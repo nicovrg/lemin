@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_rooms_and_links.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/05 23:34:09 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		check_coords_in_room(char *line)
 {

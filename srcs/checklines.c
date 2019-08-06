@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checklines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/05 23:46:08 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:26:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
 {

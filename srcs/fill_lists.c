@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lists.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/05 23:35:46 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		index_tubes(t_links **new, t_room **tmp)
 {

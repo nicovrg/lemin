@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_validity.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:17:22 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 03:24:06 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:06:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
 {

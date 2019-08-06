@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 05:13:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/05 23:44:30 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		error_with_status(char **line, t_room **rooms)
 {

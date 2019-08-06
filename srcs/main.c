@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 00:45:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:08:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/lemin.h"
+#include "lemin.h"
 
 int		main(int argc, char **argv)
 {
@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 	(void)argv;
 	if (!checklines(&rooms, &tab))
 		return (free_lists(&rooms, &tab, 1));
+	ft_printf("here\n");
 	if (!check_map_validity(&rooms))
 		return (free_lists(&rooms, &tab, 1));
 	// while (rooms)

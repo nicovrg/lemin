@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 01:55:19 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/06 04:08:24 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEMIN_H
 # define LEMIN_H
 
-# include "libft/libft.h"
+# include "libft.h"
+# include "ft_printf.h"
 
 typedef struct		s_links
 {
