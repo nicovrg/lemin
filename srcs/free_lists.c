@@ -6,11 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:54:56 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+#include "libft.h"
 
 int		free_rooms_and_links(t_room **rooms)
 {

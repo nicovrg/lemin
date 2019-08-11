@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checklines.c                                       :+:      :+:    :+:   */
+/*   check_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "lemin.h"
+#include "libft.h"
 
-int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
+static int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
 {
 	if (!ft_strchr(line, ' ') && !ft_strchr(line, '-'))
 		return (error_of_status(status));
@@ -27,7 +28,16 @@ int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
 	return (1);
 }
 
-int		check_with_status(t_room **rooms, char *line, int *status, int i)
+/*
+** ==================== dispatch_rooms_checking ====================
+** if there are no ' ' or '-' return error
+** if there is '-' call check_if_tubes
+**     if check_if_tubes() return 0 return error
+**     else return 0
+** if 
+*/
+
+static int		check_with_status(t_room **rooms, char *line, int *status, int i)
 {
 	if (*status == 0)
 	{
@@ -52,9 +62,20 @@ int		check_with_status(t_room **rooms, char *line, int *status, int i)
 	return (1);
 }
 
-int		check_if_rooms(t_room **rooms, char *line, int *var, int *status)
+/*
+** ==================== check_with_status ====================
+** this function behave in different ways depending on the status value
+** the first time it's call, status is equal to 0
+** if status == 0, it check the first line only contain digit (ant number)
+** then it increment the status value and return 0
+** if status == 1, call dispatch_rooms_checking()
+** if status == 2, if !check_if_tubes return an error, else return 0
+** if status != 0/1/2 return 1
+*/
+
+static int		check_if_rooms(t_room **rooms, char *line, int *var, int *status)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (line[0] == '#')
@@ -70,26 +91,33 @@ int		check_if_rooms(t_room **rooms, char *line, int *var, int *status)
 	return (1);
 }
 
-int		checklines(t_room **rooms, char ***tab)
+/*
+** ==================== check_if_rooms ====================
+** je comprends pas pourquoi var peut prendre la valeur de 3
+** end peut être avant start? sinon que faire si il y a deux starts / deux ends sur la même map?
+*/
+
+
+int		check_lines(t_room **rooms, char ***tab)
 {
-	char	*line;
 	int		i;
 	int		var;
 	int		status;
+	char	*line;
 
-	line = NULL;
 	i = 0;
 	var = 0;
 	status = 0;
+	line = NULL;
 	while (get_next_line(0, &line) == 1)
 	{
 		if (!(*tab = ft_realloctab(tab)))
-			return (error_while_gnl(&line));
+			return (error_while_gnl(&line, ERR_PARSE_1));
 		if (!((*tab)[i] = ft_strdup(line)))
-			return (error_while_gnl(&line));
+			return (error_while_gnl(&line, ERR_PARSE_2));
 		if (check_if_rooms(rooms, line, &var, &status))
 			if (!fill_rooms_list(rooms, line, &var))
-				return (error_while_gnl(&line));
+				return (error_while_gnl(&line, ERR_PARSE_3));
 		if (status == -1)
 			return (error_with_status(&line, rooms));
 		i++;
@@ -97,3 +125,13 @@ int		checklines(t_room **rooms, char ***tab)
 	}
 	return (1);
 }
+
+/*
+** ==================== check_lines ====================
+** read on the standard input
+** then reallocate tab with (to add another cell) -- ft_realloctab()
+** copy line in the tab last cell -- ft_strdup()
+** check if line represent a room -- check_if_rooms()
+** if line represent a room, append it to t_room structure -- fill_rooms_list()
+** free line and return 1 (meaning no error code was return before and everything was ok)
+*/

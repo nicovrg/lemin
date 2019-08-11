@@ -6,11 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:54:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+#include "libft.h"
 
 int		check_coords_in_room(char *line)
 {

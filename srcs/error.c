@@ -6,11 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 05:13:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 04:06:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/11 19:00:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+#include "libft.h"
 
 int		error_with_status(char **line, t_room **rooms)
 {
@@ -20,8 +21,9 @@ int		error_with_status(char **line, t_room **rooms)
 	return (1);
 }
 
-int		error_while_gnl(char **line)
+int		error_while_gnl(char **line, char *error_msg)
 {
+	ft_putendl(error_msg);
 	ft_strdel(line);
 	return (0);
 }
