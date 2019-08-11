@@ -13,13 +13,13 @@
 #include "lemin.h"
 #include "libft.h"
 
-static int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
+static int		check_room_isvalid(t_room **rooms, char *line, int *status)
 {
 	if (!ft_strchr(line, ' ') && !ft_strchr(line, '-'))
 		return (error_of_status(status));
 	if (ft_strchr(line, '-'))
 	{
-		if (!check_if_tubes(rooms, line, status))
+		if (!check_is_tubes(rooms, line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -29,12 +29,11 @@ static int		dispatch_rooms_checking(t_room **rooms, char *line, int *status)
 }
 
 /*
-** ==================== dispatch_rooms_checking ====================
-** if there are no ' ' or '-' return error
-** if there is '-' call check_if_tubes
-**     if check_if_tubes() return 0 return error
-**     else return 0
-** if 
+** ==================== check_room_isvalid ====================
+** this function check if the room is valid and call the function
+** to add the room to t_room structure
+** it call check_is_tubes to get the first tubes without loosing line
+** this call should happen only once
 */
 
 static int		check_with_status(t_room **rooms, char *line, int *status, int i)
@@ -51,11 +50,10 @@ static int		check_with_status(t_room **rooms, char *line, int *status, int i)
 		return (0);
 	}
 	else if (*status == 1)
-		if (!dispatch_rooms_checking(rooms, line, status))
-			return (0);
-	if (*status == 2)
+		return (check_room_isvalid(rooms, line, status));
+	else if (*status == 2)
 	{
-		if (!check_if_tubes(rooms, line, status))
+		if (!check_is_tubes(rooms, line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -68,12 +66,12 @@ static int		check_with_status(t_room **rooms, char *line, int *status, int i)
 ** the first time it's call, status is equal to 0
 ** if status == 0, it check the first line only contain digit (ant number)
 ** then it increment the status value and return 0
-** if status == 1, call dispatch_rooms_checking()
-** if status == 2, if !check_if_tubes return an error, else return 0
-** if status != 0/1/2 return 1
+** if status == 1, call check_room_isvalid()
+** if status == 2, call check_is_tube
+** return 1 if we append something on the list, 0 otherwise
 */
 
-static int		check_if_rooms(t_room **rooms, char *line, int *var, int *status)
+static int		check_is_comment(t_room **rooms, char *line, int *var, int *status)
 {
 	int	i;
 
@@ -92,7 +90,7 @@ static int		check_if_rooms(t_room **rooms, char *line, int *var, int *status)
 }
 
 /*
-** ==================== check_if_rooms ====================
+** ==================== check_is_comment ====================
 ** je comprends pas pourquoi var peut prendre la valeur de 3
 ** end peut être avant start? sinon que faire si il y a deux starts / deux ends sur la même map?
 */
@@ -115,7 +113,7 @@ int		check_lines(t_room **rooms, char ***tab)
 			return (error_while_gnl(&line, ERR_PARSE_1));
 		if (!((*tab)[i] = ft_strdup(line)))
 			return (error_while_gnl(&line, ERR_PARSE_2));
-		if (check_if_rooms(rooms, line, &var, &status))
+		if (check_is_comment(rooms, line, &var, &status))
 			if (!fill_rooms_list(rooms, line, &var))
 				return (error_while_gnl(&line, ERR_PARSE_3));
 		if (status == -1)
@@ -131,7 +129,7 @@ int		check_lines(t_room **rooms, char ***tab)
 ** read on the standard input
 ** then reallocate tab with (to add another cell) -- ft_realloctab()
 ** copy line in the tab last cell -- ft_strdup()
-** check if line represent a room -- check_if_rooms()
+** check if line represent a room -- check_is_comment()
 ** if line represent a room, append it to t_room structure -- fill_rooms_list()
 ** free line and return 1 (meaning no error code was return before and everything was ok)
 */

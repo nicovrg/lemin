@@ -1,0 +1,5 @@
+1- enlever le tableau et mettre un int avec le nombre de fourmis
+2- gérer le cas ou il y a plusieurs start ou end
+3- faire la norme du ft_realloctab
+4- checker le ptr de t_room
+5- vérifier qu'il ne peut pas y avoir de '-' ni de ' ' dans le nom de rooms / tubes

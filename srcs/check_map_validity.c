@@ -6,13 +6,13 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:17:22 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/06 04:06:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/12 00:28:07 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
+static int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
 {
 	t_links	*buf;
 
@@ -38,7 +38,7 @@ int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
 	return (0);
 }
 
-int		check_links_in_map(t_room **rooms, int start, char *name, char *prev)
+static int		check_links_in_map(t_room **rooms, int start, char *name, char *prev)
 {
 	t_room	*tmp;
 	t_links	*buf;

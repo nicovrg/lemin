@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/11 18:55:03 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/12 00:25:47 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ int		index_tubes(t_links **new, t_room **tmp)
 	return (1);
 }
 
-int		fill_tubes_with_room_bis(t_norme *norme, t_room **tmp,
-		t_links **new, char *buf)
+int		fill_tubes_with_room_bis(t_norme *norme, t_room **tmp, t_links **new, char *buf)
 {
 	if (!ft_strcmp((*tmp)->name, norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf)
-		- ft_strlen(norme->line) - 1)))
+		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(norme->line) - 1)))
 			return (0);
 		index_tubes(new, tmp);
 		norme->count++;
@@ -47,17 +45,13 @@ int		fill_tubes_with_room_bis(t_norme *norme, t_room **tmp,
 	return (1);
 }
 
-int		fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new,
-		t_room **rooms)
+int		fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
 {
-	if (!ft_strncmp((*tmp)->name, norme->line,
-	ft_strchr(norme->line, '-') - norme->line))
+	if (!ft_strncmp((*tmp)->name, norme->line, ft_strchr(norme->line, '-') - norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(norme->line,
-		ft_strchr(norme->line, '-') - norme->line + 1, ft_strlen(norme->line)
-		- ft_strlen(ft_strchr(norme->line, '-') + 1))))
+		if (!((*new)->room = ft_strsub(norme->line, ft_strchr(norme->line, '-') - norme->line + 1, ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, '-') + 1))))
 			return (0);
 		index_tubes(new, tmp);
 		norme->line = ft_strchr(norme->line, '-') + 1;
@@ -71,10 +65,10 @@ int		fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new,
 
 int		fill_tubes_list(t_room **rooms, char *line)
 {
+	char	*buf;
 	t_room	*tmp;
 	t_links	*new;
 	t_norme	norme;
-	char	*buf;
 
 	tmp = (*rooms);
 	norme.line = line;
@@ -87,11 +81,8 @@ int		fill_tubes_list(t_room **rooms, char *line)
 			if (!fill_tubes_with_room(&norme, &tmp, &new, rooms))
 				return (0);
 		}
-		else
-		{
-			if (!fill_tubes_with_room_bis(&norme, &tmp, &new, buf))
-				return (0);
-		}
+		else if (!fill_tubes_with_room_bis(&norme, &tmp, &new, buf))
+			return (0);
 	}
 	if (norme.count != 2)
 		return (0);
@@ -115,7 +106,7 @@ int		fill_rooms_list(t_room **rooms, char *line, int *var)
 	else
 		*var = 0;
 	if (!(new->name = ft_strsub(line, 0, ft_strchr(line, ' ') - line)))
-		return (1);
+		return (0);
 	new->next = NULL;
 	new->links = NULL;
 	if (!(*rooms))

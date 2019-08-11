@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lists.c                                       :+:      :+:    :+:   */
+/*   free_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "lemin.h"
 #include "libft.h"
 
-int		free_rooms_and_links(t_room **rooms)
+static int		free_rooms_and_links(t_room **rooms)
 {
 	t_room	*tmp;
 	t_links	*buf;
@@ -34,7 +34,7 @@ int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
-int		free_lists(t_room **rooms, char ***tab, int var)
+int		free_all(t_room **rooms, char ***tab, int var)
 {
 	int		i;
 
