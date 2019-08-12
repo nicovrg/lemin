@@ -3,72 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_validity.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:17:22 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/12 00:28:07 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/12 23:47:49 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
-{
-	t_links	*buf;
+// static int		advance_in_links(t_room **rooms, char *name, char *prev, t_room *tmp)
+// {
+// 	t_links	*buf;
 
-	while (tmp && ft_strcmp(tmp->name, name))
-		tmp = tmp->next;
-	if (tmp->end == 1)
-		return (1);
-	if (tmp->links)
-		buf = tmp->links;
-	else
-		return (0);
-	while (buf)
-	{
-		if (buf && !ft_strcmp(buf->room, prev))
-			buf = buf->next;
-		if (rooms && buf->room && tmp->name)
-		{
-			if (check_links_in_map(rooms, 0, buf->room, tmp->name))
-				return (1);
-		}
-		buf = buf->next;
-	}
-	return (0);
-}
+// 	while (tmp && ft_strcmp(tmp->name, name))
+// 		tmp = tmp->next;
+// 	if (tmp->end == 1)
+// 		return (1);
+// 	if (tmp->links)
+// 		buf = tmp->links;
+// 	else
+// 		return (0);
+// 	while (buf)
+// 	{
+// 		if (buf && !ft_strcmp(buf->room, prev))
+// 			buf = buf->next;
+// 		if (rooms && buf->room && tmp->name)
+// 		{
+// 			if (check_links_in_map(rooms, 0, buf->room, tmp->name))
+// 				return (1);
+// 		}
+// 		buf = buf->next;
+// 	}
+// 	return (0);
+// }
 
-static int		check_links_in_map(t_room **rooms, int start, char *name, char *prev)
-{
-	t_room	*tmp;
-	t_links	*buf;
+// int		check_links_in_map(t_room **rooms, int start, char *name, char *prev)
+// {
+// 	t_room	*tmp;
+// 	t_links	*buf;
 
-	tmp = (*rooms);
-	if (start == 1)
-	{
-		while (tmp && tmp->start != 1)
-			tmp = tmp->next;
-		if (tmp->links)
-			buf = tmp->links;
-		else
-			return (0);
-		while (buf)
-		{
-			if (buf->room && tmp->name)
-			{
-				if (check_links_in_map(rooms, 0, buf->room, tmp->name))
-					return (1);
-			}
-			buf = buf->next;
-		}
-	}
-	else
-	{
-		if (advance_in_links(rooms, name, prev, tmp))
-			return (1);
-	}
-	return (0);
-}
+// 	tmp = (*rooms);
+// 	if (start == 1)
+// 	{
+// 		while (tmp && tmp->start != 1)
+// 			tmp = tmp->next;
+// 		if (tmp->links)
+// 			buf = tmp->links;
+// 		else
+// 			return (0);
+// 		while (buf)
+// 		{
+// 			if (buf->room && tmp->name)
+// 			{
+// 				if (check_links_in_map(rooms, 0, buf->room, tmp->name))
+// 					return (1);
+// 			}
+// 			buf = buf->next;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		if (advance_in_links(rooms, name, prev, tmp))
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
 int		check_map_validity(t_room **rooms)
 {
@@ -81,13 +81,14 @@ int		check_map_validity(t_room **rooms)
 	end = 0;
 	while (tmp)
 	{
-		if (tmp->start == 1)
+		if (tmp->start == 1 && tmp->links)
 			start++;
-		if (tmp->end == 1)
+		if (tmp->end == 1 && tmp->links)
 			end++;
 		tmp = tmp->next;
 	}
 	if (start != 1 || end != 1)
 		return (0);
-	return (check_links_in_map(rooms, 1, NULL, NULL));
+	// return (check_links_in_map(rooms, 1, NULL, NULL));
+	return (1);
 }

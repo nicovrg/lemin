@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                       :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/11 18:54:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/12 23:44:14 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,13 @@ static int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
-int		free_all(t_room **rooms, char ***tab, int var)
+int				free_all(t_room **rooms, int var)
 {
 	int		i;
 
 	i = 0;
 	while (*rooms)
 		free_rooms_and_links(rooms);
-	while (*tab && (*tab)[i])
-	{
-		ft_strdel(&((*tab)[i]));
-		i++;
-	}
-	free(*tab);
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (var);
