@@ -6,11 +6,7 @@
 #    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2019/08/13 02:33:35 by qgirard          ###   ########.fr        #
-=======
-#    Updated: 2019/08/13 02:41:09 by nivergne         ###   ########.fr        #
->>>>>>> 795592c6b7bf323745938b9894d9a78e69e0ffe6
+#    Updated: 2019/08/13 03:44:30 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +32,7 @@ SRC_PARSE = 		check_lines.c\
 					check_map_validity.c\
 					check_rooms_and_links.c\
 					fill_lists.c\
-<<<<<<< HEAD
-					free_all.c\
-					error.c \
 					check_paths.c
-=======
->>>>>>> 795592c6b7bf323745938b9894d9a78e69e0ffe6
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
