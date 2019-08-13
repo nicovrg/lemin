@@ -6,33 +6,47 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/11 22:48:40 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/13 02:41:09 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = lem-in
 
-INC = -I./include
-INC_PATH = -Iinclude/ -Ilibft/include
+INC_PATH := include/
+SRC_PATH := srcs/
+OBJ_PATH := obj/
 
 INC_LEMIN =		lemin.h
 
 INC_LEMIN := $(addprefix include/, $(INC_LEMIN))
 
-SRC_LEMIN =			main.c\
-					check_lines.c\
-					check_map_validity.c\
-					check_rooms_and_links.c\
-					fill_lists.c\
+SRC_GENERAL =		main.c\
 					free_all.c\
 					error.c
 
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_LEMIN))
-OBJ = $(SRC:src/%.c=obj/%.o)
+SRC_GENERAL := $(addprefix general/, $(SRC_GENERAL))
+OBJ_GENERAL := $(addprefix general/, $(addsuffix .o, $(basename $(notdir $(SRC_GENERAL)))))
 
-SRC_PATH = srcs/
+SRC_PARSE = 		check_lines.c\
+					check_map_validity.c\
+					check_rooms_and_links.c\
+					fill_lists.c\
+
+SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
+OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
+
+SRC := $(addprefix $(SRC_PATH), $(SRC_GENERAL))
+SRC += $(addprefix $(SRC_PATH), $(SRC_PARSE))
+
+OBJ := $(addprefix $(OBJ_PATH), $(OBJ_GENERAL))
+OBJ += $(addprefix $(OBJ_PATH), $(OBJ_PARSE))
+
+
+INC = -I./include
+INC_PATH = -Iinclude/ -Ilibft/include
+
 GCC_FLAG = -Wall -Wextra -Werror
-# -g3 -fsanitize=address
 CC = gcc $(GCC_FLAG) $(INC_PATH)
 LIB = libft/libft.a
 
@@ -62,7 +76,7 @@ $(NAME): makelib obj $(LIB) $(OBJ)
 makelib:
 	@$(MAKE) -C libft
 
-obj/%.o: src/%.c $(INC_LEMIN)
+obj/%.o: srcs/%.c $(INC_LEMIN)
 	@echo "Building$(BLU) $(patsubst obj/%,%,$(basename $@))$(END)"
 	@printf "\033[A"
 	@$(CC) $(CFLAGS) -o $@ -c $<
@@ -78,6 +92,8 @@ fsanitize: makelib obj $(LIB) $(OBJ)
 
 obj:
 	@mkdir -p obj
+	@mkdir -p obj/general
+	@mkdir -p obj/parse
 
 clean_lib:
 	@make -C libft clean
@@ -146,6 +162,10 @@ bitcoin_autore:
 	@echo "$(PURPLE)   ;       ;                       +:   ~~--  ':'  -';"
 	@echo "$(PURPLE)                                    ':         : .::/"
 	@echo "$(PURPLE)       ;                            ;;+_  :::. :..;;;"
+
+debug_makefile:
+	@echo "$(SRC)"
+	@echo "$(OBJ)"
 
 .PHONY: all clean fclean re libft_clean proj_clean
 
