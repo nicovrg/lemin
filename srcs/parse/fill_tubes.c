@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:35:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 21:40:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	return (1);
 }
 
+/* ==================== index_tubes ====================
+** index_tubes() add the tube at the end of the rooms tubes links
+*/
+
+
 static int				fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
 {
-	if (!ft_strncmp((*tmp)->name, norme->line,
-	ft_strchr(norme->line, '-') - norme->line))
+	if (!ft_strncmp((*tmp)->name, norme->line, ft_strchr(norme->line, '-') - norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
@@ -55,8 +59,7 @@ static int				fill_tubes_with_room_bis(t_norme *norme, t_room **tmp, t_links **n
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(buf, 0,
-		ft_strlen(buf) - ft_strlen(norme->line) - 1)))
+		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(norme->line) - 1)))
 			return (0);
 		index_tubes(new, tmp);
 		norme->count++;
@@ -72,10 +75,10 @@ int						fill_tubes(t_room **rooms, char *line)
 	t_links	*new;
 	t_norme	norme;
 
+	buf = line;
 	tmp = (*rooms);
 	norme.line = line;
 	norme.count = 0;
-	buf = line;
 	while (tmp)
 	{
 		if (ft_strchr(norme.line, '-'))
@@ -93,5 +96,10 @@ int						fill_tubes(t_room **rooms, char *line)
 
 
 /* ==================== fill_tubes ====================
-**  
+** fill_tubes() check if the line represent a tube
+** then call fill_tubes_with_room() and fill_tubes_with_room_bis
+** 
+** 
+** 
+// while tmp, sans tmp = tmp->next?
 */
