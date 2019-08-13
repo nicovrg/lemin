@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 02:50:51 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 03:48:59 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(void)
 {
 	int		nb_ant;
 	t_room	*rooms;
-	t_room	*paths;
+	t_path	*paths;
 
 	rooms = NULL;
 	paths = NULL;
