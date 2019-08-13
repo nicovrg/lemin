@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 22:49:53 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 23:03:30 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ int	fill_rooms(t_room **rooms, t_norme *norme)
 {
 	t_room	*tmp;
 	t_room	*new;
-
+	
 	tmp = (*rooms);
-	while ((*rooms) && tmp->next)
+	while ((*rooms) && tmp->next && ft_strncmp(tmp->name, norme->line,
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
 		tmp = tmp->next;
+	if (tmp && !ft_strncmp(tmp->name, norme->line,
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
+		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
 	new->start = (norme->var == 1 || norme->var == 4) ? 1 : 0;
@@ -29,7 +33,8 @@ int	fill_rooms(t_room **rooms, t_norme *norme)
 		norme->var = (norme->var == 3) ? 1 : 2;
 	else
 		norme->var = 0;
-	if (!(new->name = ft_strsub(norme->line, 0, ft_strchr(norme->line, ' ') - norme->line)))
+	if (!(new->name = ft_strsub(norme->line, 0,
+	ft_strchr(norme->line, ' ') - norme->line)))
 		return (0);
 	new->next = NULL;
 	new->links = NULL;
@@ -39,6 +44,10 @@ int	fill_rooms(t_room **rooms, t_norme *norme)
 		tmp->next = new;
 	return (1);
 }
+/* ==================== fill_tubes ====================
+** call the functions that add links to rooms
+*/
+
 
 /* ==================== fill_rooms ====================
 ** fill_rooms() append the room in norme->line at then end of t_room struct
