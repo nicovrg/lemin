@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:00:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 22:14:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	return (1);
 }
 
-static int				fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
+
+/* ==================== index_tubes ====================
+** append tube on the room
+** tmp is a copy of room 
+** (to keep the room address at the start of rooms)
+*/
+
+static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
 {
 	if (!ft_strncmp((*tmp)->name, norme->line,
 	ft_strchr(norme->line, '-') - norme->line))
@@ -49,7 +56,12 @@ static int				fill_tubes_with_room(t_norme *norme, t_room **tmp, t_links **new, 
 	return (1);
 }
 
-static int				fill_tubes_with_room_bis(t_norme *norme, t_room **tmp, t_links **new, char *buf)
+
+/* ==================== fill_tubes_first_room ====================
+** send to index_tube the address of after the '-'
+*/
+
+static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, char *buf)
 {
 	if (!ft_strcmp((*tmp)->name, norme->line))
 	{
@@ -64,6 +76,11 @@ static int				fill_tubes_with_room_bis(t_norme *norme, t_room **tmp, t_links **n
 	*tmp = (*tmp)->next;
 	return (1);
 }
+
+
+/* ==================== fill_tubes_last_room ====================
+** send to index_tube the address of before the '-'
+*/
 
 int						fill_tubes(t_room **rooms, char *line)
 {
@@ -80,10 +97,10 @@ int						fill_tubes(t_room **rooms, char *line)
 	{
 		if (ft_strchr(norme.line, '-'))
 		{
-			if (!fill_tubes_with_room(&norme, &tmp, &new, rooms))
+			if (!fill_tubes_first_room(&norme, &tmp, &new, rooms))
 				return (0);
 		}
-		else if (!fill_tubes_with_room_bis(&norme, &tmp, &new, buf))
+		else if (!fill_tubes_last_room(&norme, &tmp, &new, buf))
 			return (0);
 	}
 	if (norme.count != 2)
@@ -93,5 +110,5 @@ int						fill_tubes(t_room **rooms, char *line)
 
 
 /* ==================== fill_tubes ====================
-** 
+** call the functions that add links to rooms
 */
