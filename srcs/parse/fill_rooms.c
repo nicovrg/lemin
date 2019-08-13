@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 23:03:30 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 23:11:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ int	fill_rooms(t_room **rooms, t_norme *norme)
 		tmp->next = new;
 	return (1);
 }
-/* ==================== fill_tubes ====================
-** call the functions that add links to rooms
-*/
-
 
 /* ==================== fill_rooms ====================
 ** fill_rooms() append the room in norme->line at then end of t_room struct

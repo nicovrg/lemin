@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 23:05:17 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 23:15:21 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	}
 	return (1);
 }
-
 
 /* ==================== index_tubes ====================
 ** append tube on the room
@@ -67,8 +66,7 @@ static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, 
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(norme->line, ft_strchr(norme->line, '-')
-		- norme->line + 1, ft_strlen(ft_strchr(norme->line, '-') + 1))))
+		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(norme->line) - 1)))
 			return (0);
 		index_tubes(new, tmp);
 		norme->count++;
