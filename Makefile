@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
+#    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/11 22:48:40 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/13 02:33:35 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC_LEMIN =			main.c\
 					check_rooms_and_links.c\
 					fill_lists.c\
 					free_all.c\
-					error.c
+					error.c \
+					check_paths.c
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_LEMIN))
 OBJ = $(SRC:src/%.c=obj/%.o)

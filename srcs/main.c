@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 00:52:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 02:50:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,22 @@
 // 	return (1);
 // }
 
-int		main(int argc, char **argv)
+int		main(void)
 {
 	int		nb_ant;
 	t_room	*rooms;
+	t_room	*paths;
 
 	rooms = NULL;
+	paths = NULL;
 	nb_ant = 0;
 	if (!check_lines(&rooms, &nb_ant))
 		return (free_all(&rooms, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, 1));
+	if (!check_paths(&rooms, &paths))
+		return (free_all(&rooms, 1));
 	ft_putendl("FINISH");
 	free_all(&rooms, 0);
-	(void)argc;
-	(void)argv;
 	return (0);
 }
