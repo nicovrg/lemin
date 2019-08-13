@@ -6,44 +6,60 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 22:18:12 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/14 01:21:14 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		init_paths(t_path **paths, int i)
+int		room_is_passed(t_path **current, char *name)
 {
-	t_path	*tmp;
-	t_path	*new;
+	t_links	*tmp;
 
-	tmp = (*paths);
-	while (*paths && tmp->next)
+	tmp = (*current)->links;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->room, name))
+			return (1);
 		tmp = tmp->next;
-	if (!(new = (t_path *)malloc(sizeof(t_path))))
-		return (0);
-	new->path = i;
-	new->next = NULL;
-	new->links = NULL;
-	if (!(*paths))
-		(*paths) = new;
-	else
-		tmp->next = new;
-	return (1);
+	}
+	return (0);
 }
 
-// int		parse_paths(t_room **rooms, t_path **paths)
-// {
-// 	return (1);
-// }
+int		parse_paths(t_room **rooms, t_path **current, char *name)
+{
+	t_room	*tmp;
+	t_links	*links;
+	t_links	*buf;
+
+	buf = (*current)->links;
+	tmp = (*rooms);
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->name, name))
+		{
+			if (tmp->end == 1)
+				return (1);
+			links = tmp->links;
+			while (links && room_is_passed(current, links->room))
+				links = links->next;
+			if (!add_room_in_path(&buf, links->room))
+				return (0);
+			if (parse_paths(rooms, current, links->room))
+				return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (2);
+}
 
 int		check_paths(t_room **rooms, t_path **paths)
 {
 	t_room	*tmp;
+	t_path	*current;
 	t_links	*buf;
-	// t_path	*current;
 	int		i;
-	// int		j;
+	int		j;
 
 	i = 1;
 	tmp = (*rooms);
@@ -54,9 +70,17 @@ int		check_paths(t_room **rooms, t_path **paths)
 			buf = tmp->links;
 			while (buf)
 			{
-				if (!(init_paths(paths, i)))
+				if (!(current = init_paths(paths, i, tmp->name)))
 					return (0);
-				// j = parse_paths(rooms, paths);
+				if (!add_room_in_path(&(current->links), buf->room))
+					return (0);
+				j = parse_paths(rooms, &current, buf->room);
+				if (j == 0)
+					return (free_paths(paths, 0));
+				if (j == 1)
+					i++;
+				if (j == 2)
+					free_paths(paths, 1);
 				buf = buf->next;
 			}
 		}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
+#    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/13 05:13:07 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/14 01:08:48 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_PARSE = 		check_lines.c\
 					check_rooms_and_links.c\
 					fill_rooms.c\
 					fill_tubes.c\
+					fill_paths.c\
 					check_paths.c
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))

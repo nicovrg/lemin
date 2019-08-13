@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 23:15:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/14 01:08:28 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ int					check_paths(t_room **rooms, t_path **paths);
 int					error_of_status(int *status);
 int					error_while_gnl(char **line, char *error_msg);
 int					error_with_status(char **line, t_room **rooms);
+t_links				*add_room_in_path(t_links **buf, char *name);
 int					fill_rooms(t_room **rooms, t_norme *norme);
 int					fill_tubes(t_room **rooms, char *line);
+t_path				*init_paths(t_path **paths, int i, char *name);
 int					free_all(t_room **rooms, int var);
+int					free_paths(t_path **paths, int var);
 
 #endif
