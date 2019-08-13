@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 02:52:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 05:14:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ int		main()
 {
 	int		nb_ant;
 	t_room	*rooms;
+	t_room	*paths;
 
 	rooms = NULL;
+	paths = NULL;
 	nb_ant = 0;
 	if (!check_lines(&rooms, &nb_ant))
 		return (free_all(&rooms, 1));
 	if (!check_map_validity(&rooms))
+		return (free_all(&rooms, 1));
+	if (!check_paths(&rooms, &paths))
 		return (free_all(&rooms, 1));
 	ft_putendl("FINISH");
 	free_all(&rooms, 0);
