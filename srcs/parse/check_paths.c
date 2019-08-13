@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:41:15 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 22:18:12 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ int		init_paths(t_path **paths, int i)
 	return (1);
 }
 
-int		parse_paths(t_room **rooms, t_path **paths)
-{
-	return (1);
-}
+// int		parse_paths(t_room **rooms, t_path **paths)
+// {
+// 	return (1);
+// }
 
 int		check_paths(t_room **rooms, t_path **paths)
 {
 	t_room	*tmp;
 	t_links	*buf;
-	t_path	*current;
+	// t_path	*current;
 	int		i;
-	int		j;
+	// int		j;
 
 	i = 1;
 	tmp = (*rooms);
@@ -56,7 +56,7 @@ int		check_paths(t_room **rooms, t_path **paths)
 			{
 				if (!(init_paths(paths, i)))
 					return (0);
-				j = parse_paths(rooms, paths);
+				// j = parse_paths(rooms, paths);
 				buf = buf->next;
 			}
 		}

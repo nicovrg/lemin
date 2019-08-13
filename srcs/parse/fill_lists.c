@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:35:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 22:49:46 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,12 @@ int				fill_rooms_list(t_room **rooms, t_norme *norme)
 	t_room	*new;
 
 	tmp = (*rooms);
-	while ((*rooms) && tmp->next)
+	while ((*rooms) && tmp->next && ft_strncmp(tmp->name, norme->line,
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
 		tmp = tmp->next;
+	if (tmp && !ft_strncmp(tmp->name, norme->line,
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
+		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
 	new->start = (norme->var == 1 || norme->var == 4) ? 1 : 0;

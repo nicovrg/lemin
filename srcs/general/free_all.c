@@ -6,12 +6,14 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/12 23:44:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 22:17:58 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
+
+// int				free_paths(t_path **paths)
 
 static int		free_rooms_and_links(t_room **rooms)
 {
