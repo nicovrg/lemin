@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 00:07:10 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 01:05:07 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ static int		check_is_comment(t_room **rooms, t_norme *norme,
 int				check_lines(t_room **rooms, int *nb_ant)
 {
 	int		i;
-	t_norme	norme;
 	int		status;
 	char	*line;
+	t_norme	norme;
 
 	i = 0;
 	norme.var = 0;
