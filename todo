@@ -1,2 +1,3 @@
+1- demander que faire si plusieurs salles start / end (ignorer / continuer / remplacer ...)
 3- faire la norme du ft_realloctab
 5- vérifier qu'il ne peut pas y avoir de '-' ni de ' ' dans le nom de rooms / tubes

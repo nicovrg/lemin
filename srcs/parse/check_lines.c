@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 01:05:07 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 05:00:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		check_room_isvalid(t_room **rooms, char *line, int *status)
 		return (error_of_status(status));
 	if (ft_strchr(line, '-'))
 	{
-		if (!check_is_tubes(rooms, line, status))
+		if (!is_tubes(rooms, line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -32,12 +32,11 @@ static int		check_room_isvalid(t_room **rooms, char *line, int *status)
 ** ==================== check_room_isvalid ====================
 ** this function check if the room is valid and call the function
 ** to add the room to t_room structure
-** it call check_is_tubes to get the first tubes without loosing line
-** this call should happen only once
+** it call is_tubes to get the first tubes without loosing line
+** this call (is_tubes) should happen only once, 
 */
 
-static int		check_with_status(t_room **rooms, t_norme *norme,
-				int *status, int *nb_ant)
+static int		check_status(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
 {
 	if (*status == 0)
 	{
@@ -56,7 +55,7 @@ static int		check_with_status(t_room **rooms, t_norme *norme,
 		return (check_room_isvalid(rooms, norme->line, status));
 	else if (*status == 2)
 	{
-		if (!check_is_tubes(rooms, norme->line, status))
+		if (!is_tubes(rooms, norme->line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -64,18 +63,18 @@ static int		check_with_status(t_room **rooms, t_norme *norme,
 }
 
 /*
-** ==================== check_with_status ====================
+** ==================== check_status ====================
 ** this function behave in different ways depending on the status value
+** it check if we are reading nb_ant, room or tubes
 ** the first time it's call, status is equal to 0
 ** if status == 0, it check the first line only contain digit (ant number)
 ** then it increment the status value and return 0
 ** if status == 1, call check_room_isvalid()
-** if status == 2, call check_is_tube
+** if status == 2, call check_is_tube()
 ** return 1 if we append something on the list, 0 otherwise
 */
 
-static int		check_is_comment(t_room **rooms, t_norme *norme,
-				int *status, int *nb_ant)
+static int		is_room(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
 {
 	norme->count = 0;
 	if (norme->line[0] == '#')
@@ -92,16 +91,23 @@ static int		check_is_comment(t_room **rooms, t_norme *norme,
 		}
 		return (0);
 	}
-	if (!check_with_status(rooms, norme, status, nb_ant))
+	if (!check_status(rooms, norme, status, nb_ant))
 		return (0);
 	return (1);
 }
 
 /*
-** ==================== check_is_comment ====================
-** je comprends pas pourquoi var peut prendre la valeur de 3
-** end peut être avant start? sinon que faire si il y a deux starts /
-** deux ends sur la même map?
+** ==================== is_room ====================
+** check if line start by a '#'
+** if it does, check if it's the start or end room
+** store we found a start/end in order to ignore possible doublons
+** norme->var value will determine the order start and end are encounter
+** norme->var = 0: no start, no end 
+** norme->var = 1: start, no end
+** norme->var = 2: end, no start
+** norme->var = 3: end, start
+** norme->var = 4: start, end
+** then call check_status to know if we are reading nb_ant, room or tubes
 */
 
 int				check_lines(t_room **rooms, int *nb_ant)
@@ -120,9 +126,9 @@ int				check_lines(t_room **rooms, int *nb_ant)
 	while (get_next_line(0, &line) == 1)
 	{
 		norme.line = line;
-		if (check_is_comment(rooms, &norme, &status, nb_ant))
-			if (!fill_rooms_list(rooms, &norme))
-				return (error_while_gnl(&line, ERR_PARSE_3));
+		if (is_room(rooms, &norme, &status, nb_ant))
+			if (!fill_rooms(rooms, &norme))
+				return (error_while_gnl(&line, ERR_PARSE_1));
 		if (status == -1)
 			return (error_with_status(&line, rooms));
 		i++;
@@ -134,10 +140,9 @@ int				check_lines(t_room **rooms, int *nb_ant)
 /*
 ** ==================== check_lines ====================
 ** read on the standard input
-** then reallocate tab with (to add another cell) -- ft_realloctab()
-** copy line in the tab last cell -- ft_strdup()
-** check if line represent a room -- check_is_comment()
-** if line represent a room, append it to t_room structure -- fill_rooms_list()
+** check if line represent a room -- is_room()
+** if line represent a room, append it to t_room structure -- fill_rooms()
+** note: is_room call check_status() which call is_tubes() which call fill_tubes()
 ** free line and return 1
 ** (meaning no error code was return before and everything was ok)
 */

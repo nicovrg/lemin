@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/13 03:48:59 by qgirard          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/13 05:14:05 by nivergne         ###   ########.fr       */
+>>>>>>> 86516d60d19a36b51d68a520d73652c17b53089e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +34,7 @@
 // 	return (1);
 // }
 
-int		main(void)
+int		main()
 {
 	int		nb_ant;
 	t_room	*rooms;
@@ -49,3 +53,9 @@ int		main(void)
 	free_all(&rooms, 0);
 	return (0);
 }
+
+/*
+** ==================== main ====================
+** call check_line() -> parse data and store it
+** call check_map_validity() -> check if the map is valid
+*/
