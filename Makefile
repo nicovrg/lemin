@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/13 02:41:09 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/13 04:56:06 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,16 +31,24 @@ OBJ_GENERAL := $(addprefix general/, $(addsuffix .o, $(basename $(notdir $(SRC_G
 SRC_PARSE = 		check_lines.c\
 					check_map_validity.c\
 					check_rooms_and_links.c\
-					fill_lists.c\
+					fill_rooms.c\
+					fill_tubes.c
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
 
+SRC_ALGO = 			
+
+SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
+OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))
+
 SRC := $(addprefix $(SRC_PATH), $(SRC_GENERAL))
 SRC += $(addprefix $(SRC_PATH), $(SRC_PARSE))
+SRC += $(addprefix $(SRC_PATH), $(SRC_ALGO))
 
 OBJ := $(addprefix $(OBJ_PATH), $(OBJ_GENERAL))
 OBJ += $(addprefix $(OBJ_PATH), $(OBJ_PARSE))
+OBJ += $(addprefix $(OBJ_PATH), $(OBJ_ALGO))
 
 
 INC = -I./include
@@ -94,6 +102,7 @@ obj:
 	@mkdir -p obj
 	@mkdir -p obj/general
 	@mkdir -p obj/parse
+	@mkdir -p obj/algo
 
 clean_lib:
 	@make -C libft clean

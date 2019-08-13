@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 00:52:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 02:52:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 // 	return (1);
 // }
 
-int		main(int argc, char **argv)
+int		main()
 {
 	int		nb_ant;
 	t_room	*rooms;
@@ -43,7 +43,11 @@ int		main(int argc, char **argv)
 		return (free_all(&rooms, 1));
 	ft_putendl("FINISH");
 	free_all(&rooms, 0);
-	(void)argc;
-	(void)argv;
 	return (0);
 }
+
+/*
+** ==================== main ====================
+** call check_line() -> parse data and store it
+** call check_map_validity() -> check if the map is valid
+*/

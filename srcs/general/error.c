@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 05:13:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/11 23:27:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/13 04:48:03 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,11 @@ int		error_while_gnl(char **line, char *error_msg)
 int		error_of_status(int *status)
 {
 	*status = -1;
+	return (0);
+}
+
+int		error_msg(char *error_msg)
+{
+	ft_putendl(error_msg);
 	return (0);
 }

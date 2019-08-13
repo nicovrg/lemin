@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 00:04:45 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/13 05:00:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "ft_printf.h"
 
-# define ERR_PARSE_1 "error in check_lines - fail to reallocate tab"
-# define ERR_PARSE_2 "error in check_lines - fail to copy line in tab"
-# define ERR_PARSE_3 "error in check_lines - fail to append room to room list"
+# define ERR_PARSE_1 "error in check_lines - fail to append room to room list"
 
 typedef struct		s_links
 {
@@ -44,15 +42,15 @@ typedef struct		s_norme
 }					t_norme;
 
 int					check_coords_in_room(char *line);
-int					check_is_tubes(t_room **rooms, char *line, int *status);
+int					is_tubes(t_room **rooms, char *line, int *status);
 int					check_links_in_map(t_room **rooms, int start, char *name, char *prev);
 int					check_map_validity(t_room **rooms);
 int					check_lines(t_room **rooms, int	*nb_ant);
 int					error_of_status(int *status);
 int					error_while_gnl(char **line, char *error_msg);
 int					error_with_status(char **line, t_room **rooms);
-int					fill_rooms_list(t_room **rooms, t_norme *norme);
-int					fill_tubes_list(t_room **rooms, char *line);
+int					fill_rooms(t_room **rooms, t_norme *norme);
+int					fill_tubes(t_room **rooms, char *line);
 int					free_all(t_room **rooms, int var);
 
 #endif
