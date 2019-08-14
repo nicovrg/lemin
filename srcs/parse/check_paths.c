@@ -6,11 +6,28 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/14 01:21:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/14 01:57:03 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+int		del_room_in_path(t_links **buf)
+{
+	t_links	*tmp;
+	t_links	*ptr;
+
+	tmp = (*buf);
+	ptr = (*buf);
+	while (*buf && tmp->next)
+		tmp = tmp->next;
+	while (*buf && ptr->next != tmp)
+		ptr = ptr->next;
+	ft_strdel(&(tmp->room));
+	free(tmp);
+	ptr->next = NULL;
+	return (1);
+}
 
 int		room_is_passed(t_path **current, char *name)
 {
@@ -41,12 +58,21 @@ int		parse_paths(t_room **rooms, t_path **current, char *name)
 			if (tmp->end == 1)
 				return (1);
 			links = tmp->links;
-			while (links && room_is_passed(current, links->room))
-				links = links->next;
-			if (!add_room_in_path(&buf, links->room))
-				return (0);
-			if (parse_paths(rooms, current, links->room))
-				return (1);
+			while (links)
+			{
+				while (links && room_is_passed(current, links->room))
+					links = links->next;
+				if (buf && links && links->room && !add_room_in_path(&buf, links->room))
+					return (0);
+				if (links && links->room && parse_paths(rooms, current, links->room) == 1)
+					return (1);
+				else
+					del_room_in_path(&buf);
+				if (links)
+					links = links->next;
+			}
+			if (!links)
+				return (2);
 		}
 		tmp = tmp->next;
 	}

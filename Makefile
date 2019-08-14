@@ -6,7 +6,7 @@
 #    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/14 01:08:48 by qgirard          ###   ########.fr        #
+#    Updated: 2019/08/14 01:30:11 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ OBJ += $(addprefix $(OBJ_PATH), $(OBJ_ALGO))
 INC = -I./include
 INC_PATH = -Iinclude/ -Ilibft/include
 
-GCC_FLAG = -Wall -Wextra -Werror
+GCC_FLAG = -Wall -Wextra -Werror -g
 CC = gcc $(GCC_FLAG) $(INC_PATH)
 LIB = libft/libft.a
 
