@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:17:46 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:20:43 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 {
 	t_room	*tmp;
 	t_links	*links;
-	t_links	*buf;
 
 	tmp = (*rooms);
-	buf = (*current)->links;
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->name, name))
@@ -94,7 +92,7 @@ int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 				while (links && links->room
 				&& (room_is_passed(current, links->room) || room_is_banned(links->room, list)))
 					links = links->next;
-				if (links && links->room && buf && !add_room_in_path(&((*current)->links), links->room))
+				if (links && links->room && !add_room_in_path(&((*current)->links), links->room))
 					return (0);
 				if (links && links->room && parse_paths(rooms, current, links->room, list) == 1)
 					return (1);
