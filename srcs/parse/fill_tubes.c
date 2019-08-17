@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 22:53:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/17 14:53:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,3 @@ int						fill_tubes(t_room **rooms, char *line)
 }
 
 
-/* ==================== fill_tubes ====================
-** call the functions that add links to rooms
-*/
