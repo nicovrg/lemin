@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:21:21 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:40:56 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 // 	return (1);
 // }
 
-int		main()
+int		main(void)
 {
 	int		nb_ant;
 	t_room	*rooms;
