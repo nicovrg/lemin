@@ -6,72 +6,48 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:25:51 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 14:41:32 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		del_room_in_path(t_path **current)
+int		parse_links(t_room **rooms, t_path **current, t_ban **list, t_links **links)
 {
-	t_links	*tmp;
-	t_links	*ptr;
-
-	tmp = (*current)->links;
-	ptr = (*current)->links;
-	while ((*current)->links && tmp->next)
-		tmp = tmp->next;
-	while ((*current)->links && ptr->next && ptr->next != tmp)
-		ptr = ptr->next;
-	if (tmp && tmp->room)
-		ft_strdel(&(tmp->room));
-	ptr->next = NULL;
-	if (tmp)
-		free(tmp);
-	return (1);
-}
-
-/*
-** ==================== del_room_in_path ====================
-** delete the last room on the current path
-*/
-
-int		room_is_banned(char *name, t_ban **list)
-{
-	t_ban	*tmp;
-
-	tmp = (*list);
-	while (tmp)
+	while ((*links))
 	{
-		if (!ft_strcmp(name, tmp->name))
+		while ((*links) && (*links)->room
+		&& (room_is_passed(current, (*links)->room)
+		|| room_is_banned((*links)->room, list)))
+			(*links) = (*links)->next;
+		if ((*links) && (*links)->room
+		&& !add_room_in_path(&((*current)->links), (*links)->room))
+			return (0);
+		if ((*links) && (*links)->room
+		&& parse_paths(rooms, current, (*links)->room, list) == 1)
 			return (1);
-		tmp = tmp->next;
+		else if ((*links))
+		{
+			if (!(fill_banned_rooms(list, (*links)->room)))
+				return (0);
+			del_room_in_path(current);
+		}
+		if ((*links))
+			(*links) = (*links)->next;
 	}
-	return (0);
+	if (!(*links))
+		return (2);
+	return (2);
 }
 
 /*
-** ==================== room_is_banned ====================
-** check if the room is in the list of banned rooms
-*/
-
-int		room_is_passed(t_path **current, char *name)
-{
-	t_links	*tmp;
-
-	tmp = (*current)->links;
-	while (tmp)
-	{
-		if (tmp->room && !ft_strcmp(tmp->room, name))
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-/*
-** ==================== room_is_passed ====================
-** check if the room is already in the current path
+** ==================== parse_links ====================
+** check if the room is passed or banned
+** then add it to the current path
+** then call parse_paths in recursive
+** if we are in the end of a branch that not result
+** of the end of the path then ban the room and delete the last
+** room of the current path
 */
 
 int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
@@ -87,26 +63,7 @@ int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 			if (tmp->end == 1)
 				return (1);
 			links = tmp->links;
-			while (links)
-			{
-				while (links && links->room
-				&& (room_is_passed(current, links->room) || room_is_banned(links->room, list)))
-					links = links->next;
-				if (links && links->room && !add_room_in_path(&((*current)->links), links->room))
-					return (0);
-				if (links && links->room && parse_paths(rooms, current, links->room, list) == 1)
-					return (1);
-				else if (links)
-				{
-					if (!(fill_banned_rooms(list, links->room)))
-						return (0);
-					del_room_in_path(current);
-				}
-				if (links)
-					links = links->next;
-			}
-			if (!links)
-				return (2);
+			return (parse_links(rooms, current, list, &links));
 		}
 		tmp = tmp->next;
 	}

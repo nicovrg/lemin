@@ -6,12 +6,36 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:39:04 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 14:37:34 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
+
+int				del_room_in_path(t_path **current)
+{
+	t_links	*tmp;
+	t_links	*ptr;
+
+	tmp = (*current)->links;
+	ptr = (*current)->links;
+	while ((*current)->links && tmp->next)
+		tmp = tmp->next;
+	while ((*current)->links && ptr->next && ptr->next != tmp)
+		ptr = ptr->next;
+	if (tmp && tmp->room)
+		ft_strdel(&(tmp->room));
+	ptr->next = NULL;
+	if (tmp)
+		free(tmp);
+	return (1);
+}
+
+/*
+** ==================== del_room_in_path ====================
+** delete the last room on the current path
+*/
 
 int				free_one_path(t_path **paths, t_path **current)
 {
