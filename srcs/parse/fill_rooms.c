@@ -3,27 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   fill_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 23:11:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/17 13:11:59 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
 
-int	fill_rooms(t_room **rooms, t_norme *norme)
+int		fill_banned_rooms(t_ban **list, char *name)
+{
+	t_ban	*tmp;
+	t_ban	*new;
+
+	tmp = (*list);
+	while ((*list) && tmp->next)
+		tmp = tmp->next;
+	if (!(new = (t_ban *)malloc(sizeof(t_ban))))
+		return (0);
+	if (!(new->name = ft_strdup(name)))
+		return (0);
+	new->next = NULL;
+	if (!(*list))
+		(*list) = new;
+	else
+		tmp->next = new;
+	return (1);
+}
+
+/* ==================== fill__banned_rooms ====================
+** this list is filled wiht the names of the rooms which we don't
+** want to pass on because they are the end of a branch who don't
+** have links with the end
+*/
+
+int		fill_rooms(t_room **rooms, t_norme *norme)
 {
 	t_room	*tmp;
 	t_room	*new;
 	
 	tmp = (*rooms);
-	while ((*rooms) && tmp->next && ft_strncmp(tmp->name, norme->line,
-	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
+	while ((*rooms) && tmp->next && (ft_strncmp(tmp->name, norme->line,
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
+	|| ft_strlen(tmp->name) != ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
 		tmp = tmp->next;
 	if (tmp && !ft_strncmp(tmp->name, norme->line,
-	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
+	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
+	&& ft_strlen(tmp->name) == ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
 		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);

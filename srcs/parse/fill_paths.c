@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 01:07:22 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/14 01:07:48 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 11:55:29 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_links	*add_room_in_path(t_links **buf, char *name)
 	if (!(new = (t_links *)malloc(sizeof(t_links))))
 		return (0);
 	new->next = NULL;
-	new->room = ft_strdup(name);
+	if (!(new->room = ft_strdup(name)))
+		return (0);
 	if (!(*buf))
 		(*buf) = new;
 	else
@@ -45,7 +46,8 @@ t_path	*init_paths(t_path **paths, int i, char *name)
 	new->path = i;
 	new->next = NULL;
 	new->links = NULL;
-	new->links = add_room_in_path(&(new->links), name);
+	if (!(new->links = add_room_in_path(&(new->links), name)))
+		return (0);
 	if (!(*paths))
 		(*paths) = new;
 	else
