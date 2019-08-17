@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:11:59 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:15:38 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int		fill_banned_rooms(t_ban **list, char *name)
 	return (1);
 }
 
-/* ==================== fill__banned_rooms ====================
+/*
+** ==================== fill__banned_rooms ====================
 ** this list is filled wiht the names of the rooms which we don't
 ** want to pass on because they are the end of a branch who don't
 ** have links with the end
@@ -73,7 +74,8 @@ int		fill_rooms(t_room **rooms, t_norme *norme)
 	return (1);
 }
 
-/* ==================== fill_rooms ====================
+/*
+** ==================== fill_rooms ====================
 ** fill_rooms() append the room in norme->line at then end of t_room struct
 ** go to the end of the list
 ** allocate a new t_room

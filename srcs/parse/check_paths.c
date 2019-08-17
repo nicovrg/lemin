@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 12:58:44 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:17:46 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int		del_room_in_path(t_path **current)
 	return (1);
 }
 
+/*
+** ==================== del_room_in_path ====================
+** delete the last room on the current path
+*/
+
 int		room_is_banned(char *name, t_ban **list)
 {
 	t_ban	*tmp;
@@ -45,6 +50,11 @@ int		room_is_banned(char *name, t_ban **list)
 	return (0);
 }
 
+/*
+** ==================== room_is_banned ====================
+** check if the room is in the list of banned rooms
+*/
+
 int		room_is_passed(t_path **current, char *name)
 {
 	t_links	*tmp;
@@ -58,6 +68,11 @@ int		room_is_passed(t_path **current, char *name)
 	}
 	return (0);
 }
+
+/*
+** ==================== room_is_passed ====================
+** check if the room is already in the current path
+*/
 
 int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 {
