@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:06:29 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:32:48 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int		free_one_path(t_path **paths, t_path **current)
 			buf = buf->next;
 			free(index);
 		}
-		// free((*current)->links);
 		free(*current);
-		// *current = NULL;
 		tmp->next = NULL;
 	}
 	return (1);

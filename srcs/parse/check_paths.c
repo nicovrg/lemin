@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:20:43 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/17 13:25:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,10 @@ int		check_paths(t_room **rooms, t_path **paths, t_ban **list)
 	t_room	*tmp;
 	t_path	*current;
 	t_links	*buf;
-	int		i;
+	int		nb_path;
 	int		j;
 
-	i = 1;
+	nb_path = 1;
 	tmp = (*rooms);
 	while (tmp)
 	{
@@ -130,7 +130,7 @@ int		check_paths(t_room **rooms, t_path **paths, t_ban **list)
 			buf = tmp->links;
 			while (buf)
 			{
-				if (!(current = init_paths(paths, i, tmp->name)))
+				if (!(current = init_paths(paths, nb_path, tmp->name)))
 					return (0);
 				if (!add_room_in_path(&(current->links), buf->room))
 					return (0);
@@ -138,7 +138,7 @@ int		check_paths(t_room **rooms, t_path **paths, t_ban **list)
 				if (j == 0)
 					return (free_paths(paths, 0));
 				if (j == 1)
-					i++;
+					nb_path++;
 				if (j == 2)
 					free_one_path(paths, &current);
 				buf = buf->next;
