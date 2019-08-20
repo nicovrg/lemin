@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 14:42:58 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/20 04:42:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_room
 	char			*name;
 	int				start;
 	int				end;
+	int				discovered;
 	t_links			*links;
 	struct s_room	*next;
 }					t_room;
@@ -53,6 +54,17 @@ typedef struct		s_ban
 	char			*name;
 	struct s_ban	*next;
 }					t_ban;
+
+
+/*
+** ==================== parse ====================
+** 
+*/
+
+/*
+** ==================== general ====================
+** 
+*/
 
 int					check_coords_in_room(char *line);
 int					is_tubes(t_room **rooms, char *line, int *status);
@@ -75,5 +87,12 @@ int					free_one_path(t_path **paths, t_path **current);
 int					parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list);
 int					room_is_banned(char *name, t_ban **list);
 int					room_is_passed(t_path **current, char *name);
+
+/*
+** ==================== algo ====================
+** 
+*/
+
+int     		    bfs(t_room **room);
 
 #endif

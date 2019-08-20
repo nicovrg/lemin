@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 15:40:38 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/20 01:19:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 
 int		check_paths(t_room **rooms, t_path **paths, t_ban **list)
 {
+	int		j;
+	int		nb_path;
 	t_room	*tmp;
 	t_path	*current;
 	t_links	*buf;
-	int		nb_path;
-	int		j;
 
 	nb_path = 1;
 	tmp = (*rooms);
