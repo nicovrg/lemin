@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/20 04:42:20 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 01:14:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "ft_printf.h"
 
 # define ERR_PARSE_1 "error in check_lines - fail to append room to room list"
+
+# define ERR_MALLOC_1 "error in bfs - fail to malloc queue in init_queue"
+# define ERR_MALLOC_2 "error in bfs - fail to malloc queue in push_queue"
 
 typedef struct		s_links
 {
