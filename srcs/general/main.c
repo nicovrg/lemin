@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 01:45:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 22:32:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ int		print_paths(t_path *paths)
 int		main(void)
 {
 	int		nb_ant;
+	char	**tab;
 	t_room	*rooms;
 	t_path	*paths;
 	t_ban	*list;
 
 	rooms = NULL;
+	tab = NULL;
 	paths = NULL;
 	list = NULL;
 	nb_ant = 0;
-	if (!check_lines(&rooms, &nb_ant))
+	if (!check_lines(&rooms, &nb_ant, &tab))
 		return (free_all(&rooms, &list, &paths, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, &list, &paths, 1));

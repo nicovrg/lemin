@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   check_paths.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 01:35:58 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 04:23:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 22:32:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+t_path	*new_paths(t_path **current)
+{
+	t_links	*tmp;
+	t_path	*new;
+
+	tmp = (*current)->links;
+	if (!(new = (t_path *)malloc(sizeof(t_path))))
+		return (NULL);
+	new->path = (*current)->path + 1;
+	new->next = NULL;
+	new->links = NULL;
+	while (tmp && tmp->next)
+	{
+		if (!(add_room_in_path(&(new->links), tmp->room)))
+			return (NULL);
+		tmp = tmp->next;
+	}
+	(*current)->next = new;
+	return (new);
+}
 
 int		parse_links(t_room **rooms, t_path **current, t_ban **list, t_links **links)
 {
@@ -25,18 +46,17 @@ int		parse_links(t_room **rooms, t_path **current, t_ban **list, t_links **links
 			return (0);
 		if ((*links) && (*links)->room
 		&& parse_paths(rooms, current, (*links)->room, list) == 1)
-			return (1);
+			*current = new_paths(current);
+			// return (1);
 		else if ((*links))
 		{
-			if (!(fill_banned_rooms(list, (*links)->room)))
-				return (0);
+			// if (!(fill_banned_rooms(list, (*links)->room)))
+			// 	return (0);
 			del_room_in_path(current);
 		}
 		if ((*links))
 			(*links) = (*links)->next;
 	}
-	if (!(*links))
-		return (2);
 	return (2);
 }
 
@@ -61,8 +81,14 @@ int		parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list)
 		{
 			if (tmp->end == 1)
 				return (1);
+			if (tmp->start == 1)
+				return (2);
 			links = tmp->links;
-			return (parse_links(rooms, current, list, &links));
+			if (!parse_links(rooms, current, list, &links))
+				return (0);
+			else
+				return (2);
+			// return (parse_links(rooms, current, list, &links));
 		}
 		tmp = tmp->next;
 	}
@@ -99,7 +125,9 @@ int		check_paths(t_room **rooms, t_path **paths, t_ban **list)
 				if (j == 0)
 					return (free_paths(paths, 0));
 				if (j == 1)
-					nb_path++;
+					nb_path = current->path + 1;
+				else
+					nb_path = current->path;
 				if (j == 2)
 					free_one_path(paths, &current);
 				buf = buf->next;
