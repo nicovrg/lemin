@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 13:53:41 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/21 03:49:34 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,23 @@ int		print_paths(t_path *paths)
 int		main(void)
 {
 	int		nb_ant;
+	char	**tab;
 	t_room	*rooms;
 	t_path	*paths;
 	t_ban	*list;
 
 	rooms = NULL;
+	tab = NULL;
 	paths = NULL;
 	list = NULL;
 	nb_ant = 0;
-	if (!check_lines(&rooms, &nb_ant))
+	if (!check_lines(&rooms, &nb_ant, &tab))
 		return (free_all(&rooms, &list, &paths, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, &list, &paths, 1));
 	if (!check_paths(&rooms, &paths, &list))
 		return (free_all(&rooms, &list, &paths, 1));
-	print_paths(paths);
+	// print_paths(paths);
 	ft_putendl("FINISH");
 	free_all(&rooms, &list, &paths, 0);
 	return (0);

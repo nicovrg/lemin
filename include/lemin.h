@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 14:42:58 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/21 01:01:36 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int					check_coords_in_room(char *line);
 int					is_tubes(t_room **rooms, char *line, int *status);
 int					check_is_tubes(t_room **rooms, char *line, int *status);
 int					check_map_validity(t_room **rooms);
-int					check_lines(t_room **rooms, int	*nb_ant);
+int					check_lines(t_room **rooms, int *nb_ant, char ***tab);
 int					check_paths(t_room **rooms, t_path **paths, t_ban **list);
 int					del_room_in_path(t_path **current);
 int					error_of_status(int *status);

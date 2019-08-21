@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:00:23 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 01:07:43 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static int		is_room(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
 ** then call check_status to know if we are reading nb_ant, room or tubes
 */
 
-int				check_lines(t_room **rooms, int *nb_ant)
+int				check_lines(t_room **rooms, int *nb_ant, char ***tab)
 {
 	int		i;
 	int		status;
@@ -125,6 +125,10 @@ int				check_lines(t_room **rooms, int *nb_ant)
 	line = NULL;
 	while (get_next_line(0, &line) == 1)
 	{
+		if (!(*tab = ft_realloctab(tab)))
+			return (0);
+		if (!((*tab)[i] = ft_strdup(line)))
+			return (0);
 		norme.line = line;
 		if (is_room(rooms, &norme, &status, nb_ant))
 			if (!fill_rooms(rooms, &norme))
