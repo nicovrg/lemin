@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 05:06:49 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 00:56:47 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			error_while_gnl(char **line, char *error_msg);
 int			error_with_status(char **line, t_room **rooms);
 int			error_msg(char *error_msg);
 
-int			free_all(t_room **rooms, t_ban **list, t_path **paths, int var);
+int			free_all(t_room **rooms, char ***tab, t_path **paths, int var);
 int			free_paths(t_path **paths, int var);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
@@ -37,7 +37,7 @@ int			del_room_in_path(t_path **current);
 ** find_rooms.c  
 */
 
-int    	    bfs(t_room **room);
+int         bfs(t_room **room, t_queue **queue);
 
 t_room*   	find_start_room(t_room **room);
 t_room*    	find_room(t_room **room, char *name);
@@ -54,7 +54,7 @@ t_room*    	find_room(t_room **room, char *name);
 ** rooms_visited.c
 */
 
-int			check_lines(t_room **rooms, int	*nb_ant);
+int			check_lines(t_room **rooms, int	*nb_ant, char ***tab);
 
 int			check_map_validity(t_room **rooms);
 

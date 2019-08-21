@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 14:37:34 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/22 00:46:58 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,19 +106,20 @@ static int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
-int				free_all(t_room **rooms, t_ban **list, t_path **paths, int var)
+int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
 {
-	t_ban	*tmp;
+	int		i;
 
+	i = 0;
 	while (*rooms)
 		free_rooms_and_links(rooms);
-	while (*list)
+	while ((*tab)[i])
 	{
-		tmp = (*list);
-		ft_strdel(&(tmp->name));
-		(*list) = (*list)->next;
-		free(tmp);
+		ft_strdel(&((*tab)[i]));
+		i++;
 	}
+	if (*tab)
+		free(*tab);
 	if (*paths)
 		free_paths(paths, var);
 	if (var == 1)

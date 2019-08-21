@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 04:50:06 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:03:56 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,14 @@ t_room*    pop_queue(t_queue **queue)
     if ((*queue) && (*queue)->next)
         (*queue) = (*queue)->next;
 	else
+	{
+		(*queue)->room = NULL;
+		free(*queue);
 		*queue = NULL;
+	}
     if (*queue && tmp_queue)
 	{
+		tmp_queue->room = NULL;
 		free(tmp_queue);
     	return ((*queue)->room);
 	}
@@ -74,27 +79,26 @@ t_room*    pop_queue(t_queue **queue)
 ** pop an element from the start of the queue
 */
 
-int         bfs(t_room **room)
+int         bfs(t_room **room, t_queue **queue)
 {
-    t_queue *queue;
     t_room  *current_room;
     t_room  *room_to_push;
 
-    queue = NULL;   
     current_room = find_start_room(room);
-    if (!init_queue(&queue, &current_room))
+    if (!init_queue(queue, &current_room))
         return (error_msg(ERR_MALLOC_1));
-    while (queue)
+    while (*queue)
     {
         while (current_room && current_room->links)
         {
             room_to_push = find_room(room, current_room->links->room);
-            if (room_to_push->discovered == 0 && !push_queue(&queue, &room_to_push))
+            if (room_to_push->discovered == 0 && !push_queue(queue, &room_to_push))
                 return (error_msg(ERR_MALLOC_2));
             current_room->links = current_room->links->next;
         }
-        current_room = pop_queue(&queue);
+        current_room = pop_queue(queue);
     }
+	free(*queue);
     return (1);
 }
 
