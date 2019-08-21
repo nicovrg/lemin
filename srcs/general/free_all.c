@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/22 00:56:29 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:09:13 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,22 @@ static int		free_queue(t_queue **queue)
 	return (1);
 }
 
-int				free_all(t_room **rooms, t_path **paths, t_queue **queue, int var)
+int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
 {
+	int		i;
+
+	i = 0;
 	while (*rooms)
 		free_rooms_and_links(rooms);
+	while ((*tab)[i])
+	{
+		ft_strdel(&((*tab)[i]));
+		i++;
+	}
+	if (*tab)
+		free(*tab);
 	if (*paths)
 		free_paths(paths, var);
-	if (*queue)
-		free_queue(queue);
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (var);

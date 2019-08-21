@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 01:01:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:08:10 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,14 @@ t_room*    pop_queue(t_queue **queue)
     if ((*queue) && (*queue)->next)
         (*queue) = (*queue)->next;
 	else
+	{
+		(*queue)->room = NULL;
+		free(*queue);
 		*queue = NULL;
+	}
     if (*queue && tmp_queue)
 	{
+		tmp_queue->room = NULL;
 		free(tmp_queue);
     	return ((*queue)->room);
 	}
@@ -97,6 +102,7 @@ int         bfs(t_room **room, t_queue **queue)
         }
         current_room = pop_queue(queue);
     }
+	free(*queue);
     return (1);
 }
 

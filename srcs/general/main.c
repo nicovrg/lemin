@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/22 00:59:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:10:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ int		main(void)
 	queue = NULL;
 	nb_ant = 0;
 	if (!check_lines(&rooms, &nb_ant, &tab))
-		return (free_all(&rooms, &paths, &queue, 1));
+		return (free_all(&rooms, &tab, &paths, 1));
 	if (!check_map_validity(&rooms))
-		return (free_all(&rooms, &paths, &queue, 1));
+		return (free_all(&rooms, &tab, &paths, 1));
 	if (!bfs(&rooms, &queue))
-		return (free_all(&rooms, &paths, &queue, 1));
+		return (free_all(&rooms, &tab, &paths, 1));
 	// if (!check_paths(&rooms, &paths, &list))
 	// 	return (free_all(&rooms, &list, &paths, 1));
-	print_paths(paths);
+	// print_paths(paths);
 	ft_putendl("FINISH");
-	free_all(&rooms, &paths, &queue, 0);
+	free_all(&rooms, &tab, &paths, 0);
 	return (0);
 }
 
