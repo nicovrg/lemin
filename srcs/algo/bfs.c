@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 03:49:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 04:08:39 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int         init_queue(t_queue **queue, t_room **room)
 
 int         push_queue(t_queue **queue, t_room **room)
 {
-    ft_printf("coucou");
-
     t_queue     *new;
     t_queue     *tmp_queue;
 
@@ -98,14 +96,14 @@ t_room*    pop_queue(t_queue **queue)
     
     tmp_queue = (*queue);
     if ((*queue) && (*queue)->next)
-    {
         (*queue) = (*queue)->next;
-        // free(tmp_queue);
-        // return ((*queue)->room);
-    }
-    if (tmp_queue)
-        free(tmp_queue);
-    return ((*queue)->room);
+	else
+		*queue = NULL;
+    if (*queue && tmp_queue)
+	{
+		free(tmp_queue);
+    	return ((*queue)->room);
+	}
     return (NULL);
 }
 
@@ -116,7 +114,6 @@ t_room*    pop_queue(t_queue **queue)
 
 int         bfs(t_room **room)
 {
-    t_queue *tmp;
     t_queue *queue;
     t_room  *current_room;
     t_room  *room_to_push;
@@ -130,17 +127,9 @@ int         bfs(t_room **room)
         while (current_room && current_room->links)
         {
             room_to_push = find_room(room, current_room->links->room);
-            if (current_room->discovered == 0 && !push_queue(&queue, &room_to_push))
+            if (room_to_push->discovered == 0 && !push_queue(&queue, &room_to_push))
                 return (error_msg(ERR_MALLOC_2));
             current_room->links = current_room->links->next;
-        }
-        if (!queue->room)
-            return (0);
-        tmp = queue;
-        while (tmp)
-        {
-            ft_printf("name = %s\n", queue->room->name);
-            tmp = tmp->next;
         }
         current_room = pop_queue(&queue);
     }
