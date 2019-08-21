@@ -6,9 +6,17 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/17 15:56:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 23:28:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
+/*
+** ==================== pseudocode ====================
+** while (bfs == true)
+** update_grap
+** check_graph output
+** memorise output
+** print output
+*/
