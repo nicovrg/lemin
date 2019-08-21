@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 04:50:06 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:01:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int         init_queue(t_queue **queue, t_room **room)
     new->room = *room;
     new->room->discovered = 1;
     new->next = NULL;
-    (*queue) = new;
+    if ((*queue))
+        (*queue) = new;
     return (1);
 }
 
@@ -35,6 +36,7 @@ int         push_queue(t_queue **queue, t_room **room)
     t_queue     *new;
     t_queue     *tmp_queue;
 
+
     tmp_queue = *queue;
     while ((*queue) && tmp_queue->next)
         tmp_queue = tmp_queue->next;
@@ -43,7 +45,9 @@ int         push_queue(t_queue **queue, t_room **room)
     new->room = (*room);
     new->room->discovered = 1;
     new->next = NULL;
-    tmp_queue->next = new;
+    if (tmp_queue && tmp_queue->next)
+        tmp_queue->next = new;
+    ft_printf("coucou\n\n\n\n");
     return (1);
 }
 
@@ -74,26 +78,24 @@ t_room*    pop_queue(t_queue **queue)
 ** pop an element from the start of the queue
 */
 
-int         bfs(t_room **room)
+int         bfs(t_room **room, t_queue **queue)
 {
-    t_queue *queue;
     t_room  *current_room;
     t_room  *room_to_push;
 
-    queue = NULL;   
     current_room = find_start_room(room);
-    if (!init_queue(&queue, &current_room))
+    if (!init_queue(queue, &current_room))
         return (error_msg(ERR_MALLOC_1));
-    while (queue)
+    while (*queue)
     {
         while (current_room && current_room->links)
         {
             room_to_push = find_room(room, current_room->links->room);
-            if (room_to_push->discovered == 0 && !push_queue(&queue, &room_to_push))
+            if (room_to_push->discovered == 0 && !push_queue(queue, &room_to_push))
                 return (error_msg(ERR_MALLOC_2));
             current_room->links = current_room->links->next;
         }
-        current_room = pop_queue(&queue);
+        current_room = pop_queue(queue);
     }
     return (1);
 }

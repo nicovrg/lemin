@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 14:37:34 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/22 00:56:29 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,27 @@ static int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
-int				free_all(t_room **rooms, t_ban **list, t_path **paths, int var)
+static int		free_queue(t_queue **queue)
 {
-	t_ban	*tmp;
+	t_queue *tmp;
 
-	while (*rooms)
-		free_rooms_and_links(rooms);
-	while (*list)
+	while (*queue)
 	{
-		tmp = (*list);
-		ft_strdel(&(tmp->name));
-		(*list) = (*list)->next;
+		tmp = (*queue);
+		(*queue) = (*queue)->next;
 		free(tmp);
 	}
+	return (1);
+}
+
+int				free_all(t_room **rooms, t_path **paths, t_queue **queue, int var)
+{
+	while (*rooms)
+		free_rooms_and_links(rooms);
 	if (*paths)
 		free_paths(paths, var);
+	if (*queue)
+		free_queue(queue);
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (var);

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 23:44:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 00:29:07 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** while (bfs == true)
 ** update_grap
 ** check_graph output
-** memorise result
+** id new result is better, memorise result
 
 ** print result
 */
