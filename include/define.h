@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lemin.h                                            :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 05:05:05 by nivergne         ###   ########.fr       */
+/*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
+/*   Updated: 2019/08/21 05:04:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEMIN_H
-# define LEMIN_H
+#ifndef DEFINE_H
+# define DEFINE_H
 
-# include "prototype.h"
-# include "typedef.h"
-# include "define.h"
+# define ERR_PARSE_1 "error in check_lines - fail to append room to room list"
 
-# include "ft_printf.h"
+# define ERR_MALLOC_1 "error in bfs - fail to malloc queue in init_queue"
+# define ERR_MALLOC_2 "error in bfs - fail to malloc queue in push_queue"
 
 #endif

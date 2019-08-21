@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/20 04:42:57 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/21 04:21:03 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC_PARSE = 		check_lines.c\
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
 
-SRC_ALGO = 			bfs.c
+SRC_ALGO = 			find_rooms.c\
+					bfs.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
 OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))
