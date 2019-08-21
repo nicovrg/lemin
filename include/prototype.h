@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 05:06:49 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 23:46:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_room*    	find_room(t_room **room, char *name);
 ** rooms_visited.c
 */
 
-int			check_lines(t_room **rooms, int	*nb_ant);
+int			check_lines(t_room **rooms, int	*nb_ant, char ***tab);
 
 int			check_map_validity(t_room **rooms);
 
