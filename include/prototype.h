@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 00:56:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:07:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			error_while_gnl(char **line, char *error_msg);
 int			error_with_status(char **line, t_room **rooms);
 int			error_msg(char *error_msg);
 
-int			free_all(t_room **rooms, t_path **paths, t_queue **queue, int var);
+int			free_all(t_room **rooms, char ***tab, t_path **paths, int var);
 int			free_paths(t_path **paths, int var);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
@@ -37,7 +37,7 @@ int			del_room_in_path(t_path **current);
 ** find_rooms.c  
 */
 
-int    	    bfs(t_room **room, t_queue **queue);
+int         bfs(t_room **room, t_queue **queue);
 
 t_room*   	find_start_room(t_room **room);
 t_room*    	find_room(t_room **room, char *name);
