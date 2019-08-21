@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/20 04:41:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 01:45:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int		main(void)
 		return (free_all(&rooms, &list, &paths, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, &list, &paths, 1));
-	bfs(&rooms);
+	if (!bfs(&rooms))
+		return (free_all(&rooms, &list, &paths, 1));
 	// if (!check_paths(&rooms, &paths, &list))
 	// 	return (free_all(&rooms, &list, &paths, 1));
 	print_paths(paths);

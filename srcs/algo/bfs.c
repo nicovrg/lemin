@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/21 01:29:06 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 03:49:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_room*      find_start_room(t_room **room)
 ** return a copy of the pointer on the starting room
 */
 
-t_room**      find_room(t_room **room, char *name)
+t_room*      find_room(t_room **room, char *name)
 {
     t_room  *tmp_room;
     
@@ -39,7 +39,7 @@ t_room**      find_room(t_room **room, char *name)
     while (tmp_room)
     {
         if (!ft_strcmp(tmp_room->name, name))
-            return (&tmp_room);
+            return (tmp_room);
         tmp_room = tmp_room->next;
     }
     return (NULL);
@@ -50,12 +50,6 @@ t_room**      find_room(t_room **room, char *name)
 ** return a copy of the pointer on the starting room
 */
 
-typedef struct      s_queue
-{
-    t_room          *room;
-    struct s_queue  *next;
-}                   t_queue;
-
 int         init_queue(t_queue **queue, t_room **room)
 {
     t_queue     *new;
@@ -63,6 +57,7 @@ int         init_queue(t_queue **queue, t_room **room)
     if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
         return (0);
     new->room = *room;
+    new->room->discovered = 1;
     new->next = NULL;
     (*queue) = new;
     return (1);
@@ -75,6 +70,8 @@ int         init_queue(t_queue **queue, t_room **room)
 
 int         push_queue(t_queue **queue, t_room **room)
 {
+    ft_printf("coucou");
+
     t_queue     *new;
     t_queue     *tmp_queue;
 
@@ -84,6 +81,7 @@ int         push_queue(t_queue **queue, t_room **room)
     if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
         return (0);
     new->room = (*room);
+    new->room->discovered = 1;
     new->next = NULL;
     tmp_queue->next = new;
     return (1);
@@ -99,11 +97,16 @@ t_room*    pop_queue(t_queue **queue)
     t_queue *tmp_queue;
     
     tmp_queue = (*queue);
-    if (!(*queue) || (*queue)->next)
-        return (NULL);
-    (*queue) = (*queue)->next;
-    free(&tmp_queue);
-    return ((*queue));
+    if ((*queue) && (*queue)->next)
+    {
+        (*queue) = (*queue)->next;
+        // free(tmp_queue);
+        // return ((*queue)->room);
+    }
+    if (tmp_queue)
+        free(tmp_queue);
+    return ((*queue)->room);
+    return (NULL);
 }
 
 /*
@@ -113,20 +116,31 @@ t_room*    pop_queue(t_queue **queue)
 
 int         bfs(t_room **room)
 {
+    t_queue *tmp;
     t_queue *queue;
     t_room  *current_room;
+    t_room  *room_to_push;
 
-    queue = NULL;
+    queue = NULL;   
     current_room = find_start_room(room);
     if (!init_queue(&queue, &current_room))
         return (error_msg(ERR_MALLOC_1));
-    while (!queue)
+    while (queue)
     {
-        while (current_room->links)
+        while (current_room && current_room->links)
         {
-            if (!push_queue(&queue, find_room(room, current_room->links->room)))
+            room_to_push = find_room(room, current_room->links->room);
+            if (current_room->discovered == 0 && !push_queue(&queue, &room_to_push))
                 return (error_msg(ERR_MALLOC_2));
             current_room->links = current_room->links->next;
+        }
+        if (!queue->room)
+            return (0);
+        tmp = queue;
+        while (tmp)
+        {
+            ft_printf("name = %s\n", queue->room->name);
+            tmp = tmp->next;
         }
         current_room = pop_queue(&queue);
     }

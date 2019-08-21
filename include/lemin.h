@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 01:14:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/21 02:02:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct		s_room
 	struct s_room	*next;
 }					t_room;
 
+typedef struct      s_queue
+{
+    t_room          *room;
+    struct s_queue  *next;
+}                   t_queue;
+
 typedef struct		s_norme
 {
 	char			*line;
@@ -68,6 +74,9 @@ typedef struct		s_ban
 ** ==================== general ====================
 ** 
 */
+
+int					error_msg(char *error_msg);
+
 
 int					check_coords_in_room(char *line);
 int					is_tubes(t_room **rooms, char *line, int *status);
