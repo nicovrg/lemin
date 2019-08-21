@@ -1,22 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lemin.h                                            :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 01:52:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 22:32:51 by qgirard          ###   ########.fr       */
+/*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
+/*   Updated: 2019/08/17 15:56:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEMIN_H
-# define LEMIN_H
+#include "lemin.h"
 
-# include "prototype.h"
-# include "typedef.h"
-# include "define.h"
-
-# include "ft_printf.h"
-
-#endif

@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 03:49:34 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/21 22:32:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ int		main(void)
 		return (free_all(&rooms, &list, &paths, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, &list, &paths, 1));
-	if (!check_paths(&rooms, &paths, &list))
+	if (!bfs(&rooms))
 		return (free_all(&rooms, &list, &paths, 1));
-	// print_paths(paths);
+	// if (!check_paths(&rooms, &paths, &list))
+	// 	return (free_all(&rooms, &list, &paths, 1));
+	print_paths(paths);
 	ft_putendl("FINISH");
 	free_all(&rooms, &list, &paths, 0);
 	return (0);

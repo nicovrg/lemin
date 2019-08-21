@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 23:15:21 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/17 14:53:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static int				index_tubes(t_links **new, t_room **tmp)
 
 static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
 {
-	if (!ft_strncmp((*tmp)->name, norme->line,
-	ft_strchr(norme->line, '-') - norme->line))
+	if (!ft_strncmp((*tmp)->name, norme->line, ft_strchr(norme->line, '-') - norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
@@ -87,10 +86,10 @@ int						fill_tubes(t_room **rooms, char *line)
 	t_links	*new;
 	t_norme	norme;
 
+	buf = line;
 	tmp = (*rooms);
 	norme.line = line;
 	norme.count = 0;
-	buf = line;
 	while (tmp)
 	{
 		if (ft_strchr(norme.line, '-'))
