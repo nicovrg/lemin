@@ -6,11 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/08/22 01:13:52 by qgirard          ###   ########.fr       */
-=======
-/*   Updated: 2019/08/22 02:09:40 by nivergne         ###   ########.fr       */
->>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
+/*   Updated: 2019/08/22 04:06:02 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +27,7 @@ int			error_with_status(char **line, t_room **rooms);
 int			error_msg(char *error_msg);
 
 int			free_all(t_room **rooms, char ***tab, t_path **paths, int var);
-<<<<<<< HEAD
-int			free_queue(t_queue **queue);
-=======
 int	    	free_queue(t_queue **queue);
->>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
 int			free_paths(t_path **paths, int var);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
