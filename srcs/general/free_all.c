@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/22 01:09:13 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:31:16 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
-static int		free_queue(t_queue **queue)
+int				free_queue(t_queue **queue)
 {
 	t_queue *tmp;
 
@@ -126,7 +126,7 @@ int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
 	i = 0;
 	while (*rooms)
 		free_rooms_and_links(rooms);
-	while ((*tab)[i])
+	while (*tab && (*tab)[i])
 	{
 		ft_strdel(&((*tab)[i]));
 		i++;

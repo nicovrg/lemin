@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 01:08:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 02:03:52 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int         init_queue(t_queue **queue, t_room **room)
     new->room = *room;
     new->room->discovered = 1;
     new->next = NULL;
-    if ((*queue))
-        (*queue) = new;
+    (*queue) = new;
     return (1);
 }
 
@@ -45,9 +44,10 @@ int         push_queue(t_queue **queue, t_room **room)
     new->room = (*room);
     new->room->discovered = 1;
     new->next = NULL;
-    if (tmp_queue && tmp_queue->next)
+    if (*queue)
         tmp_queue->next = new;
-    ft_printf("coucou\n\n\n\n");
+	else
+		(*queue) = new;
     return (1);
 }
 
@@ -65,13 +65,13 @@ t_room*    pop_queue(t_queue **queue)
         (*queue) = (*queue)->next;
 	else
 	{
-		(*queue)->room = NULL;
+		// (*queue)->room = NULL;
 		free(*queue);
 		*queue = NULL;
 	}
     if (*queue && tmp_queue)
 	{
-		tmp_queue->room = NULL;
+		// tmp_queue->room = NULL;
 		free(tmp_queue);
     	return ((*queue)->room);
 	}
@@ -102,7 +102,7 @@ int         bfs(t_room **room, t_queue **queue)
         }
         current_room = pop_queue(queue);
     }
-	free(*queue);
+	// free(*queue);
     return (1);
 }
 
