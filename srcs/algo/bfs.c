@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 02:56:24 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 04:16:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int     bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room
         while (tmp)
         {
             (*room_to_push) = find_room(room, tmp->room);
-            if ((*room_to_push)->discovered == 0 && !push_queue(queue, room_to_push))
-                return (error_msg(ERR_MALLOC_2));
             tmp = tmp->next;
         }
         (*current_room) = pop_queue(queue);
