@@ -6,7 +6,11 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/22 01:31:16 by qgirard          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/22 02:45:53 by nivergne         ###   ########.fr       */
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +110,18 @@ static int		free_rooms_and_links(t_room **rooms)
 	return (1);
 }
 
+<<<<<<< HEAD
 int				free_queue(t_queue **queue)
+=======
+int		free_queue(t_queue **queue)
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
 {
 	t_queue *tmp;
 
 	while (*queue)
 	{
 		tmp = (*queue);
+		free_rooms_and_links(&(tmp->room));
 		(*queue) = (*queue)->next;
 		free(tmp);
 	}
@@ -126,7 +135,11 @@ int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
 	i = 0;
 	while (*rooms)
 		free_rooms_and_links(rooms);
+<<<<<<< HEAD
 	while (*tab && (*tab)[i])
+=======
+	while ((*tab) && (*tab)[i])
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
 	{
 		ft_strdel(&((*tab)[i]));
 		i++;

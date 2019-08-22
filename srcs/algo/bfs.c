@@ -6,14 +6,19 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/22 02:03:52 by qgirard          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/22 02:56:24 by nivergne         ###   ########.fr       */
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int         init_queue(t_queue **queue, t_room **room)
+int     init_bfs(t_room **room, t_queue **queue, t_room **current_room)
 {
+<<<<<<< HEAD
     t_queue     *new;
 
     if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
@@ -48,18 +53,24 @@ int         push_queue(t_queue **queue, t_room **room)
         tmp_queue->next = new;
 	else
 		(*queue) = new;
+=======
+    (*current_room) = find_start_room(room);
+    if (!init_queue(queue, current_room))
+        return (error_msg(ERR_MALLOC_1));
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
     return (1);
 }
 
 /*
-** ==================== push_queue ====================
-** add an element at the bottom of the queue
+** ==================== init_bfs ====================
+** init bfs
 */
 
-t_room*    pop_queue(t_queue **queue)
+int     bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to_push)
 {
-    t_queue *tmp_queue;
+    t_links *tmp;
     
+<<<<<<< HEAD
     tmp_queue = (*queue);
     if ((*queue) && (*queue)->next)
         (*queue) = (*queue)->next;
@@ -91,16 +102,21 @@ int         bfs(t_room **room, t_queue **queue)
     current_room = find_start_room(room);
     if (!init_queue(queue, &current_room))
         return (error_msg(ERR_MALLOC_1));
+=======
+    tmp = NULL;
+>>>>>>> b80c5a994f36fca3df678a78bc7f88d92c07ba8c
     while (*queue)
     {
-        while (current_room && current_room->links)
+        if (*current_room && (*current_room)->links)
+            tmp = (*current_room)->links;
+        while (tmp)
         {
-            room_to_push = find_room(room, current_room->links->room);
-            if (room_to_push->discovered == 0 && !push_queue(queue, &room_to_push))
+            (*room_to_push) = find_room(room, tmp->room);
+            if ((*room_to_push)->discovered == 0 && !push_queue(queue, room_to_push))
                 return (error_msg(ERR_MALLOC_2));
-            current_room->links = current_room->links->next;
+            tmp = tmp->next;
         }
-        current_room = pop_queue(queue);
+        (*current_room) = pop_queue(queue);
     }
 	// free(*queue);
     return (1);
