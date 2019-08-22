@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 02:44:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 05:18:20 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int         init_queue(t_queue **queue, t_room ** __unused room)
     new->room = *room;
     new->room->discovered = 1;
     new->next = NULL;
+	new->prev = NULL;
+	new->prev_room = NULL;
     if (!(*queue))
         (*queue) = new;
     return (1);
@@ -31,7 +33,7 @@ int         init_queue(t_queue **queue, t_room ** __unused room)
 ** create and init a queue (list first in first out)
 */
 
-int         push_queue(t_queue **queue, t_room **room)
+int         push_queue(t_queue **queue, t_room **room, char *name)
 {
     t_queue     *new;
     t_queue     *tmp_queue;
@@ -44,8 +46,14 @@ int         push_queue(t_queue **queue, t_room **room)
     new->room = (*room);
     new->room->discovered = 1;
     new->next = NULL;
+	new->prev = NULL;
+	if (!(new->prev_room = ft_strdup(name)))
+		return (0);
     if (*queue)
+	{
         tmp_queue->next = new;
+		new->prev = tmp_queue;
+	}
     else
         *queue = new;
     return (1);

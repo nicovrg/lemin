@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/22 04:05:59 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/08/22 05:20:53 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ int				free_queue(t_queue **queue)
 	while (*queue)
 	{
 		tmp = (*queue);
-		free_rooms_and_links(&(tmp->room));
+		if (tmp->prev_room)
+			ft_strdel(&(tmp->prev_room));
 		(*queue) = (*queue)->next;
 		free(tmp);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 02:40:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/22 05:01:53 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ typedef struct		s_room
 
 typedef struct      s_queue
 {
+	char			*prev_room;
     t_room          *room;
     struct s_queue  *next;
+	struct s_queue	*prev;
 }                   t_queue;
 
 typedef struct		s_norme
