@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/22 02:46:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/27 01:13:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		print_paths(t_path *paths)
 {
 	while (paths)
 	{
-		ft_printf("PATH = %d\n---------------------------------------------------\n", paths->path);
-		while (paths->links)
+		ft_printf("PATH = %d\n---------------------------------------------------\n", paths->nb_path);
+		while (paths->lst_rooms)
 		{
-			ft_printf("LINK: %s\n", paths->links->room);
-			paths->links = paths->links->next;
+			ft_printf("LINK: %s\n", paths->lst_rooms->room);
+			paths->lst_rooms = paths->lst_rooms->next;
 		}
 		ft_printf("---------------------------------------------------\n\n\n\n");
 		paths = paths->next;
@@ -52,7 +52,7 @@ int		main(void)
 	char	**tab;
 	t_room	*rooms;
 	t_path	*paths;
-    t_queue *queue;
+	t_queue *queue;
 
 	nb_ant = 0;
 	tab = NULL;
@@ -63,11 +63,11 @@ int		main(void)
 		return (free_all(&rooms, &tab, &paths, 1));
 	if (!check_map_validity(&rooms))
 		return (free_all(&rooms, &tab, &paths, 1));
-	if (!lemin(&rooms, &queue))
+	if (!lemin(&rooms, &queue, &paths))
 		return (free_all(&rooms, &tab, &paths, 1));
 	// if (!check_paths(&rooms, &paths, &list))
-	// 	return (free_all(&rooms, &list, &paths, 1));
-	// print_paths(paths);
+	//	return (free_all(&rooms, &list, &paths, 1));
+	print_paths(paths);
 	ft_putendl("FINISH");
 	free_queue(&queue);
 	free_all(&rooms, &tab, &paths, 0);

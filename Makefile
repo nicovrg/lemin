@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/22 02:09:10 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/27 00:23:25 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ SRC_PARSE = 		check_lines.c\
 					check_rooms_and_links.c\
 					fill_rooms.c\
 					fill_tubes.c\
-					fill_paths.c\
-					check_paths.c\
 					rooms_visited.c
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))

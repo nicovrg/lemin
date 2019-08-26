@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/22 02:40:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/27 00:31:21 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ typedef struct		s_links
 	struct s_links	*next;
 }					t_links;
 
-typedef struct		s_path
-{
-	int				path;
-	t_links			*links;
-	struct s_path	*next;
-}					t_path;
-
 typedef struct		s_room
 {
 	char			*name;
@@ -36,11 +29,20 @@ typedef struct		s_room
 	struct s_room	*next;
 }					t_room;
 
-typedef struct      s_queue
+typedef struct		s_path
 {
-    t_room          *room;
-    struct s_queue  *next;
-}                   t_queue;
+	int				nb_path;
+	t_links			*lst_rooms;
+	struct s_path	*next;
+}					t_path;
+
+typedef struct		s_queue
+{
+	char			*prev_room;
+	t_room			*room;
+	struct s_queue	*prev;
+	struct s_queue	*next;
+}					t_queue;
 
 typedef struct		s_norme
 {
