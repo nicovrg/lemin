@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/26 23:30:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/28 00:49:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,3 @@ int			push_queue(t_queue **queue, t_room **room, char *prev_name)
 ** ==================== push_queue ====================
 ** add an element at the bottom of the queue
 */
-
-t_room*		pop_queue(t_queue **queue)
-{
-	t_queue *tmp_queue;
-		
-	tmp_queue = (*queue);
-	if ((*queue) && (*queue)->next)
-		(*queue) = (*queue)->next;
-	else
-	{
-		(*queue)->room = NULL;
-		free(*queue);
-		*queue = NULL;
-	}
-	if (*queue && tmp_queue)
-	{
-		tmp_queue->room = NULL;
-		free(tmp_queue);
-		return ((*queue)->room);
-	}
-	return (NULL);
-}
-
-/*
-** ==================== pop_queue ====================
-** pop an element from the start of the queue
-*/
-

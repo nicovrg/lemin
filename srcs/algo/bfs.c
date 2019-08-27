@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/27 01:33:29 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/28 00:50:51 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to
 /*
 ** ==================== bfs ====================
 ** an implementation of breadth first search algorithm
-** traverse the graph through breadth
+** traverse the graph through breadth and return when end is met
 */

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/27 01:03:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/27 23:41:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define ERR_MALLOC_7 "error in fill_lst_rooms - fail to malloc new_room"
 # define ERR_MALLOC_8 "error in fill_lst_rooms - fail to strdup new_room->room"
 # define ERR_MALLOC_9 "error in lemin - fill_path return incorrect value"
+# define ERR_MALLOC_10 "error in fill_lst_rooms - failled malloc in helper_flr"
 
 #endif

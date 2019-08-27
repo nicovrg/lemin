@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/27 00:22:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/28 00:25:49 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 ** ==================== general ====================
 ** error.c 
 ** free_all.c
+** debug.c
 */
 
 int			error_of_status(int *status);
@@ -32,15 +33,19 @@ int			free_paths(t_path **paths, int var);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
 
+int			print_rooms(t_room *rooms);
+int			print_queue(t_queue **queue);
+int			print_paths(t_path *paths);
+
 /*
 ** ==================== algo ====================
 ** lemin.c
 ** bfs.c
 ** queue.c
 ** find_rooms.c
+** fill_path.c
 */
 
-int			fill_path(int nb_path, t_queue **find_end, t_path **paths);
 int			lemin(t_room **room, t_queue **queue, t_path **paths);
 
 int			init_bfs(t_room **room, t_queue **queue, t_room **current_room);
@@ -50,9 +55,10 @@ int			init_queue(t_queue **queue, t_room **room);
 int			push_queue(t_queue **queue, t_room **room, char *prev_name);
 t_room*		pop_queue(t_queue **queue);
 
-
 t_room*		find_start_room(t_room **room);
 t_room*		find_room(t_room **room, char *name);
+
+int			fill_path(int nb_path, t_queue **find_end, t_path **paths);
 
 /*
 ** ==================== parse ====================

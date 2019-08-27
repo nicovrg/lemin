@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/27 00:23:25 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/28 00:24:12 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INC_LEMIN := $(addprefix include/, $(INC_LEMIN))
 
 SRC_GENERAL =		main.c\
 					free_all.c\
-					error.c
+					error.c\
+					debug.c
 
 SRC_GENERAL := $(addprefix general/, $(SRC_GENERAL))
 OBJ_GENERAL := $(addprefix general/, $(addsuffix .o, $(basename $(notdir $(SRC_GENERAL)))))
@@ -41,6 +42,7 @@ OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE
 SRC_ALGO = 			lemin.c\
 					bfs.c\
 					queue.c\
+					fill_path.c\
 					find_rooms.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
