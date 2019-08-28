@@ -6,11 +6,74 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/28 00:24:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/08/29 00:12:28 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+/*
+** ==================== pseudo code ====================
+** on veut parcourrir le graph
+** trouver la salle du graph qui correspond au nom de la salle dans le lien du path
+** mettre le forward entre cette salle et la salle suivante a 1
+** continuer ce bordel
+*/
+
+/*
+** ==================== reflexion ====================
+** si on update le graph dans lequel on a déjà toutes les données et qu'on trouve que le chemin n'est en fait pas empruntable ...
+** on va devoir revenir en arrière pour changer le chemin, c'est galère
+** sinon on copie le graph et on remplace l'ancienne version si on a peu aller au bout de l'operation?
+*/
+
+// static	int		update_graph(t_room **room, t_path **paths)
+// {
+// 	static int i = 0;
+// 	ft_printf("Call %d\n", i++);
+
+// 	t_room	*tmp_room;
+// 	t_path	*tmp_paths;
+// 	t_links	*tmp_links;
+
+// 	tmp_room = (*room);
+// 	tmp_paths = (*paths);
+// 	while (tmp_paths && tmp_paths->next)
+// 		tmp_paths = tmp_paths->next;
+// 	// print_paths(tmp_paths);
+// 	// tmp_links = ()	
+
+// 	while (tmp_room && tmp_paths && ft_strcmp(tmp_room->name, tmp_paths->lst_links->room))
+// 		tmp_room = tmp_room->next;
+// 	tmp_paths->lst_links = tmp_paths->lst_links->next;
+// 	//segfault ici
+// 	while (tmp_room && tmp_paths && ft_strcmp(tmp_room->links->room, tmp_paths->lst_links->room))
+// 		tmp_room->links = tmp_room->links->next;
+// 	// ft_printf("coucou\n");
+// 	// ft_printf("room %s\n", tmp_room->links->room);
+// 	// ft_printf("link %s\n", tmp_paths->lst_links->room);
+// 	// tmp_room->links->forward == 1;
+// 	return (1);
+// }
+
+// static	int		update_graph(t_room **room, t_path **paths)
+// {
+// 	t_room	*tmp_room;
+// 	t_path	*tmp_paths;
+// 	t_links	*tmp_links;
+
+// 	tmp_room = (*room);
+// 	tmp_paths = (*paths);
+// 	while (tmp_paths && tmp_paths->next)
+// 		tmp_paths = tmp_paths->next;
+// 	while (tmp_room && tmp_paths && ft_strcmp(tmp_room->name, tmp_paths->lst_links->room))
+// 		tmp_room = tmp_room->next;
+// 	tmp_links = tmp_paths->lst_links->next;
+// 	tmp_paths->lst_links = tmp_paths->lst_links->next;
+// 	while (tmp_room && tmp_paths && ft_strcmp(tmp_room->links->room, tmp_paths->lst_links->room))
+// 		tmp_room->links = tmp_room->links->next;
+// 	return (1);
+// }
 
 int		lemin(t_room **room, t_queue **queue, t_path **paths)
 {

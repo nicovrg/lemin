@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/28 00:24:12 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/29 00:12:16 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ SRC_PARSE = 		check_lines.c\
 					check_map_validity.c\
 					check_rooms_and_links.c\
 					fill_rooms.c\
-					fill_tubes.c\
-					rooms_visited.c
+					fill_tubes.c
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
