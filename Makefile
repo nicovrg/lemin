@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/22 02:09:10 by nivergne         ###   ########.fr        #
+#    Updated: 2019/08/29 00:12:16 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INC_LEMIN := $(addprefix include/, $(INC_LEMIN))
 
 SRC_GENERAL =		main.c\
 					free_all.c\
-					error.c
+					error.c\
+					debug.c
 
 SRC_GENERAL := $(addprefix general/, $(SRC_GENERAL))
 OBJ_GENERAL := $(addprefix general/, $(addsuffix .o, $(basename $(notdir $(SRC_GENERAL)))))
@@ -32,10 +33,7 @@ SRC_PARSE = 		check_lines.c\
 					check_map_validity.c\
 					check_rooms_and_links.c\
 					fill_rooms.c\
-					fill_tubes.c\
-					fill_paths.c\
-					check_paths.c\
-					rooms_visited.c
+					fill_tubes.c
 
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
@@ -43,6 +41,7 @@ OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE
 SRC_ALGO = 			lemin.c\
 					bfs.c\
 					queue.c\
+					fill_path.c\
 					find_rooms.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
