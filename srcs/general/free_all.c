@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/02 22:02:01 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/02 23:30:30 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int		free_rooms_and_links(t_room **rooms)
 
 	tmp = (*rooms);
 	buf = tmp->links;
-	while (buf)
+	while (tmp && buf)
 	{
 		index = buf;
 		ft_strdel(&(index->room));

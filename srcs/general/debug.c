@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/27 23:58:51 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/02 23:13:56 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		print_rooms(t_room *rooms)
 	{
 		ft_printf("ROOM = %s\nSTART = %d END = %d\n---------------------------------------------------\n",
 		rooms->name, rooms->start, rooms->end);
-		while (rooms->links)
+		while (rooms && rooms->links)
 		{
 			ft_printf("TUBE : %s\n", rooms->links->room);
 			rooms->links = rooms->links->next;

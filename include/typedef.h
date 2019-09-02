@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 22:00:51 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/02 23:09:48 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct		s_links
 {
 	char			*room;
+	int				discovered;
 	struct s_links	*next;
 }					t_links;
 

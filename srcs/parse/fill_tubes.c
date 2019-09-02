@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/17 14:53:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/02 23:09:40 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	t_links	*buf;
 
 	(*new)->next = NULL;
+	(*new)->discovered = 0;
 	if (!((*tmp)->links))
 		(*tmp)->links = *new;
 	else

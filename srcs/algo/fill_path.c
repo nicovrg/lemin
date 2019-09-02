@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 00:24:01 by nivergne          #+#    #+#             */
-/*   Updated: 2019/08/28 00:48:55 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/02 23:36:19 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		helper_flr(t_queue **ptr_end, t_links **lst_rooms, t_queue **find_en
 	tmp_link = (*lst_rooms);
 	while (*lst_rooms && tmp_link->next)
 		tmp_link = tmp_link->next;
-	if (!(new_room = (t_links *)ft_memalloc(sizeof(t_links))))
+	if (!(new_room = (t_links *)malloc(sizeof(t_links))))
 		return (error_msg(ERR_MALLOC_7));
 	if (!(new_room->room = ft_strdup((*find_end)->room->name)))
 		return (error_msg(ERR_MALLOC_8));
@@ -45,7 +45,7 @@ static int		fill_lst_rooms(t_queue **find_end, t_links **lst_rooms)
 
 	ptr_end = NULL;
 	ptr_true_end = *find_end;
-	while ((*find_end)->room->start != 1)
+	while ((*find_end) && (*find_end)->room->start != 1)
 	{
 		if (!(helper_flr(&ptr_end, lst_rooms, find_end)))
 			return (error_msg(ERR_MALLOC_10));

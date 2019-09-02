@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 22:01:06 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/02 23:18:49 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to
 	{
 		if (*current_room && (*current_room)->links)
 			tmp_links = (*current_room)->links;
-		while (tmp_links && (*current_room)->end != 1)
+		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
 			(*room_to_push) = find_room(room, tmp_links->room);
 			if ((*room_to_push)->discovered == 0 && !push_queue(queue, room_to_push, (*current_room)->name))
