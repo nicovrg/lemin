@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 02:56:39 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 03:45:49 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,21 @@ int		lemin(t_room **room, t_queue **queue, t_path **paths)
 	queue_state = (*queue);
 	while (bfs(room, &queue_state, &current_room, &room_to_push) == 1)
 	{
-		// find_end = (find_end) ? find_end->next : *queue;
-		// while (find_end && find_end->room->end != 1)
-		// 	find_end = find_end->next;
-		// if (!(fill_path(nb_path, &find_end, paths)))
-		// 	return (error_msg(ERR_MALLOC_9));
-		// nb_path++;
+		find_end = (find_end) ? find_end->next : *queue;
+		while (find_end && find_end->room->end != 1)
+			find_end = find_end->next;
+		if (!(fill_path(nb_path, &find_end, paths)))
+			return (error_msg(ERR_MALLOC_9));
+		nb_path++;
 	}
-	(*paths) = NULL;
-	while (*queue)
-	{
-		ft_putendl((*queue)->room->name);
-		if ((*queue)->prev_link)
-			ft_putendl((*queue)->prev_link);
-		(*queue) = (*queue)->next;
-	}
+	// (*paths) = NULL;
+	// while (*queue)
+	// {
+	// 	ft_putendl((*queue)->room->name);
+	// 	// if ((*queue)->prev_link)
+	// 	// 	ft_putendl((*queue)->prev_link);
+	// 	(*queue) = (*queue)->next;
+	// }
 	return (1);
 }
 

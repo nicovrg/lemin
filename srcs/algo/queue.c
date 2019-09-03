@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 00:13:53 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 03:52:44 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,20 @@ int			push_queue(t_queue **queue, t_room **room, char *prev_name)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
-	char		*buf;
+	// char		*buf;
 
 	tmp_queue = *queue;
+	prev_name = NULL;
 	while ((*queue) && tmp_queue->next)
 		tmp_queue = tmp_queue->next;
 	if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
 		return (0);
 	new->room = (*room);
 	new->room->discovered = 1;
-	buf = ft_strjoin(prev_name, "-");
-	buf = ft_strjoinf(buf, (*room)->name, 1);
-	if (!(new->prev_link = ft_strdup(buf)))
-		return (error_msg(ERR_MALLOC_3));
+	new->prev_link = (*queue);
 	new->prev = tmp_queue;
 	new->next = NULL;
 	tmp_queue->next = new;
-	ft_strdel(&buf);
 	return (1);
 }
 

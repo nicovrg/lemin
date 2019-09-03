@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 00:08:59 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 03:44:39 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ int		init_bfs(t_room **room, t_queue **queue, t_room **current_room)
 ** init bfs
 */
 
+// int		link_is_passed(char *prev_link, char *current_room, char *room_to_push)
+// {
+// 	if (!ft_strcmp(current_room, ft_strchr(prev_link, '-') + 1)
+// 	&& !ft_strncmp(room_to_push, prev_link, ft_strchr(prev_link, '-') - prev_link))
+// 		return (0);
+// 	return (1);
+// }
+
 int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to_push)
 {
 	int		end;
@@ -40,7 +48,8 @@ int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to
 		{
 			(*room_to_push) = find_room(room, tmp_links->room);
 			if (tmp_links->discovered == 0 && (!(*queue)->prev_link
-			|| ft_strcmp(tmp_links->room, (*queue)->prev_link)))
+			|| ft_strcmp(tmp_links->room, (*queue)->prev_link->room->name)))
+			// || link_is_passed((*queue)->prev_link, (*current_room)->name, (*room_to_push)->name)))
 				if (!push_queue(queue, room_to_push, (*current_room)->name))
 					return (error_msg(ERR_MALLOC_2));
 			tmp_links->discovered = 1;

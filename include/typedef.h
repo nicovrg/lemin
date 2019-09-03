@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 03:14:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 03:36:02 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_path
 
 typedef struct		s_queue
 {
-	char			*prev_link;
+	struct s_queue	*prev_link;
 	t_room			*room;
 	struct s_queue	*prev;
 	struct s_queue	*next;

@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/03 00:25:43 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 04:05:47 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 // 	return (1);
 // }
 
-int				free_paths(t_path **paths, int var)
+int				free_paths(t_path **paths)
 {
 	t_path	*tmp;
 	t_links	*links;
@@ -82,7 +82,7 @@ int				free_paths(t_path **paths, int var)
 		(*paths) = (*paths)->next;
 		free(tmp);
 	}
-	return (var);
+	return (1);
 }
 
 static int		free_rooms_and_links(t_room **rooms)
@@ -113,7 +113,7 @@ int				free_queue(t_queue **queue)
 	while (*queue)
 	{
 		tmp = (*queue);
-		ft_strdel(&(tmp->prev_link));
+		// ft_strdel(&(tmp->prev_link));
 		// free_rooms_and_links(&(tmp->room));
 		(*queue) = (*queue)->next;
 		free(tmp);
@@ -121,11 +121,12 @@ int				free_queue(t_queue **queue)
 	return (1);
 }
 
-int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
+int				free_error(t_room **rooms, char ***tab, t_path **paths, t_queue **queue)
 {
 	int		i;
 
 	i = 0;
+	free_queue(queue);
 	while (*rooms)
 		free_rooms_and_links(rooms);
 	while ((*tab) && (*tab)[i])
@@ -136,8 +137,28 @@ int				free_all(t_room **rooms, char ***tab, t_path **paths, int var)
 	if (*tab)
 		free(*tab);
 	if (*paths)
-		free_paths(paths, var);
-	if (var == 1)
-		ft_putendl("ERROR");
-	return (var);
+		free_paths(paths);
+	ft_putendl("ERROR");
+	return (1);
+}
+
+int				free_all(t_room **rooms, char ***tab, t_path **paths, t_queue **queue)
+{
+	int		i;
+
+	i = 0;
+	if (*queue)
+		free_queue(queue);
+	while (*rooms)
+		free_rooms_and_links(rooms);
+	while ((*tab) && (*tab)[i])
+	{
+		ft_strdel(&((*tab)[i]));
+		i++;
+	}
+	if (*tab)
+		free(*tab);
+	if (*paths)
+		free_paths(paths);
+	return (0);
 }

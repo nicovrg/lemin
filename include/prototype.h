@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 22:00:34 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 04:19:35 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@ int			error_while_gnl(char **line, char *error_msg);
 int			error_with_status(char **line, t_room **rooms);
 int			error_msg(char *error_msg);
 
-int			free_all(t_room **rooms, char ***tab, t_path **paths, int var);
+int			free_all(t_room **rooms, char ***tab, t_path **paths, t_queue **queue);
+int			free_error(t_room **rooms, char ***tab, t_path **paths, t_queue **queue);
 int			free_queue(t_queue **queue);
-int			free_paths(t_path **paths, int var);
+int			free_paths(t_path **paths);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
 
-int			print_rooms(t_room *rooms);
+int			print_rooms(t_room **rooms);
 int			print_queue(t_queue **queue);
-int			print_paths(t_path *paths);
+int			print_paths(t_path **paths);
 
 /*
 ** ==================== algo ====================
