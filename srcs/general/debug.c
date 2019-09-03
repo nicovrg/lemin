@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 23:13:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/02 23:53:02 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		print_rooms(t_room *rooms)
 		rooms->name, rooms->start, rooms->end);
 		while (rooms && rooms->links)
 		{
-			ft_printf("TUBE : %s\n", rooms->links->room);
+			ft_printf("TUBE : %s\t%d\n", rooms->links->room, rooms->links->discovered);
 			rooms->links = rooms->links->next;
 		}
 		ft_printf("---------------------------------------------------\n\n\n\n");

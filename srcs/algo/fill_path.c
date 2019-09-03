@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 00:24:01 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 23:36:19 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 01:27:41 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static int		fill_lst_rooms(t_queue **find_end, t_links **lst_rooms)
 	{
 		if (!(helper_flr(&ptr_end, lst_rooms, find_end)))
 			return (error_msg(ERR_MALLOC_10));
-		while (*find_end && ft_strcmp((*find_end)->room->name, ptr_end->prev_room))
+		while (*find_end && ft_strcmp((*find_end)->room->name, ptr_end->prev_link))
 			*find_end = (*find_end)->prev;
 	}
 	if (!(helper_flr(&ptr_end, lst_rooms, find_end)))
-			return (error_msg(ERR_MALLOC_10));
+		return (error_msg(ERR_MALLOC_10));
 	(*find_end) = ptr_true_end;
 	return (1);
 }

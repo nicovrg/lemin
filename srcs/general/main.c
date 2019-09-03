@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/02 23:38:20 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/02 23:54:08 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		main(void)
 		return (free_all(&rooms, &tab, &paths, 1));
 	// if (!check_paths(&rooms, &paths, &list))
 	//	return (free_all(&rooms, &list, &paths, 1));
+	print_paths(paths);
 	// print_rooms(rooms);
 	ft_putendl("FINISH");
 	free_queue(&queue);

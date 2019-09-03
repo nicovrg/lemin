@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/02 22:01:48 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 00:13:53 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			init_queue(t_queue **queue, t_room **room)
 	new->room = *room;
 	new->prev = NULL;
 	new->next = NULL;
-	new->prev_room = NULL;
+	new->prev_link = NULL;
 	new->room->discovered = 1;
 	if (!(*queue))
 		(*queue) = new;
@@ -37,6 +37,7 @@ int			push_queue(t_queue **queue, t_room **room, char *prev_name)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
+	char		*buf;
 
 	tmp_queue = *queue;
 	while ((*queue) && tmp_queue->next)
@@ -45,11 +46,14 @@ int			push_queue(t_queue **queue, t_room **room, char *prev_name)
 		return (0);
 	new->room = (*room);
 	new->room->discovered = 1;
-	if (!(new->prev_room = ft_strdup(prev_name)))
+	buf = ft_strjoin(prev_name, "-");
+	buf = ft_strjoinf(buf, (*room)->name, 1);
+	if (!(new->prev_link = ft_strdup(buf)))
 		return (error_msg(ERR_MALLOC_3));
 	new->prev = tmp_queue;
 	new->next = NULL;
 	tmp_queue->next = new;
+	ft_strdel(&buf);
 	return (1);
 }
 
