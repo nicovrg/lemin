@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/02 23:09:40 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/04 03:51:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
+
+static int				free_link(t_links **new)
+{
+	ft_strdel(&((*new)->room));
+	free(*new);
+	return (0);
+}
 
 static int				index_tubes(t_links **new, t_room **tmp)
 {
@@ -24,8 +31,14 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	else
 	{
 		buf = (*tmp)->links;
-		while (buf->next)
+		while (buf && buf->next)
+		{
+			if (!ft_strcmp(buf->room, (*new)->room))
+				return (free_link(new));
 			buf = buf->next;
+		}
+		if (!ft_strcmp(buf->room, (*new)->room))
+			return (free_link(new));
 		buf->next = *new;
 	}
 	return (1);
@@ -45,7 +58,8 @@ static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new,
 			return (0);
 		if (!((*new)->room = ft_strsub(norme->line, ft_strchr(norme->line, '-') - norme->line + 1, ft_strlen(ft_strchr(norme->line, '-') + 1))))
 			return (0);
-		index_tubes(new, tmp);
+		if (!index_tubes(new, tmp))
+			return (0);
 		norme->line = ft_strchr(norme->line, '-') + 1;
 		*tmp = (*rooms);
 		norme->count++;
@@ -68,7 +82,8 @@ static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, 
 			return (0);
 		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(norme->line) - 1)))
 			return (0);
-		index_tubes(new, tmp);
+		if (!index_tubes(new, tmp))
+			return (0);
 		norme->count++;
 	}
 	*tmp = (*tmp)->next;
@@ -105,5 +120,3 @@ int						fill_tubes(t_room **rooms, char *line)
 		return (0);
 	return (1);
 }
-
-

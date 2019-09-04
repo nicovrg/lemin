@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/21 22:32:51 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/04 03:34:33 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int				check_lines(t_room **rooms, int *nb_ant, char ***tab)
 	line = NULL;
 	while (get_next_line(0, &line) == 1)
 	{
+		if (!line[0])
+			return (error_while_gnl(&line, ERR_PARSE_2));
 		if (!(*tab = ft_realloctab(tab)))
 			return (0);
 		if (!((*tab)[i] = ft_strdup(line)))

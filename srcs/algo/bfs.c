@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 03:44:39 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/04 03:28:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,48 @@ int		init_bfs(t_room **room, t_queue **queue, t_room **current_room)
 // 	return (1);
 // }
 
+// int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to_push)
+// {
+// 	int		end;
+// 	t_links *tmp_links;
+
+// 	tmp_links = NULL;
+// 	end = 0;
+// 	while (*queue)
+// 	{
+// 		if (*current_room && (*current_room)->links)
+// 			tmp_links = (*current_room)->links;
+// 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
+// 		{
+// 			(*room_to_push) = find_room(room, tmp_links->room);
+// 			if (tmp_links->discovered == 0 && (!(*queue)->prev_link
+// 			|| ft_strcmp(tmp_links->room, (*queue)->prev_link->room->name)))
+// 				if (!push_queue(queue, room_to_push, (*current_room)->name))
+// 					return (error_msg(ERR_MALLOC_2));
+// 			tmp_links->discovered = 1;
+// 			if ((*room_to_push)->end == 1)
+// 			{
+// 				tmp_links->discovered = 0;
+// 				end = 1;
+// 			}
+// 			tmp_links = tmp_links->next;
+// 		}
+// 		(*queue) = (*queue)->next;
+// 		if ((*queue))
+// 			(*current_room) = (*queue)->room;
+// 		if (end == 1)
+// 			return (1);
+// 	}
+// 	return (2);
+// }
+
 int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to_push)
 {
 	int		end;
 	t_links *tmp_links;
 
-	tmp_links = NULL;
 	end = 0;
+	tmp_links = NULL;
 	while (*queue)
 	{
 		if (*current_room && (*current_room)->links)
@@ -49,7 +84,6 @@ int		bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to
 			(*room_to_push) = find_room(room, tmp_links->room);
 			if (tmp_links->discovered == 0 && (!(*queue)->prev_link
 			|| ft_strcmp(tmp_links->room, (*queue)->prev_link->room->name)))
-			// || link_is_passed((*queue)->prev_link, (*current_room)->name, (*room_to_push)->name)))
 				if (!push_queue(queue, room_to_push, (*current_room)->name))
 					return (error_msg(ERR_MALLOC_2));
 			tmp_links->discovered = 1;

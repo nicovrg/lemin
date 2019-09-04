@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/03 04:21:09 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/04 03:53:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int		main(void)
 		return (free_error(&rooms, &tab, &paths, &queue));
 	if (!lemin(&rooms, &queue, &paths))
 		return (free_error(&rooms, &tab, &paths, &queue));
-	// if (!check_paths(&rooms, &paths, &list))
-	//	return (free_all(&rooms, &list, &paths, 1));
-	// print_paths(&paths);
-	print_rooms(&rooms);
+	if (!paths)
+		return (free_error(&rooms, &tab, &paths, &queue));
+	print_paths(&paths);
+	// print_rooms(&rooms);
 	ft_putendl("FINISH");
 	free_all(&rooms, &tab, &paths, &queue);
 	return (0);

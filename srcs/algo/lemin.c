@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 03:45:49 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 23:38:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,6 @@ int		lemin(t_room **room, t_queue **queue, t_path **paths)
 			return (error_msg(ERR_MALLOC_9));
 		nb_path++;
 	}
-	// (*paths) = NULL;
-	// while (*queue)
-	// {
-	// 	ft_putendl((*queue)->room->name);
-	// 	// if ((*queue)->prev_link)
-	// 	// 	ft_putendl((*queue)->prev_link);
-	// 	(*queue) = (*queue)->next;
-	// }
 	return (1);
 }
 

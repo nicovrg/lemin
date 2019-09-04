@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 03:52:44 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:37:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int			push_queue(t_queue **queue, t_room **room, char *prev_name)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
-	// char		*buf;
 
 	tmp_queue = *queue;
 	prev_name = NULL;
