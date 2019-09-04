@@ -6,13 +6,11 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/04 23:52:53 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/04 04:02:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-
 
 int		init_bfs(t_room **room, t_queue **queue, t_room **current_room)
 {

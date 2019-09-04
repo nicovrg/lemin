@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/04 03:53:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/04 23:57:40 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(void)
 {
 	int		nb_ant;
 	char	**tab;
+	
 	t_room	*rooms;
 	t_path	*paths;
 	t_queue *queue;

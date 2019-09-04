@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 03:36:02 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/04 23:55:21 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
+
+typedef	struct		s_zelda
+{
+	char			*name;
+	struct s_zelda	*next;
+}					t_zelda;
 
 typedef struct		s_links
 {
@@ -45,19 +51,24 @@ typedef struct		s_queue
 	struct s_queue	*next;
 }					t_queue;
 
-typedef struct		s_norme
+typedef	struct		
 {
-	char			*line;
-	int				count;
-	int				var;
-	int				start;
-	int				end;
-}					t_norme;
 
-typedef struct		s_ban
-{
-	char			*name;
-	struct s_ban	*next;
-}					t_ban;
+};
+
+// typedef struct		s_norme
+// {
+// 	char			*line;
+// 	int				count;
+// 	int				var;
+// 	int				start;
+// 	int				end;
+// }					t_norme;
+
+// typedef struct		s_ban
+// {
+// 	char			*name;
+// 	struct s_ban	*next;
+// }					t_ban;
 
 #endif
