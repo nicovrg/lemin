@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 23:29:16 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 01:17:56 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ static int		init_main_two(t_lemin *l)
 
 int				main(void)
 {
-	t_lemin l;
+	t_lemin lem;
 
-	init_main(&l);
-	init_main_two(&l);
-	if (!check_lines(&l))
-		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
-	if (!check_map_validity(&l))
-		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
-	if (!lemin(&l))
-		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
-	if (!l.path)
-		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
-	print_paths(&l.path);
+	init_main(&lem);
+	init_main_two(&lem);
+	if (!check_lines(&lem))
+		return (free_all(1, &lem));
+	if (!check_map_validity(&lem))
+		return (free_all(1, &lem));
+	if (!lemin(&lem))
+		return (free_all(1, &lem));
+	if (!lem.path)
+		return (free_all(1, &lem));
+	print_paths(&lem.path);
 	// print_rooms(&l);
 	ft_putendl("FINISH");
-	free_all(&l.room, &l.tab, &l.path, &l.queue);
+	free_all(0, &lem);
 	return (0);
 }
 

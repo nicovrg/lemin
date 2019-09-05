@@ -3,64 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/03 04:05:47 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/06 01:17:12 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
-
-// int				del_room_in_path(t_path **current)
-// {
-// 	t_links	*tmp;
-// 	t_links	*ptr;
-
-// 	tmp = (*current)->links;
-// 	ptr = (*current)->links;
-// 	while ((*current)->links && tmp->next)
-// 		tmp = tmp->next;
-// 	while ((*current)->links && ptr->next && ptr->next != tmp)
-// 		ptr = ptr->next;
-// 	if (tmp && tmp->room)
-// 		ft_strdel(&(tmp->room));
-// 	ptr->next = NULL;
-// 	if (tmp)
-// 		free(tmp);
-// 	return (1);
-// }
-
-// /*
-// ** ==================== del_room_in_path ====================
-// ** delete the last room on the current path
-// */
-
-// int				free_one_path(t_path **paths, t_path **current)
-// {
-// 	t_path	*tmp;
-// 	t_links	*buf;
-// 	t_links	*index;
-
-// 	tmp = (*paths);
-// 	while (*paths && *current && tmp->next && tmp->next != *current)
-// 		tmp = tmp->next;
-// 	if (*current)
-// 	{
-// 		buf = (*current)->links;
-// 		while (buf)
-// 		{
-// 			index = buf;
-// 			ft_strdel(&(index->room));
-// 			buf = buf->next;
-// 			free(index);
-// 		}
-// 		free(*current);
-// 		tmp->next = NULL;
-// 	}
-// 	return (1);
-// }
 
 int				free_paths(t_path **paths)
 {
@@ -113,52 +64,31 @@ int				free_queue(t_queue **queue)
 	while (*queue)
 	{
 		tmp = (*queue);
-		// ft_strdel(&(tmp->prev_link));
-		// free_rooms_and_links(&(tmp->room));
 		(*queue) = (*queue)->next;
 		free(tmp);
 	}
 	return (1);
 }
 
-int				free_error(t_room **rooms, char ***tab, t_path **paths, t_queue **queue)
+int				free_all(int var, t_lemin *l)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	free_queue(queue);
-	while (*rooms)
-		free_rooms_and_links(rooms);
-	while ((*tab) && (*tab)[i])
+	if (l->queue)
+		free_queue(&(l->queue));
+	while (l->room)
+		free_rooms_and_links(&(l->room));
+	while (l->tab && l->tab[i])
 	{
-		ft_strdel(&((*tab)[i]));
+		ft_strdel(&((l->tab)[i]));
 		i++;
 	}
-	if (*tab)
-		free(*tab);
-	if (*paths)
-		free_paths(paths);
-	ft_putendl("ERROR");
-	return (1);
-}
-
-int				free_all(t_room **rooms, char ***tab, t_path **paths, t_queue **queue)
-{
-	int		i;
-
-	i = 0;
-	if (*queue)
-		free_queue(queue);
-	while (*rooms)
-		free_rooms_and_links(rooms);
-	while ((*tab) && (*tab)[i])
-	{
-		ft_strdel(&((*tab)[i]));
-		i++;
-	}
-	if (*tab)
-		free(*tab);
-	if (*paths)
-		free_paths(paths);
+	if (l->tab)
+		(free(l->tab));
+	if (l->path)
+		free_paths(&(l->path));
+	if (var == 1)
+		ft_putendl("ERROR");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 00:49:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 01:19:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ int			error_while_gnl(char **line, char *error_msg);
 int			error_with_status(char **line, t_lemin *l);
 int			error_msg(char *error_msg);
 
-int			free_all(t_room **rooms, char ***tab, t_path **paths, t_queue **queue);
-int			free_error(t_room **rooms, char ***tab, t_path **paths, t_queue **queue);
+int			free_all(int var, t_lemin *l);
 int			free_queue(t_queue **queue);
 int			free_paths(t_path **paths);
-int			free_one_path(t_path **paths, t_path **current);
-int			del_room_in_path(t_path **current);
 
 int			print_rooms(t_lemin *l);
 int			print_queue(t_queue **queue);
