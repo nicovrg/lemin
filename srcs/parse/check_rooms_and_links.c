@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/04 03:43:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:14:27 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		check_coords_in_room(char *line)
 ** check_coords_in_room() check if coords are valids
 */
 
-int		is_tubes(t_room **rooms, char *line, int *status)
+int		is_tubes(t_lemin *l, char *line, int *status)
 {
 	int		i;
 	int		hyphen;
@@ -61,7 +61,7 @@ int		is_tubes(t_room **rooms, char *line, int *status)
 			hyphen++;
 		i++;
 	}
-	if (hyphen > 1 || !fill_tubes(rooms, line))
+	if (hyphen > 1 || !fill_tubes(l, line))
 		return (0);
 	return (1);
 }

@@ -6,19 +6,19 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:17:22 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/13 05:14:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:42:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		check_map_validity(t_room **rooms)
+int		check_map_validity(t_lemin *l)
 {
-	t_room	*tmp;
 	int		start;
 	int		end;
+	t_room	*tmp;
 
-	tmp = (*rooms);
+	tmp = l->room;
 	start = 0;
 	end = 0;
 	while (tmp)

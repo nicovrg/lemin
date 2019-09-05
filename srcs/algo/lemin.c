@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 23:38:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:49:16 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@
 // 	return (1);
 // }
 
-int		lemin(t_room **room, t_queue **queue, t_path **paths)
+int		lemin(t_lemin *l)
 {
 	int		nb_path;
 	t_queue	*find_end;
@@ -87,15 +87,15 @@ int		lemin(t_room **room, t_queue **queue, t_path **paths)
 	find_end = NULL;
 	current_room = NULL;
 	room_to_push = NULL;
-	if (!(init_bfs(room, queue, &current_room)))
+	if (!(init_bfs(l, &current_room)))
 		return (error_msg(ERR_MALLOC_4));
-	queue_state = (*queue);
-	while (bfs(room, &queue_state, &current_room, &room_to_push) == 1)
+	queue_state = l->queue;
+	while (bfs(l, &queue_state, &current_room, &room_to_push) == 1)
 	{
-		find_end = (find_end) ? find_end->next : *queue;
+		find_end = (find_end) ? find_end->next : l->queue;
 		while (find_end && find_end->room->end != 1)
 			find_end = find_end->next;
-		if (!(fill_path(nb_path, &find_end, paths)))
+		if (!(fill_path(nb_path, &find_end, l)))
 			return (error_msg(ERR_MALLOC_9));
 		nb_path++;
 	}

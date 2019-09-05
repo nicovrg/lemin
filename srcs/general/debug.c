@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 04:20:26 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/05 02:23:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int		print_paths(t_path **paths)
 	return (1);
 }
 
-int		print_rooms(t_room **rooms)
+int		print_rooms(t_lemin *l)
 {
 	t_room	*tmp_room;
 	t_links	*tmp_links;
 
-	tmp_room = (*rooms);
+	tmp_room = l->room;
 	while (tmp_room)
 	{
 		ft_printf("ROOM = %s\nSTART = %d END = %d\n---------------------------------------------------\n",

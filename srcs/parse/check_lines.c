@@ -6,20 +6,20 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/04 03:34:33 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:29:09 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
 
-static int		check_room_isvalid(t_room **rooms, char *line, int *status)
+static int		check_room_isvalid(t_lemin *l, char *line, int *status)
 {
 	if (!ft_strchr(line, ' ') && !ft_strchr(line, '-'))
 		return (error_of_status(status));
 	if (ft_strchr(line, '-'))
 	{
-		if (!is_tubes(rooms, line, status))
+		if (!is_tubes(l, line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -36,7 +36,7 @@ static int		check_room_isvalid(t_room **rooms, char *line, int *status)
 ** this call (is_tubes) should happen only once, 
 */
 
-static int		check_status(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
+static int		check_status(t_lemin *l, t_norme *norme, int *status)
 {
 	if (*status == 0)
 	{
@@ -47,15 +47,15 @@ static int		check_status(t_room **rooms, t_norme *norme, int *status, int *nb_an
 			norme->count = norme->count + 1;
 		}
 		if (norme->line)
-			*nb_ant = ft_atoi(norme->line);
+			l->nb_ant = ft_atoi(norme->line);
 		*status = 1;
 		return (0);
 	}
 	else if (*status == 1)
-		return (check_room_isvalid(rooms, norme->line, status));
+		return (check_room_isvalid(l, norme->line, status));
 	else if (*status == 2)
 	{
-		if (!is_tubes(rooms, norme->line, status))
+		if (!is_tubes(l, norme->line, status))
 			return (error_of_status(status));
 		return (0);
 	}
@@ -74,7 +74,7 @@ static int		check_status(t_room **rooms, t_norme *norme, int *status, int *nb_an
 ** return 1 if we append something on the list, 0 otherwise
 */
 
-static int		is_room(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
+static int		is_room(t_lemin *l, t_norme *norme, int *status)
 {
 	norme->count = 0;
 	if (norme->line[0] == '#')
@@ -91,7 +91,7 @@ static int		is_room(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
 		}
 		return (0);
 	}
-	if (!check_status(rooms, norme, status, nb_ant))
+	if (!check_status(l, norme, status))
 		return (0);
 	return (1);
 }
@@ -110,7 +110,7 @@ static int		is_room(t_room **rooms, t_norme *norme, int *status, int *nb_ant)
 ** then call check_status to know if we are reading nb_ant, room or tubes
 */
 
-int				check_lines(t_room **rooms, int *nb_ant, char ***tab)
+int				check_lines(t_lemin *l)
 {
 	int		i;
 	int		status;
@@ -127,16 +127,16 @@ int				check_lines(t_room **rooms, int *nb_ant, char ***tab)
 	{
 		if (!line[0])
 			return (error_while_gnl(&line, ERR_PARSE_2));
-		if (!(*tab = ft_realloctab(tab)))
+		if (!(l->tab = ft_realloctab(&l->tab)))
 			return (0);
-		if (!((*tab)[i] = ft_strdup(line)))
+		if (!((l->tab)[i] = ft_strdup(line)))
 			return (0);
 		norme.line = line;
-		if (is_room(rooms, &norme, &status, nb_ant))
-			if (!fill_rooms(rooms, &norme))
+		if (is_room(l, &norme, &status))
+			if (!fill_rooms(l, &norme))
 				return (error_while_gnl(&line, ERR_PARSE_1));
 		if (status == -1)
-			return (error_with_status(&line, rooms));
+			return (error_with_status(&line, l));
 		i++;
 		ft_strdel(&line);
 	}

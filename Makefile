@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/08/29 00:12:16 by nivergne         ###   ########.fr        #
+#    Updated: 2019/09/05 00:26:58 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ OBJ += $(addprefix $(OBJ_PATH), $(OBJ_ALGO))
 INC = -I./include
 INC_PATH = -Iinclude/ -Ilibft/include
 
-GCC_FLAG = -Wall -Wextra -Werror -g
+GCC_FLAG = -Wall -Wextra -Werror -g3
 CC = gcc $(GCC_FLAG) $(INC_PATH)
 LIB = libft/libft.a
 
@@ -84,7 +84,7 @@ all: $(NAME)
 
 $(NAME): makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)compile$(GRN)		[OK]$(END)"
-	@$(CC) $(CFLAGS) $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)
+	@$(CC) $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)
 
 makelib:
 	@$(MAKE) -C libft
@@ -92,16 +92,16 @@ makelib:
 obj/%.o: srcs/%.c $(INC_LEMIN)
 	@echo "Building$(BLU) $(patsubst obj/%,%,$(basename $@))$(END)"
 	@printf "\033[A"
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) -o $@ -c $<
 	@printf "\33[2K"
 
 debug: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)debug$(GRN)		[OK]$(END)"
-	@$(CC) $(CFLAGS) -g3 $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_debug
+	@$(CC) -g3 $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_debug
 
 fsanitize: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)fsanitize$(GRN)	[OK]$(END)"
-	@$(CC) $(CFLAGS) -g3 -fsanitize=address $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_fsanitize
+	@$(CC) -g3 -fsanitize=address $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_fsanitize
 
 obj:
 	@mkdir -p obj

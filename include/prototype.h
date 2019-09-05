@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/03 04:19:35 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/05 02:23:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 int			error_of_status(int *status);
 int			error_while_gnl(char **line, char *error_msg);
-int			error_with_status(char **line, t_room **rooms);
+int			error_with_status(char **line, t_lemin *l);
 int			error_msg(char *error_msg);
 
 int			free_all(t_room **rooms, char ***tab, t_path **paths, t_queue **queue);
@@ -34,7 +34,7 @@ int			free_paths(t_path **paths);
 int			free_one_path(t_path **paths, t_path **current);
 int			del_room_in_path(t_path **current);
 
-int			print_rooms(t_room **rooms);
+int			print_rooms(t_lemin *l);
 int			print_queue(t_queue **queue);
 int			print_paths(t_path **paths);
 
@@ -47,19 +47,18 @@ int			print_paths(t_path **paths);
 ** fill_path.c
 */
 
-int			lemin(t_room **room, t_queue **queue, t_path **paths);
+int			lemin(t_lemin *l);
 
-int			init_bfs(t_room **room, t_queue **queue, t_room **current_room);
-int			bfs(t_room **room, t_queue **queue, t_room **current_room, t_room **room_to_push);
+int			init_bfs(t_lemin *l, t_room **current_room);
+int			bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push);
 
-int			init_queue(t_queue **queue, t_room **room);
-int			push_queue(t_queue **queue, t_room **room, char *prev_name);
-t_room*		pop_queue(t_queue **queue);
+int			init_queue(t_lemin *l, t_room **room);
+int			push_queue(t_lemin *l, t_room **room, char *prev_name);
 
-t_room*		find_start_room(t_room **room);
-t_room*		find_room(t_room **room, char *name);
+t_room*		find_start_room(t_lemin *l);
+t_room*		find_room(t_lemin *l, char *name);
 
-int			fill_path(int nb_path, t_queue **find_end, t_path **paths);
+int			fill_path(int nb_path, t_queue **find_end, t_lemin *l);
 
 /*
 ** ==================== parse ====================
@@ -72,16 +71,16 @@ int			fill_path(int nb_path, t_queue **find_end, t_path **paths);
 ** rooms_visited.c
 */
 
-int			check_lines(t_room **rooms, int	*nb_ant, char ***tab);
+int			check_lines(t_lemin *l);
 
-int			check_map_validity(t_room **rooms);
+int			check_map_validity(t_lemin *l);
 
 int			check_coords_in_room(char *line);
-int			is_tubes(t_room **rooms, char *line, int *status);
+int			is_tubes(t_lemin *l, char *line, int *status);
 
-int			fill_rooms(t_room **rooms, t_norme *norme);
+int			fill_rooms(t_lemin *l, t_norme *norme);
 
-int			fill_tubes(t_room **rooms, char *line);
+int			fill_tubes(t_lemin *l, char *line);
 
 int			room_is_banned(char *name, t_ban **list);
 int			room_is_passed(t_path **current, char *name);
@@ -98,5 +97,7 @@ int			check_paths(t_room **rooms, t_path **paths, t_ban **list);
 t_links		*add_room_in_path(t_links **buf, char *name);
 t_path		*init_paths(t_path **paths, int i, char *name);
 int			fill_banned_rooms(t_ban **list, char *name);
+
+t_room*		pop_queue(t_lemin *l);
 
 #endif

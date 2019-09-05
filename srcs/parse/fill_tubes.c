@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/04 03:51:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:46:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int				index_tubes(t_links **new, t_room **tmp)
 ** (to keep the room address at the start of rooms)
 */
 
-static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new, t_room **rooms)
+static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new, t_lemin *l)
 {
 	if (!ft_strncmp((*tmp)->name, norme->line, ft_strchr(norme->line, '-') - norme->line))
 	{
@@ -61,7 +61,7 @@ static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new,
 		if (!index_tubes(new, tmp))
 			return (0);
 		norme->line = ft_strchr(norme->line, '-') + 1;
-		*tmp = (*rooms);
+		*tmp = l->room;
 		norme->count++;
 	}
 	else
@@ -95,7 +95,7 @@ static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, 
 ** send to index_tube the address of before the '-'
 */
 
-int						fill_tubes(t_room **rooms, char *line)
+int						fill_tubes(t_lemin *l, char *line)
 {
 	char	*buf;
 	t_room	*tmp;
@@ -103,14 +103,14 @@ int						fill_tubes(t_room **rooms, char *line)
 	t_norme	norme;
 
 	buf = line;
-	tmp = (*rooms);
+	tmp = l->room;
 	norme.line = line;
 	norme.count = 0;
 	while (tmp)
 	{
 		if (ft_strchr(norme.line, '-'))
 		{
-			if (!fill_tubes_first_room(&norme, &tmp, &new, rooms))
+			if (!fill_tubes_first_room(&norme, &tmp, &new, l))
 				return (0);
 		}
 		else if (!fill_tubes_last_room(&norme, &tmp, &new, buf))

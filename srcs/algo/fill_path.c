@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 00:24:01 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/04 00:54:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:58:15 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ static int		fill_lst_rooms(t_queue **find_end, t_links **lst_rooms)
 
 
 
-int				fill_path(int nb_path, t_queue **find_end, t_path **paths)
+int				fill_path(int nb_path, t_queue **find_end, t_lemin *l)
 {
 	t_path	*tmp_path;
 	t_path	*new_path;
 
-	tmp_path = (*paths);
-	while (*paths && tmp_path->next)
+	tmp_path = l->path;
+	while (l->path && tmp_path->next)
 		tmp_path = tmp_path->next;
 	if (!(new_path = (t_path *)ft_memalloc(sizeof(t_path))))
 		return (error_msg(ERR_MALLOC_5));
@@ -82,10 +82,10 @@ int				fill_path(int nb_path, t_queue **find_end, t_path **paths)
 	if (!(fill_lst_rooms(find_end, &(new_path->lst_rooms))))
 		return (error_msg(ERR_MALLOC_6));
 	new_path->next = NULL;
-	if ((*paths))
+	if (l->path)
 		tmp_path->next = new_path;
 	else
-		(*paths) = new_path;
+		l->path = new_path;
 	return (1);
 }
 

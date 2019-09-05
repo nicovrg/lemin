@@ -6,20 +6,20 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/08/28 00:28:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 01:43:16 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
 
-int		fill_rooms(t_room **rooms, t_norme *norme)
+int		fill_rooms(t_lemin *l, t_norme *norme)
 {
 	t_room	*tmp;
 	t_room	*new;
 	
-	tmp = (*rooms);
-	while ((*rooms) && tmp->next && (ft_strncmp(tmp->name, norme->line,
+	tmp = l->room;
+	while (l->room && tmp->next && (ft_strncmp(tmp->name, norme->line,
 	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
 	|| ft_strlen(tmp->name) != ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
 		tmp = tmp->next;
@@ -41,8 +41,8 @@ int		fill_rooms(t_room **rooms, t_norme *norme)
 		return (0);
 	new->next = NULL;
 	new->links = NULL;
-	if (!(*rooms))
-		(*rooms) = new;
+	if (!l->room)
+		l->room = new;
 	else
 		tmp->next = new;
 	return (1);
