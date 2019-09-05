@@ -6,21 +6,21 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/05 02:03:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 00:50:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int			init_queue(t_lemin *l, t_room **room)
+int			init_queue(t_lemin *l, t_room **current_room)
 {
 	t_queue		*new;
 
 	if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
 		return (0);
-	new->room = *room;
+	new->room = *current_room;
 	new->prev = NULL;
-	new->next = NULL;
+		new->next = NULL;
 	new->prev_link = NULL;
 	new->room->discovered = 1;
 	if (!l->queue)
@@ -33,20 +33,19 @@ int			init_queue(t_lemin *l, t_room **room)
 ** create and init a queue (list first in first out)
 */
 
-int			push_queue(t_lemin *l,  t_room **room, char *prev_name)
+int			push_queue(t_queue **queue_state, t_room **room_to_push)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
 
-	tmp_queue = l->queue;
-	prev_name = NULL;
-	while (l->queue && tmp_queue->next)
+	tmp_queue = *queue_state;
+	while (*queue_state && tmp_queue->next)
 		tmp_queue = tmp_queue->next;
 	if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
 		return (0);
-	new->room = *room;
+	new->room = *room_to_push;
 	new->room->discovered = 1;
-	new->prev_link = l->queue;
+	new->prev_link = *queue_state;
 	new->prev = tmp_queue;
 	new->next = NULL;
 	tmp_queue->next = new;

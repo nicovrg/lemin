@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 01:46:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 22:49:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int				free_link(t_links **new)
 {
 	ft_strdel(&((*new)->room));
 	free(*new);
-	return (0);
+	return (1);
 }
 
 static int				index_tubes(t_links **new, t_room **tmp)

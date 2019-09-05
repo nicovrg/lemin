@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 02:23:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/05 23:29:16 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int				main(void)
 		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
 	if (!l.path)
 		return (free_error(&l.room, &l.tab, &l.path, &l.queue));
-	// print_paths(&l.path);
-	print_rooms(&l);
+	print_paths(&l.path);
+	// print_rooms(&l);
 	ft_putendl("FINISH");
 	free_all(&l.room, &l.tab, &l.path, &l.queue);
 	return (0);

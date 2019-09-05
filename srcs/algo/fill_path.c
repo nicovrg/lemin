@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 00:24:01 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/05 01:58:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 00:39:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ static int		fill_lst_rooms(t_queue **find_end, t_links **lst_rooms)
 ** ptr_true_end is a pointer on the actual end ->
 ** after the path is filled find_end = ptr_true_end
 */
-
-
 
 int				fill_path(int nb_path, t_queue **find_end, t_lemin *l)
 {
