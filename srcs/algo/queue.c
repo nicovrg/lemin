@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 00:50:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 03:47:40 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int			init_queue(t_lemin *l, t_room **current_room)
 		return (0);
 	new->room = *current_room;
 	new->prev = NULL;
-		new->next = NULL;
+	new->link = NULL;
+	new->next = NULL;
 	new->prev_link = NULL;
 	new->room->discovered = 1;
 	if (!l->queue)
@@ -33,7 +34,7 @@ int			init_queue(t_lemin *l, t_room **current_room)
 ** create and init a queue (list first in first out)
 */
 
-int			push_queue(t_queue **queue_state, t_room **room_to_push)
+int			push_queue(t_queue **queue_state, t_room **room_to_push, t_links **tmp_links)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
@@ -45,6 +46,7 @@ int			push_queue(t_queue **queue_state, t_room **room_to_push)
 		return (0);
 	new->room = *room_to_push;
 	new->room->discovered = 1;
+	new->link = (*tmp_links);
 	new->prev_link = *queue_state;
 	new->prev = tmp_queue;
 	new->next = NULL;
