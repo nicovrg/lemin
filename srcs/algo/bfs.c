@@ -6,13 +6,13 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 00:50:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 04:38:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		init_bfs(t_lemin *l, t_room **current_room)
+int				init_bfs(t_lemin *l, t_room **current_room)
 {
 	(*current_room) = find_start_room(l);
 	if (!init_queue(l, current_room))
@@ -25,7 +25,37 @@ int		init_bfs(t_lemin *l, t_room **current_room)
 ** init bfs
 */
 
-int		bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push)
+static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
+{
+	t_zelda		*tmp_zelda;
+	t_zelda		*new_zelda;
+	
+	tmp_zelda = l->zelda;
+	while (tmp_zelda && tmp_zelda->next)
+		tmp_zelda = tmp_zelda->next;
+	if (!(new_zelda = (t_zelda *)ft_memalloc(sizeof(t_zelda))))
+		return (error_msg(ERR_MALLOC_11));
+	if (!(new_zelda->coming = ft_strdup(current_room_name)))
+		return (error_msg(ERR_MALLOC_12));
+	if (!(new_zelda->going = ft_strdup(linked_room_name)))
+		return (error_msg(ERR_MALLOC_13));
+	new_zelda->next = NULL;
+	if (!(l->zelda))
+		l->zelda = new_zelda;
+	else
+		tmp_zelda->next = new_zelda;
+	return (1);
+}
+
+
+// free zelda
+
+/*
+** ==================== init_zelda ====================
+** 
+*/
+
+int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push)
 {
 	int		end;
 	t_links *tmp_links;
@@ -38,6 +68,10 @@ int		bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room
 			tmp_links = (*current_room)->links;
 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
+			if (!zelda(l, (*current_room)->name, tmp_links->room))
+				return (0);
+			// ft_printf("l->zelda->coming = %s\n", l->zelda->coming);
+			// l->zelda = l->zelda->next;
 			(*room_to_push) = find_room(l, tmp_links->room);
 			if (tmp_links->discovered == 0 && (!(*queue_state)->prev_link
 			|| ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))

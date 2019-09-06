@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/06 01:17:12 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 04:46:06 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,22 @@ int				free_queue(t_queue **queue)
 	return (1);
 }
 
+int				free_zelda(t_zelda **zelda)
+{
+	t_zelda *tmp_zelda;
+
+	while (*zelda)
+	{
+		tmp_zelda = (*zelda);
+		ft_strdel(&(tmp_zelda->coming));
+		ft_strdel(&(tmp_zelda->going));
+		(*zelda) = (*zelda)->next;
+		free(tmp_zelda);
+	}
+	return (1);
+}
+
+
 int				free_all(int var, t_lemin *l)
 {
 	int	i;
@@ -88,6 +104,8 @@ int				free_all(int var, t_lemin *l)
 		(free(l->tab));
 	if (l->path)
 		free_paths(&(l->path));
+	if (l->zelda)
+		free_zelda(&(l->zelda));
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (0);

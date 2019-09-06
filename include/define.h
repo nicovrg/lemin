@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/04 03:34:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 04:36:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@
 # define ERR_MALLOC_8 "error in fill_lst_rooms - fail to strdup new_room->room"
 # define ERR_MALLOC_9 "error in lemin - fill_path return incorrect value"
 # define ERR_MALLOC_10 "error in fill_lst_rooms - failled malloc in helper_flr"
+# define ERR_MALLOC_11 "error in zelda - failled malloc tmp_zelda"
+# define ERR_MALLOC_12 "error in zelda - failled malloc current_room_name"
+# define ERR_MALLOC_13 "error in zelda - failled malloc linked_room_name"
 
 #endif

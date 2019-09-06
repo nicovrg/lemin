@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 01:19:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 04:40:13 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int			error_msg(char *error_msg);
 int			free_all(int var, t_lemin *l);
 int			free_queue(t_queue **queue);
 int			free_paths(t_path **paths);
+int			free_zelda(t_zelda **zelda);
+
 
 int			print_rooms(t_lemin *l);
 int			print_queue(t_queue **queue);
@@ -86,15 +88,17 @@ int			fill_tubes(t_lemin *l, char *line);
 ** fill_paths.c
 */
 
-// int			parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list);
-// int			check_paths(t_room **rooms, t_path **paths, t_ban **list);
-// int			fill_banned_rooms(t_ban **list, char *name);
-// int			room_is_banned(char *name, t_ban **list);
-// int			room_is_passed(t_path **current, char *name);
-
-t_links		*add_room_in_path(t_links **buf, char *name);
-t_path		*init_paths(t_path **paths, int i, char *name);
-
-t_room*		pop_queue(t_lemin *l);
+/*
+** int			parse_paths(t_room **rooms, t_path **current, char *name, t_ban **list);
+** int			check_paths(t_room **rooms, t_path **paths, t_ban **list);
+** int			fill_banned_rooms(t_ban **list, char *name);
+** int			room_is_banned(char *name, t_ban **list);
+** int			room_is_passed(t_path **current, char *name);
+** 
+** t_links		*add_room_in_path(t_links **buf, char *name);
+** t_path		*init_paths(t_path **paths, int i, char *name);
+** 
+** t_room*		pop_queue(t_lemin *l);
+*/
 
 #endif

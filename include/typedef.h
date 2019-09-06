@@ -6,18 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/05 23:29:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 03:35:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
-
-typedef	struct		s_zelda
-{
-	char			*name;
-	struct s_zelda	*next;
-}					t_zelda;
 
 typedef struct		s_links
 {
@@ -50,6 +44,13 @@ typedef struct		s_queue
 	struct s_queue	*prev;
 	struct s_queue	*next;
 }					t_queue;
+
+typedef	struct		s_zelda
+{
+	char			*coming;
+	char			*going;
+	struct s_zelda	*next;
+}					t_zelda;
 
 typedef	struct		s_lemin
 {
