@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 04:38:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/06 04:46:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
 		tmp_zelda->next = new_zelda;
 	return (1);
 }
-
-
-// free zelda
 
 /*
 ** ==================== init_zelda ====================
