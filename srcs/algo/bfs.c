@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 04:46:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/07 18:45:56 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
 		return (error_msg(ERR_MALLOC_12));
 	if (!(new_zelda->going = ft_strdup(linked_room_name)))
 		return (error_msg(ERR_MALLOC_13));
+	new_zelda->lock = 0;
 	new_zelda->next = NULL;
 	if (!(l->zelda))
 		l->zelda = new_zelda;
@@ -67,8 +68,8 @@ int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **ro
 		{
 			if (!zelda(l, (*current_room)->name, tmp_links->room))
 				return (0);
-			// ft_printf("l->zelda->coming = %s\n", l->zelda->coming);
-			// l->zelda = l->zelda->next;
+			ft_printf("zelda = %s-%s\t%d\n", l->zelda->coming, l->zelda->going, l->zelda->lock);
+			l->zelda = l->zelda->next;
 			(*room_to_push) = find_room(l, tmp_links->room);
 			if (tmp_links->discovered == 0 && (!(*queue_state)->prev_link
 			|| ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))

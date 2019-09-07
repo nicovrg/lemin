@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 00:55:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/07 18:52:26 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		lemin(t_lemin *l)
+static	int		zelda_lock(t_lemin *l, int nb_path)
+{
+	t_path	*tmp_path;
+	t_zelda	*tmp_zelda;
+
+	tmp_path = l->path;
+	while (tmp_path && tmp_path->nb_path != nb_path)
+		tmp_path = tmp_path->next;
+	while (tmp_zelda)
+	{
+		tmp_zelda = tmp_zelda->next;
+	}
+}
+
+int				lemin(t_lemin *l)
 {
 	int		nb_path;
 	t_queue	*find_end;
@@ -34,6 +48,7 @@ int		lemin(t_lemin *l)
 			find_end = find_end->next;
 		if (!(fill_path(nb_path, &find_end, l)))
 			return (error_msg(ERR_MALLOC_9));
+		zelda_lock(l, nb_path);
 		nb_path++;
 	}
 	return (1);
