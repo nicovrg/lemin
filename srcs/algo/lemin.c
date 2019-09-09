@@ -3,36 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/07 20:37:42 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/10 01:10:19 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static	int		zelda_lock(t_lemin *l, int nb_path)
+static int		count_links(t_room **room)
 {
-	t_path	*tmp_path;
-	t_zelda	*tmp_zelda;
+	t_links	*tmp;
+	int		i;
 
-	tmp_path = l->path;
-	tmp_zelda = l->zelda;
-	while (tmp_path && tmp_path->next && tmp_path->nb_path != nb_path)
-		tmp_path = tmp_path->next;
-	ft_printf("====== = %d\n", tmp_path->nb_path);
-	ft_printf("l->zelda = %p\n", l->zelda);
-	while (tmp_zelda)
+	tmp = (*room)->links;
+	i = 0;
+	while (tmp)
 	{
-		while (tmp_path->lst_rooms)
-		{
-			if (tmp_path->lst_rooms->room == tmp_zelda->coming && tmp_path->lst_rooms->next->room == tmp_zelda->going)
-				tmp_zelda->lock = 1;
-			tmp_path->lst_rooms = tmp_path->lst_rooms->next;
-		}
-		tmp_zelda = tmp_zelda->next;
+		i++;
+		tmp = tmp->next;
 	}
+	return (i);
+}
+
+/*
+** ==================== count_links ====================
+** count the number of links of a room
+*/
+
+static int		nb_max_paths(t_lemin *l)
+{
+	int		nb_start_links;
+	int		nb_end_links;
+	t_room	*tmp;
+
+	nb_end_links = 0;
+	nb_start_links = 0;
+	tmp = l->room;
+	while (tmp && tmp->start != 1)
+		tmp = tmp->next;
+	nb_start_links = count_links(&tmp);
+	tmp = l->room;
+	while (tmp && tmp->end != 1)
+		tmp = tmp->next;
+	nb_end_links = count_links(&tmp);
+	if (l->nb_ant <= nb_start_links && l->nb_ant <= nb_end_links)
+		return (l->nb_ant);
+	if (nb_start_links <= nb_end_links && nb_start_links <= l->nb_ant)
+		return (nb_start_links);
+	if (nb_end_links <= nb_start_links && nb_end_links <= l->nb_ant)
+		return (nb_end_links);
+	return (1);	
+}
+
+/*
+** ==================== nb_max_paths ====================
+** return the minimum between nb_ant, nb_start_links, nb_end_links
+** this number is the maximum of paths that we search
+*/
+
+static int		init_values(t_lemin *l, t_queue **find_end, t_room **current_room, t_room **room_to_push)
+{
+	l->queue = NULL;
+	*find_end = NULL;
+	*current_room = NULL;
+	*room_to_push = NULL;
+	if (!(init_bfs(l, current_room)))
+		return (error_msg(ERR_MALLOC_4));
 	return (1);
 }
 
@@ -45,20 +83,24 @@ int				lemin(t_lemin *l)
 	t_room	*current_room;
 
 	nb_path = 1;
-	find_end = NULL;
-	current_room = NULL;
-	room_to_push = NULL;
-	if (!(init_bfs(l, &current_room)))
-		return (error_msg(ERR_MALLOC_4));
+	if (!(init_values(l, &find_end, &current_room, &room_to_push)))
+		return (0);
 	queue_state = l->queue;
-	while (bfs(l, &queue_state, &current_room, &room_to_push) == 1)
+	l->max_paths = nb_max_paths(l);
+	while (l->max_paths && bfs(l, &queue_state, &current_room, &room_to_push) == 1)
 	{
 		find_end = (find_end) ? find_end->next : l->queue;
 		while (find_end && find_end->room->end != 1)
 			find_end = find_end->next;
+		if (!find_end)
+			return (1);
 		if (!(fill_path(nb_path, &find_end, l)))
 			return (error_msg(ERR_MALLOC_9));
-		zelda_lock(l, nb_path);
+		free_queue(&(l->queue));
+		if (!(init_values(l, &find_end, &current_room, &room_to_push)))
+			return (0);
+		queue_state = l->queue;
+		l->max_paths--;
 		nb_path++;
 	}
 	return (1);

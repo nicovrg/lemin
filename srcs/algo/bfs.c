@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/08 16:44:45 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/10 01:10:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,13 @@ int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **ro
 			ft_printf("zelda = %s-%s\t%d\n", tmp_zelda->coming, tmp_zelda->going, tmp_zelda->lock);
 			tmp_zelda = tmp_zelda->next;
 			(*room_to_push) = find_room(l, tmp_links->room);
-			if (tmp_links->discovered == 0 && (!(*queue_state)->prev_link || ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))
-				if (!push_queue(queue_state, room_to_push))
+			if ((*room_to_push)->start != 1 && tmp_links->discovered == 0
+			&& (!(*queue_state)->prev_link
+			|| ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))
+				if (!push_queue(queue_state, room_to_push, &tmp_links))
 					return (error_msg(ERR_MALLOC_2));
-			tmp_links->discovered = 1;
-			if ((*room_to_push)->end == 1)
-			{
-				tmp_links->discovered = 0;
+			if (tmp_links->discovered == 0 && (*room_to_push)->end == 1)
 				end = 1;
-			}
 			tmp_links = tmp_links->next;
 		}
 		*queue_state = (*queue_state)->next;

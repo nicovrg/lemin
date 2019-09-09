@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/06 03:38:20 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 01:09:32 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
-	l->tab = NULL;
+	l->max_paths = 0;
+	l->zelda = NULL;
 	return (1);
 }
 

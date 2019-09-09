@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/07 18:44:21 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/10 01:09:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct		s_path
 
 typedef struct		s_queue
 {
-	struct s_queue	*prev_link;
 	t_room			*room;
+	t_links			*link;
+	struct s_queue	*prev_link;
 	struct s_queue	*prev;
 	struct s_queue	*next;
 }					t_queue;
@@ -56,6 +57,7 @@ typedef	struct		s_zelda
 typedef	struct		s_lemin
 {
 	int				nb_ant;
+	int				max_paths;
 	char			**tab;
 	t_room			*room;
 	t_path			*path;
