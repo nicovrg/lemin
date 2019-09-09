@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/07 18:45:56 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:44:45 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int				init_bfs(t_lemin *l, t_room **current_room)
 ** init bfs
 */
 
-static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
+static	int		zelda(t_zelda **zelda, char *current_room_name, char *linked_room_name)
 {
 	t_zelda		*tmp_zelda;
 	t_zelda		*new_zelda;
 	
-	tmp_zelda = l->zelda;
+	tmp_zelda = *zelda;
 	while (tmp_zelda && tmp_zelda->next)
 		tmp_zelda = tmp_zelda->next;
 	if (!(new_zelda = (t_zelda *)ft_memalloc(sizeof(t_zelda))))
@@ -41,8 +41,8 @@ static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
 		return (error_msg(ERR_MALLOC_13));
 	new_zelda->lock = 0;
 	new_zelda->next = NULL;
-	if (!(l->zelda))
-		l->zelda = new_zelda;
+	if (!(*zelda))
+		*zelda = new_zelda;
 	else
 		tmp_zelda->next = new_zelda;
 	return (1);
@@ -55,24 +55,25 @@ static	int		zelda(t_lemin *l, char *current_room_name, char *linked_room_name)
 
 int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push)
 {
-	int		end;
-	t_links *tmp_links;
+	int			end;
+	t_links		*tmp_links;
+	t_zelda		*tmp_zelda;
 
 	end = 0;
 	tmp_links = NULL;
+	tmp_zelda = l->zelda;
 	while (*queue_state)
 	{
 		if (*current_room && (*current_room)->links)
 			tmp_links = (*current_room)->links;
 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
-			if (!zelda(l, (*current_room)->name, tmp_links->room))
+			if (!zelda(&tmp_zelda, (*current_room)->name, tmp_links->room))
 				return (0);
-			ft_printf("zelda = %s-%s\t%d\n", l->zelda->coming, l->zelda->going, l->zelda->lock);
-			l->zelda = l->zelda->next;
+			ft_printf("zelda = %s-%s\t%d\n", tmp_zelda->coming, tmp_zelda->going, tmp_zelda->lock);
+			tmp_zelda = tmp_zelda->next;
 			(*room_to_push) = find_room(l, tmp_links->room);
-			if (tmp_links->discovered == 0 && (!(*queue_state)->prev_link
-			|| ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))
+			if (tmp_links->discovered == 0 && (!(*queue_state)->prev_link || ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))
 				if (!push_queue(queue_state, room_to_push))
 					return (error_msg(ERR_MALLOC_2));
 			tmp_links->discovered = 1;

@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/07 18:52:26 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:37:42 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,22 @@ static	int		zelda_lock(t_lemin *l, int nb_path)
 	t_zelda	*tmp_zelda;
 
 	tmp_path = l->path;
-	while (tmp_path && tmp_path->nb_path != nb_path)
+	tmp_zelda = l->zelda;
+	while (tmp_path && tmp_path->next && tmp_path->nb_path != nb_path)
 		tmp_path = tmp_path->next;
+	ft_printf("====== = %d\n", tmp_path->nb_path);
+	ft_printf("l->zelda = %p\n", l->zelda);
 	while (tmp_zelda)
 	{
+		while (tmp_path->lst_rooms)
+		{
+			if (tmp_path->lst_rooms->room == tmp_zelda->coming && tmp_path->lst_rooms->next->room == tmp_zelda->going)
+				tmp_zelda->lock = 1;
+			tmp_path->lst_rooms = tmp_path->lst_rooms->next;
+		}
 		tmp_zelda = tmp_zelda->next;
 	}
+	return (1);
 }
 
 int				lemin(t_lemin *l)
