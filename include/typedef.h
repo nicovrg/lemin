@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:02:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:10:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct		s_room
 	char			*name;
 	int				start;
 	int				end;
-	int				discovered;
+	int				up;
+	int				down;
 	t_links			*links;
 	struct s_room	*next;
 }					t_room;

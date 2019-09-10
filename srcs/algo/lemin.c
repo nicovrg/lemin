@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 02:43:55 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:08:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int		nb_max_paths(t_lemin *l)
 ** this number is the maximum of paths that we search
 */
 
-static int		init_values(t_lemin *l, t_queue **find_end, t_room **current_room, t_room **room_to_push)
+static int		init_lemin(t_lemin *l, t_queue **find_end, t_room **current_room, t_room **room_to_push)
 {
 	l->queue = NULL;
 	*find_end = NULL;
@@ -74,6 +74,11 @@ static int		init_values(t_lemin *l, t_queue **find_end, t_room **current_room, t
 	return (1);
 }
 
+/*
+** ==================== init_lemin ====================
+** init values declared in lemin function
+*/
+
 int				lemin(t_lemin *l)
 {
 	int		nb_path;
@@ -83,7 +88,7 @@ int				lemin(t_lemin *l)
 	t_room	*current_room;
 
 	nb_path = 1;
-	if (!(init_values(l, &find_end, &current_room, &room_to_push)))
+	if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
 		return (0);
 	queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
@@ -97,7 +102,7 @@ int				lemin(t_lemin *l)
 		if (!(fill_path(nb_path, &find_end, l)))
 			return (error_msg(ERR_MALLOC_9));
 		free_queue(&(l->queue));
-		if (!(init_values(l, &find_end, &current_room, &room_to_push)))
+		if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
 			return (0);
 		queue_state = l->queue;
 		l->max_paths--;
