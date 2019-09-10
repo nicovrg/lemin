@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 01:10:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:02:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,53 +25,19 @@ int				init_bfs(t_lemin *l, t_room **current_room)
 ** init bfs
 */
 
-static	int		zelda(t_zelda **zelda, char *current_room_name, char *linked_room_name)
-{
-	t_zelda		*tmp_zelda;
-	t_zelda		*new_zelda;
-	
-	tmp_zelda = *zelda;
-	while (tmp_zelda && tmp_zelda->next)
-		tmp_zelda = tmp_zelda->next;
-	if (!(new_zelda = (t_zelda *)ft_memalloc(sizeof(t_zelda))))
-		return (error_msg(ERR_MALLOC_11));
-	if (!(new_zelda->coming = ft_strdup(current_room_name)))
-		return (error_msg(ERR_MALLOC_12));
-	if (!(new_zelda->going = ft_strdup(linked_room_name)))
-		return (error_msg(ERR_MALLOC_13));
-	new_zelda->lock = 0;
-	new_zelda->next = NULL;
-	if (!(*zelda))
-		*zelda = new_zelda;
-	else
-		tmp_zelda->next = new_zelda;
-	return (1);
-}
-
-/*
-** ==================== init_zelda ====================
-** 
-*/
-
 int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push)
 {
 	int			end;
 	t_links		*tmp_links;
-	t_zelda		*tmp_zelda;
 
 	end = 0;
 	tmp_links = NULL;
-	tmp_zelda = l->zelda;
 	while (*queue_state)
 	{
 		if (*current_room && (*current_room)->links)
 			tmp_links = (*current_room)->links;
 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
-			if (!zelda(&tmp_zelda, (*current_room)->name, tmp_links->room))
-				return (0);
-			ft_printf("zelda = %s-%s\t%d\n", tmp_zelda->coming, tmp_zelda->going, tmp_zelda->lock);
-			tmp_zelda = tmp_zelda->next;
 			(*room_to_push) = find_room(l, tmp_links->room);
 			if ((*room_to_push)->start != 1 && tmp_links->discovered == 0
 			&& (!(*queue_state)->prev_link

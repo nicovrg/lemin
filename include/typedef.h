@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 02:43:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:02:56 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ typedef struct		s_queue
 	struct s_queue	*next;
 }					t_queue;
 
-typedef	struct		s_zelda
-{
-	int				lock;
-	char			*coming;
-	char			*going;
-	struct s_zelda	*next;
-}					t_zelda;
-
 typedef	struct		s_lemin
 {
 	long			nb_ant;
@@ -63,7 +55,6 @@ typedef	struct		s_lemin
 	t_room			*room;
 	t_path			*path;
 	t_queue 		*queue;
-	t_zelda 		*zelda;
 }					t_lemin;
 
 typedef struct		s_norme

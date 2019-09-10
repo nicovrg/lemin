@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 01:07:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:03:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int			error_msg(char *error_msg);
 int			free_all(int var, t_lemin *l);
 int			free_queue(t_queue **queue);
 int			free_paths(t_path **paths);
-int			free_zelda(t_zelda **zelda);
 
 
 int			print_rooms(t_lemin *l);

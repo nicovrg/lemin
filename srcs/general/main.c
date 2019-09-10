@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/10 02:43:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:02:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
 	l->max_paths = 0;
-	l->zelda = NULL;
 	return (1);
 }
 
@@ -26,7 +25,7 @@ static int		init_main_two(t_lemin *l)
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
-	l->zelda = NULL;
+	l->tab = NULL;
 	return (1);
 }
 
