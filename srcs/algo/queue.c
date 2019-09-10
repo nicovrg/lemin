@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 03:47:40 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 03:25:21 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int			init_queue(t_lemin *l, t_room **current_room)
 	new->link = NULL;
 	new->next = NULL;
 	new->prev_link = NULL;
-	new->room->discovered = 1;
 	if (!l->queue)
 		l->queue = new;
 	return (1);
@@ -45,7 +44,6 @@ int			push_queue(t_queue **queue_state, t_room **room_to_push, t_links **tmp_lin
 	if (!(new = (t_queue *)ft_memalloc(sizeof(t_queue))))
 		return (0);
 	new->room = *room_to_push;
-	new->room->discovered = 1;
 	new->link = (*tmp_links);
 	new->prev_link = *queue_state;
 	new->prev = tmp_queue;

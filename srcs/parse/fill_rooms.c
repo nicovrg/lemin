@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 01:43:16 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:25:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		fill_rooms(t_lemin *l, t_norme *norme)
 		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
-	new->discovered = 0;
 	new->start = (norme->var == 1 || norme->var == 4) ? 1 : 0;
 	new->end = (norme->var == 2 || norme->var == 3) ? 1 : 0;
 	if (norme->var >= 3)
