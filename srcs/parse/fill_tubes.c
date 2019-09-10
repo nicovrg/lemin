@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/10 02:35:32 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 03:21:18 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int				index_tubes(t_links **new, t_room **tmp)
 	t_links	*buf;
 
 	(*new)->next = NULL;
+	if (!((*new)->coming = ft_strdup((*tmp)->name)))
+		return (0);
 	(*new)->discovered = 0;
 	if (!((*tmp)->links))
 		(*tmp)->links = *new;
@@ -52,6 +54,9 @@ static int				index_tubes(t_links **new, t_room **tmp)
 
 static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new, t_lemin *l)
 {
+	norme->ptr_link = l->room;
+	while (norme->ptr_link && ft_strcmp(norme->ptr_link->name, ft_strchr(norme->line, '-') + 1))
+		norme->ptr_link = norme->ptr_link->next;
 	if (!ft_strncmp((*tmp)->name, norme->line, ft_strchr(norme->line, '-') - norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
@@ -60,6 +65,8 @@ static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new,
 			return (0);
 		if (!index_tubes(new, tmp))
 			return (0);
+		(*new)->ptr_room = norme->ptr_link;
+		norme->ptr_link = l->room;
 		norme->line = ft_strchr(norme->line, '-') + 1;
 		*tmp = l->room;
 		norme->count++;
@@ -76,6 +83,9 @@ static int				fill_tubes_first_room(t_norme *norme, t_room **tmp, t_links **new,
 
 static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, char *buf)
 {
+	while (norme->ptr_link
+	&& ft_strncmp(norme->ptr_link->name, buf, ft_strlen(buf) - ft_strlen(norme->line) - 1))
+		norme->ptr_link = norme->ptr_link->next;
 	if (!ft_strcmp((*tmp)->name, norme->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
@@ -84,6 +94,7 @@ static int				fill_tubes_last_room(t_norme *norme, t_room **tmp, t_links **new, 
 			return (0);
 		if (!index_tubes(new, tmp))
 			return (0);
+		(*new)->ptr_room = norme->ptr_link;
 		norme->count++;
 	}
 	*tmp = (*tmp)->next;

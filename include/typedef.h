@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 02:36:05 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 03:18:26 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef	struct		s_zelda
 
 typedef struct		s_links
 {
+	char			*coming;
 	char			*room;
 	int				discovered;
 	struct s_room	*ptr_room;
