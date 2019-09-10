@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/06 01:17:12 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 03:22:25 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int		free_rooms_and_links(t_room **rooms)
 	{
 		index = buf;
 		ft_strdel(&(index->room));
+		ft_strdel(&(index->coming));
 		buf = buf->next;
 		free(index);
 	}
