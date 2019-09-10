@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 01:29:09 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/09 23:41:18 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ static int		check_status(t_lemin *l, t_norme *norme, int *status)
 	{
 		while (norme->line[norme->count])
 		{
-			if (!ft_isdigit(norme->line[norme->count]))
+			if (!ft_isdigit(norme->line[norme->count]) || ft_strlen(norme->line) >= 11)
 				return (error_of_status(status));
 			norme->count = norme->count + 1;
 		}
 		if (norme->line)
-			l->nb_ant = ft_atoi(norme->line);
+			l->nb_ant = ft_atol(norme->line);
+		if (l->nb_ant > 2147483647)
+			return (error_of_status(status));
 		*status = 1;
 		return (0);
 	}

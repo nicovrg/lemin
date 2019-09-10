@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 05:33:15 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 02:36:05 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_links
 {
 	char			*room;
 	int				discovered;
+	struct s_room	*ptr_room;
 	struct s_links	*next;
 }					t_links;
 
@@ -54,7 +55,7 @@ typedef struct		s_queue
 
 typedef	struct		s_lemin
 {
-	int				nb_ant;
+	long			nb_ant;
 	int				max_paths;
 	char			**tab;
 	t_room			*room;
@@ -70,6 +71,7 @@ typedef struct		s_norme
 	int				var;
 	int				start;
 	int				end;
+	t_room			*ptr_link;
 }					t_norme;
 
 #endif
