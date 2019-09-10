@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:18:26 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 05:10:33 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_path
 {
 	int				nb_path;
 	t_links			*lst_rooms;
+	t_room			*ptr_room;
 	struct s_path	*next;
 }					t_path;
 

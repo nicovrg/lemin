@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 04:09:14 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 05:03:45 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		init_bfs(t_lemin *l, t_room **current_room)
 ** init bfs
 */
 
-int		bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push)
+int		bfs(t_queue **queue_state, t_room **current_room, t_room **room_to_push)
 {
 	int		end;
 	t_links *tmp_links;
@@ -38,7 +38,7 @@ int		bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room
 			tmp_links = (*current_room)->links;
 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
-			(*room_to_push) = find_room(l, tmp_links->room);
+			(*room_to_push) = tmp_links->ptr_room;
 			if ((*room_to_push)->start != 1 && tmp_links->discovered == 0
 			&& (!(*queue_state)->prev_link
 			|| ft_strcmp(tmp_links->room, (*queue_state)->prev_link->room->name)))
