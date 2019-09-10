@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:08:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/10 20:02:55 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static int		count_links(t_room **room)
 {
-	t_links	*tmp;
 	int		i;
+	t_links	*tmp_link;
 
-	tmp = (*room)->links;
 	i = 0;
-	while (tmp)
+	tmp_link = (*room)->links;
+	while (tmp_link)
 	{
 		i++;
-		tmp = tmp->next;
+		tmp_link = tmp_link->next;
 	}
 	return (i);
 }
@@ -79,6 +79,56 @@ static int		init_lemin(t_lemin *l, t_queue **find_end, t_room **current_room, t_
 ** init values declared in lemin function
 */
 
+static	int		update_graph(t_lemin *l)
+{
+	static int i = 1;
+	ft_printf("==================== CALL %d ====================\n", i++);
+
+	t_room	*tmp_room;
+	t_room	*tmp_room_wait_ptr;
+	t_path	*tmp_path;
+	char	*tmp_name;
+
+	tmp_room = l->room;
+	tmp_path = l->path;
+	while (tmp_path && tmp_path->next)
+		tmp_path = tmp_path->next;
+	print_paths(&tmp_path);
+	ft_printf(" = %s\n", tmp_path->lst_rooms->room);
+	tmp_name = tmp_path->lst_rooms->room;
+	tmp_path->lst_rooms = tmp_path->lst_rooms->next;
+	ft_printf("tmp_name = %s\ttmp_path->lst_rooms->room = %s\n", tmp_name, tmp_path->lst_rooms->room);
+	while (tmp_path && tmp_path->lst_rooms)
+	{
+		tmp_room_wait_ptr = find_room(l, tmp_path->lst_rooms->room);
+		tmp_name = tmp_path->lst_rooms->room;
+		while (tmp_room_wait_ptr && tmp_room_wait_ptr->end != 1)
+		{
+			// ft_printf("tmp_name = %s\ttmp_path->lst_rooms->room = %s\n", tmp_name, tmp_path->lst_rooms->room);
+			tmp_room_wait_ptr = tmp_room_wait_ptr->next;
+		}
+		tmp_path->lst_rooms = tmp_path->lst_rooms->next;
+	}
+	// while (tmp_room && tmp_path && ft_strcmp(tmp_room->name, tmp_path->lst_rooms->room))
+	// {
+	// 	ft_printf("%s-%s\n", tmp_room->name, tmp_path->lst_rooms->room);
+	// 	tmp_room = tmp_room->next;
+	// }
+	// tmp_links = tmp_path->lst_rooms->next;
+	// tmp_path->lst_rooms = tmp_path->lst_rooms->next;
+	// while (tmp_room && tmp_path && tmp_room->links && tmp_path->lst_rooms && ft_strcmp(tmp_room->links->room, tmp_path->lst_rooms->room))
+	// 	tmp_room->links = tmp_room->links->next;
+	return (1);
+}
+
+/*
+** ==================== update_graph ====================
+** iterate on all the paths until we are on the last one
+** iterate in this last path starting from end, going to start
+** move from the last room in the path to the previous room linked to it
+** iterate through rooms untill we find room that match the 
+*/
+
 int				lemin(t_lemin *l)
 {
 	int		nb_path;
@@ -103,6 +153,8 @@ int				lemin(t_lemin *l)
 			return (error_msg(ERR_MALLOC_9));
 		free_queue(&(l->queue));
 		if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
+			return (0);
+		if (!update_graph(l))
 			return (0);
 		queue_state = l->queue;
 		l->max_paths--;

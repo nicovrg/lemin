@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 02:32:57 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 08:19:24 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		print_paths(t_path **paths)
 	t_path	*tmp_path;
 	t_links	*tmp_links;
 
-	tmp_path = (*paths);
+	tmp_path = *paths;
 	while (tmp_path)
 	{
 		ft_printf("PATH = %d\n---------------------------------------------------\n", tmp_path->nb_path);
