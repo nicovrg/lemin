@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/11 19:59:52 by nivergne         ###   ########.fr        #
+#    Updated: 2019/09/11 23:39:03 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,12 @@ SRC_PARSE = 		check_lines.c\
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
 
-SRC_ALGO = 			lemin.c\
-					bfs.c\
+SRC_ALGO = 			bfs.c\
 					queue.c\
-					fill_path.c\
-					find_rooms.c
+					lemin.c\
+					find_rooms.c\
+					update_graph.c\
+					put_links_to_full.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
 OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))

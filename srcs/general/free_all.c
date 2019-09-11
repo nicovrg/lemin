@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 20:00:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/11 23:42:43 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int				free_paths(t_path **paths)
 {
-	t_path	*tmp;
-	t_links	*links;
-	t_links	*index;
+	t_path		*tmp;
+	t_inpath	*links;
+	t_inpath	*index;
 
 	while (*paths)
 	{
@@ -26,7 +26,6 @@ int				free_paths(t_path **paths)
 		while (links)
 		{
 			index = links;
-			ft_strdel(&(index->room));
 			links = links->next;
 			free(index);
 		}

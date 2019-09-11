@@ -6,18 +6,31 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/11 19:58:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/11 23:44:19 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
+typedef struct		s_inpath
+{
+	struct s_room	*room;
+	struct s_inpath	*next;
+}					t_inpath;
+
+typedef struct		s_path
+{
+	struct s_inpath	*lst_rooms;
+	struct s_path	*next;
+}					t_path;
+
 typedef struct		s_links
 {
-	struct s_room	*coming;
+	int				ant;
+	int				full;
 	char			*room;
-	int				discovered;
+	struct s_room	*coming;
 	struct s_room	*ptr_room;
 	struct s_links	*same_link;
 	struct s_links	*next;
@@ -28,19 +41,9 @@ typedef struct		s_room
 	char			*name;
 	int				start;
 	int				end;
-	// int				up;
-	// int				down;
 	t_links			*links;
 	struct s_room	*next;
 }					t_room;
-
-typedef struct		s_path
-{
-	int				nb_path;
-	t_links			*lst_rooms;
-	t_room			*ptr_room;
-	struct s_path	*next;
-}					t_path;
 
 typedef struct		s_queue
 {
