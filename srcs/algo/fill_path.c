@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 00:24:01 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 05:14:52 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/11 01:51:19 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static int		helper_flr(t_queue **ptr_end, t_links **lst_rooms, t_queue **find_en
 		return (error_msg(ERR_MALLOC_7));
 	if ((*find_end) && (*find_end)->room)
 		new_room->ptr_room = (*find_end)->room;
+	new_room->room = NULL;
 	new_room->next = NULL;
+	new_room->discovered = 1;
 	if ((*find_end) && (*find_end)->link)
 		(*find_end)->link->discovered = 1;
 	if (!(*lst_rooms))

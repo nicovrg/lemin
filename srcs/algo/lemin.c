@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 05:04:37 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 22:33:37 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int				lemin(t_lemin *l)
 		return (0);
 	queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
-	while (l->max_paths && bfs(&queue_state, &current_room, &room_to_push) == 1)
+	while (l->max_paths && bfs(l, &queue_state, &current_room, &room_to_push) == 1)
 	{
 		find_end = (find_end) ? find_end->next : l->queue;
 		while (find_end && find_end->room->end != 1)

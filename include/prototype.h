@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 05:04:04 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/10 23:36:48 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			print_paths(t_path **paths);
 int			lemin(t_lemin *l);
 
 int			init_bfs(t_lemin *l, t_room **current_room);
-int			bfs(t_queue **queue_state, t_room **current_room, t_room **room_to_push);
+int			bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **room_to_push);
 
 int			init_queue(t_lemin *l, t_room **room);
 int			push_queue(t_queue **queue_state, t_room **room_to_push, t_links **tmp_links);
@@ -56,6 +56,8 @@ t_room*		find_start_room(t_lemin *l);
 t_room*		find_room(t_lemin *l, char *name);
 
 int			fill_path(int nb_path, t_queue **find_end, t_lemin *l);
+
+int			update_graph(t_lemin *l);
 
 /*
 ** ==================== parse ====================

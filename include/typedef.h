@@ -6,25 +6,20 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 05:10:33 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/11 02:04:14 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-typedef	struct		s_zelda
-{
-	char			*name;
-	struct s_zelda	*next;
-}					t_zelda;
-
 typedef struct		s_links
 {
-	char			*coming;
+	struct s_room	*coming;
 	char			*room;
 	int				discovered;
 	struct s_room	*ptr_room;
+	struct s_links	*same_link;
 	struct s_links	*next;
 }					t_links;
 
@@ -63,7 +58,6 @@ typedef	struct		s_lemin
 	t_room			*room;
 	t_path			*path;
 	t_queue 		*queue;
-	t_zelda 		*zelda;
 }					t_lemin;
 
 typedef struct		s_norme
@@ -73,7 +67,7 @@ typedef struct		s_norme
 	int				var;
 	int				start;
 	int				end;
-	t_room			*ptr_link;
+	t_links			*ptr_link;
 }					t_norme;
 
 #endif
