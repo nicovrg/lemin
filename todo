@@ -5,3 +5,6 @@
 5- verifier si il faut retourner error si il n'y a aucune fourmis ou juste mettre FINISH
 6- checker pourquoi le mkdir -p obj/ ne fonctionne pas
 7- verifier que on ne doit pas continuer si deux fois le meme lien (parsing)
+
+IMPORTANT:
+10 secondes sur la map5 faut revoir ce qu'on a change sur le parsing c'est NUL.

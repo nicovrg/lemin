@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/11 02:36:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/11 19:58:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_room*		find_start_room(t_lemin *l);
 t_room*		find_room(t_lemin *l, char *name);
 
 int			fill_path(int nb_path, t_queue **find_end, t_lemin *l);
+
+int			update_graph(t_lemin *l);
 
 /*
 ** ==================== parse ====================

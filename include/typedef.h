@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 08:29:12 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/11 19:58:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 typedef struct		s_links
 {
+	struct s_room	*coming;
 	char			*room;
 	int				discovered;
 	struct s_room	*ptr_room;
+	struct s_links	*same_link;
 	struct s_links	*next;
 }					t_links;
 
@@ -36,6 +38,7 @@ typedef struct		s_path
 {
 	int				nb_path;
 	t_links			*lst_rooms;
+	t_room			*ptr_room;
 	struct s_path	*next;
 }					t_path;
 
@@ -65,7 +68,7 @@ typedef struct		s_norme
 	int				var;
 	int				start;
 	int				end;
-	t_room			*ptr_link;
+	t_links			*ptr_link;
 }					t_norme;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:48:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/11 19:59:00 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int				bfs(t_lemin *l, t_queue **queue_state, t_room **current_room, t_room **ro
 			tmp_links = (*current_room)->links;
 		while (tmp_links && (*current_room) && (*current_room)->end != 1)
 		{
+			// (*room_to_push) = tmp_links->ptr_room;
 			(*room_to_push) = find_room(l, tmp_links->room);
 			if ((*room_to_push)->start != 1 && tmp_links->discovered == 0
 			&& (!(*queue_state)->prev_link
