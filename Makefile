@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/11 02:32:11 by nivergne         ###   ########.fr        #
+#    Updated: 2019/09/11 23:39:03 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,12 @@ SRC_PARSE = 		check_lines.c\
 SRC_PARSE := $(addprefix parse/, $(SRC_PARSE))
 OBJ_PARSE := $(addprefix parse/, $(addsuffix .o, $(basename $(notdir $(SRC_PARSE)))))
 
-SRC_ALGO = 			lemin.c\
-					bfs.c\
+SRC_ALGO = 			bfs.c\
 					queue.c\
-					fill_path.c\
-					find_rooms.c
+					lemin.c\
+					find_rooms.c\
+					update_graph.c\
+					put_links_to_full.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
 OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))
@@ -55,12 +56,14 @@ OBJ := $(addprefix $(OBJ_PATH), $(OBJ_GENERAL))
 OBJ += $(addprefix $(OBJ_PATH), $(OBJ_PARSE))
 OBJ += $(addprefix $(OBJ_PATH), $(OBJ_ALGO))
 
+DEPS = $(subst .o,.d,$(OBJ))
 
 INC = -I./include
 INC_PATH = -Iinclude/ -Ilibft/include
 
-GCC_FLAG = -Wall -Wextra -Werror -g3
-CC = gcc $(GCC_FLAG) $(INC_PATH)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3
+CPPFLAGS += -MMD -MP
 LIB = libft/libft.a
 
 GRN =		\x1b[32m
@@ -82,32 +85,28 @@ PINK			=			\033[38;2;152;0;255m
 
 all: $(NAME)
 
-$(NAME): makelib obj $(LIB) $(OBJ)
+$(NAME): $(OBJ) | makelib
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)compile$(GRN)		[OK]$(END)"
 	@$(CC) $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)
 
 makelib:
 	@$(MAKE) -C libft
 
-obj/%.o: srcs/%.c $(INC_LEMIN)
+obj/%.o: srcs/%.c
+	@mkdir -p obj
+	@mkdir -p $(dir $@)
 	@echo "Building$(BLU) $(patsubst obj/%,%,$(basename $@))$(END)"
 	@printf "\033[A"
-	@$(CC) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_PATH) -o $@ -c $<
 	@printf "\33[2K"
 
 debug: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)debug$(GRN)		[OK]$(END)"
-	@$(CC) -g3 $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_debug
+	@$(CC) $(CFLAGS) $(INC_PATH) -g3 $(OBJ) $(MLX) -L libft -lft -o $(NAME)_debug
 
 fsanitize: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)fsanitize$(GRN)	[OK]$(END)"
-	@$(CC) -g3 -fsanitize=address $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)_fsanitize
-
-obj:
-	@mkdir -p obj
-	@mkdir -p obj/general
-	@mkdir -p obj/parse
-	@mkdir -p obj/algo
+	@$(CC) $(CFLAGS) $(INC_PATH) -g3 -fsanitize=address $(OBJ) $(MLX) -L libft -lft -o $(NAME)_fsanitize
 
 clean_lib:
 	@make -C libft clean
@@ -121,6 +120,8 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
 
 bitcoin:
 	@echo "$(DARK_PURPLE)______ _   ___   __    ______ _____ _____ _____ _____ _____ _   _"

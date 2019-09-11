@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 01:47:38 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/11 23:47:42 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static	int		init_main(t_lemin *l)
 
 static int		init_main_two(t_lemin *l)
 {
-	l->tab = NULL;
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
+	l->tab = NULL;
 	return (1);
 }
 
@@ -41,12 +41,10 @@ int				main(void)
 		return (free_all(1, &lem));
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
-	if (!lem.path)
-		return (free_all(1, &lem));
 	// if (!update_graph(&lem))
 	// 	return (free_all(1, &lem));
-	print_paths(&lem.path);
-	// print_rooms(&lem);
+	// print_paths(&lem.path);
+	print_rooms(&lem);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 00:22:35 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/11 20:28:28 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int				index_tubes(t_links **new, t_room **tmp, t_norme *norme)
 	(*new)->coming = (*tmp);
 	// if (!((*new)->coming = ft_strdup((*tmp)->name)))
 	// 	return (0);
-	(*new)->discovered = 0;
+	(*new)->ant = 0;
+	(*new)->full = 0;
 	if (!((*tmp)->links))
 		(*tmp)->links = *new;
 	else
