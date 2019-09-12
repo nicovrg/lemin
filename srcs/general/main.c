@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/12 03:01:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 03:30:06 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int				main(void)
 		return (free_all(1, &lem));
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
-	print_rooms(&lem);
+	print_rooms(&lem);	
 	// print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:36:08 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/12 03:01:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 03:31:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,17 @@ int				update_graph(t_lemin *l)
 {
 	t_path  *updated_paths;
 	t_room  *find_start;
+	t_links	*tmp_links;
 
 	updated_paths = NULL;
 	find_start = find_start_room(l);
-	while (find_start && find_start->links)
+	tmp_links = find_start->links;
+	while (tmp_links)
 	{
-		if (find_start->links->full == 1)
-			if (!update_paths(&(find_start->links), &updated_paths))
+		if (tmp_links->full == 1)
+			if (!update_paths(&(tmp_links), &updated_paths))
 				return (error_msg(ERR_MALLOC_11));
-		find_start->links = find_start->links->next;
+		tmp_links = tmp_links->next;
 	}
 	return (1);
 }
