@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:36:08 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/12 03:31:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 03:57:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static	int		fill_path(t_inpath **lst_rooms, t_links **links)
 			new_inpath->next = NULL;
 			new_inpath->room = tmp_link->same_link->coming;
 			tmp_inpath->next = new_inpath;
+			tmp_inpath = tmp_inpath->next;
 			tmp_link = tmp_link->same_link->coming->links;
 		}
 		tmp_link = tmp_link->next;
@@ -83,6 +84,7 @@ int				update_graph(t_lemin *l)
 				return (error_msg(ERR_MALLOC_11));
 		tmp_links = tmp_links->next;
 	}
+	l->path = updated_paths;
 	return (1);
 }
 
