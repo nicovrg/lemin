@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 20:28:28 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 01:46:57 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int				index_tubes(t_links **new, t_room **tmp, t_norme *norme)
 	t_links	*buf;
 
 	(*new)->next = NULL;
-	(*new)->ptr_room = NULL;
 	(*new)->coming = (*tmp);
 	// if (!((*new)->coming = ft_strdup((*tmp)->name)))
 	// 	return (0);
