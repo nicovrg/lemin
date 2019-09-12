@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 23:42:43 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 00:03:49 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 int				free_paths(t_path **paths)
 {
-	t_path		*tmp;
-	t_inpath	*links;
-	t_inpath	*index;
+	t_path		*tmp_path;
+	t_inpath	*tmp_inpath;
+	t_inpath	*inpath;
 
 	while (*paths)
 	{
-		tmp = (*paths);
-		links = tmp->lst_rooms;
-		while (links)
+		tmp_path = (*paths);
+		inpath = tmp_path->lst_rooms;
+		while (inpath)
 		{
-			index = links;
-			links = links->next;
-			free(index);
+			tmp_inpath = inpath;
+			free(tmp_inpath);
+			inpath = inpath->next;
 		}
 		(*paths) = (*paths)->next;
-		free(tmp);
+		free(tmp_path);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:36:08 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/12 03:57:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 00:30:15 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static	int		fill_path(t_inpath **lst_rooms, t_links **links)
 {
+	static int i = 1;
+	ft_printf("\x1b[36m==================== Call fill_path number %d ====================\x1b[0m\n", i);
 	t_links		*tmp_link;
 	t_inpath	*new_inpath;
 	t_inpath	*tmp_inpath;
@@ -23,6 +25,13 @@ static	int		fill_path(t_inpath **lst_rooms, t_links **links)
 	while (tmp_link && tmp_link->coming->end != 1)
 	{
 		new_inpath = NULL;
+		// if (i == 2)
+		// {
+			if (tmp_link->full == 1 && tmp_link->same_link->full != 1)
+				ft_printf("\x1b[32mtmp_inpath->name = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\n\x1b[0m", tmp_inpath->room->name, tmp_link->full, tmp_link->same_link->full);
+			else
+				ft_printf("tmp_inpath->name = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\n", tmp_inpath->room->name, tmp_link->full, tmp_link->same_link->full);
+		// }
 		if (tmp_link->full == 1 && tmp_link->same_link->full != 1)
 		{
 			if (!(new_inpath = (t_inpath *)malloc(sizeof(t_inpath))))
@@ -31,10 +40,13 @@ static	int		fill_path(t_inpath **lst_rooms, t_links **links)
 			new_inpath->room = tmp_link->same_link->coming;
 			tmp_inpath->next = new_inpath;
 			tmp_inpath = tmp_inpath->next;
+			// if (i == 3)
+				// ft_printf("tmp_inpath->name = %s\n", tmp_inpath->room->name);
 			tmp_link = tmp_link->same_link->coming->links;
 		}
 		tmp_link = tmp_link->next;
 	}
+	i++;
 	return (1);
 }
 
