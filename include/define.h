@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/11 22:20:21 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 02:32:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define ERR_MALLOC_9 "error in lemin - fill_path return incorrect value"
 # define ERR_MALLOC_10 "error in fill_lst_rooms - failed malloc in helper_flr"
 # define ERR_MALLOC_11 "error in update_grath - failed malloc new_path in update_grath"
-# define ERR_MALLOC_12 "error in update_paths - failed malloc new_path"
+# define ERR_MALLOC_12 "error in update_paths - failed malloc"
+# define ERR_MALLOC_13 "error in update_paths - return error from fill_path"
+# define ERR_MALLOC_14 "error in fill_path - failed malloc"
 
 #endif

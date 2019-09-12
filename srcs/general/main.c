@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 23:47:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 03:01:42 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
 	l->max_paths = 0;
-	return (1);
-}
-
-static int		init_main_two(t_lemin *l)
-{
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
@@ -34,17 +29,14 @@ int				main(void)
 	t_lemin lem;
 
 	init_main(&lem);
-	init_main_two(&lem);
 	if (!check_lines(&lem))
 		return (free_all(1, &lem));
 	if (!check_map_validity(&lem))
 		return (free_all(1, &lem));
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
-	// if (!update_graph(&lem))
-	// 	return (free_all(1, &lem));
-	// print_paths(&lem.path);
 	print_rooms(&lem);
+	// print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
 	return (0);

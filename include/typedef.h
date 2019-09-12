@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/11 23:44:19 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/12 02:33:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct		s_links
 	int				full;
 	char			*room;
 	struct s_room	*coming;
-	struct s_room	*ptr_room;
 	struct s_links	*same_link;
 	struct s_links	*next;
 }					t_links;
