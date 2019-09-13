@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:34:33 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:57:22 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,33 +81,30 @@ static int		init_lemin(t_lemin *l, t_queue **find_end, t_room **current_room, t_
 
 int				lemin(t_lemin *l)
 {
-	int		nb_path;
-	t_queue	*find_end;
-	t_queue	*queue_state;
-	t_room	*room_to_push;
-	t_room	*current_room;
+	int		i;
+	t_bfs	b;
 
-	nb_path = 1;
-	if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
+	i = 1;
+	if (!(init_lemin(l, &(b.find_end), &(b.current_room), &(b.room_to_push))))
 		return (error_msg(ERR_LEMIN_1));
-	queue_state = l->queue;
+	b.queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
-	while (l->max_paths && bfs(&queue_state, &current_room, &room_to_push) == 1)
+	while (l->max_paths && bfs(&(b.queue_state), &(b.current_room), &(b.room_to_push)) == 1)
 	{
-		find_end = l->queue;
-		while (find_end && find_end->room->end != 1)
-			find_end = find_end->next;
-		if (!find_end)
+		b.find_end = l->queue;
+		while (b.find_end && (b.find_end)->room->end != 1)
+			b.find_end = (b.find_end)->next;
+		if (!b.find_end)
 			return (1);
-		put_links_to_full(&find_end);
-		free_queue(&(l->queue));
-		if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
-			return (error_msg(ERR_LEMIN_1));
+		put_links_to_full(&(b.find_end));
 		if (!update_graph(l))
 			return (error_msg(ERR_LEMIN_2));
-		queue_state = l->queue;
+		free_queue(&(l->queue));
+		if (!(init_bfs(l,  &(b.current_room))))
+			return (error_msg(ERR_LEMIN_1));
+		b.queue_state = l->queue;
 		l->max_paths--;
-		nb_path++;
+		i++;
 	}
 	return (1);
 }

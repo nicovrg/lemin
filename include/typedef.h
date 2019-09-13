@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:43:22 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:51:25 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ typedef	struct			s_lemin
 	struct s_path		*path;
 	struct s_queue 		*queue;
 }						t_lemin;
+
+typedef struct			s_bfs
+{
+	struct s_queue		*find_end;
+	struct s_queue		*queue_state;
+	struct s_room		*room_to_push;
+	struct s_room		*current_room;
+}						t_bfs;
+
 
 typedef struct			s_parse
 {
