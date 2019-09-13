@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 07:43:43 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:53:56 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int				index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 	(*new)->coming = (*tmp);
 	// if (!((*new)->coming = ft_strdup((*tmp)->name)))
 	// 	return (0);
-	(*new)->ant = 0;
 	(*new)->full = 0;
 	if (!((*tmp)->links))
 		(*tmp)->links = *new;

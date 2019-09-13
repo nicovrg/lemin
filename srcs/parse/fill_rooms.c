@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 07:43:43 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:55:16 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		fill_rooms(t_lemin *l, t_parse *parse)
 		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
+	new->ant = 0;	
 	new->start = (parse->var == 1 || parse->var == 4) ? 1 : 0;
 	new->end = (parse->var == 2 || parse->var == 3) ? 1 : 0;
 	if (parse->var >= 3)

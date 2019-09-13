@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 07:43:29 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:57:10 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
-	l->nb_stock = 0;
+	l->stock = 0;
 	l->max_paths = 0;
 	l->room = NULL;
 	l->path = NULL;

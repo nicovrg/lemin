@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:51:25 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:56:46 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct			s_path
 
 typedef struct			s_links
 {
-	int					ant;
 	int					full;
 	char				*room;
 	struct s_room		*coming;
@@ -37,9 +36,10 @@ typedef struct			s_links
 
 typedef struct			s_room
 {
-	char				*name;
-	int					start;
+	int					ant;
 	int					end;
+	int					start;
+	char				*name;
 	struct s_links		*links;
 	struct s_room		*next;
 }						t_room;
@@ -57,7 +57,7 @@ typedef	struct			s_lemin
 {
 	int					max_paths;
 	long				nb_ant;
-	long				nb_stock;
+	long				stock;
 	char				**tab;
 	struct s_room		*room;
 	struct s_path		*path;

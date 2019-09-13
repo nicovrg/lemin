@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 08:36:58 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 09:01:24 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		lemin(t_lemin *l)
 		put_links_to_full(&(b.find_end));
 		if (!update_graph(l))
 			return (error_msg(ERR_LEMIN_2));
+		// test_graph(l);
 		free_queue(&(l->queue));
 		if (!(init_bfs(l,  &(b.current_room))))
 			return (error_msg(ERR_LEMIN_1));
