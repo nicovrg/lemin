@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:43:43 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:37:51 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int			print_paths(t_path **paths);
 ** queue.c
 ** find_rooms.c
 ** fill_path.c
+** count_kchoz.c
 */
-
+int			init_lemin(t_lemin *l, t_queue **end, t_room **current, t_room **push);
 int			lemin(t_lemin *l);
 
 int			init_bfs(t_lemin *l, t_room **current_room);
@@ -59,6 +60,8 @@ t_room*		find_room(t_lemin *l, char *name);
 int			put_links_to_full(t_queue **find_end);
 
 int			update_graph(t_lemin *l);
+
+int			nb_max_paths(t_lemin *l);
 
 /*
 ** ==================== parse ====================

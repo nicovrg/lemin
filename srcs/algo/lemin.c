@@ -6,70 +6,19 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:57:22 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 08:36:58 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static int		count_links(t_room **room)
-{
-	int		i;
-	t_links	*tmp_link;
-
-	i = 0;
-	tmp_link = (*room)->links;
-	while (tmp_link)
-	{
-		i++;
-		tmp_link = tmp_link->next;
-	}
-	return (i);
-}
-
-/*
-** ==================== count_links ====================
-** count the number of links of a room
-*/
-
-static int		nb_max_paths(t_lemin *l)
-{
-	int		nb_start_links;
-	int		nb_end_links;
-	t_room	*tmp;
-
-	nb_end_links = 0;
-	nb_start_links = 0;
-	tmp = l->room;
-	while (tmp && tmp->start != 1)
-		tmp = tmp->next;
-	nb_start_links = count_links(&tmp);
-	tmp = l->room;
-	while (tmp && tmp->end != 1)
-		tmp = tmp->next;
-	nb_end_links = count_links(&tmp);
-	if (l->nb_ant <= nb_start_links && l->nb_ant <= nb_end_links)
-		return (l->nb_ant);
-	if (nb_start_links <= nb_end_links && nb_start_links <= l->nb_ant)
-		return (nb_start_links);
-	if (nb_end_links <= nb_start_links && nb_end_links <= l->nb_ant)
-		return (nb_end_links);
-	return (1);	
-}
-
-/*
-** ==================== nb_max_paths ====================
-** return the minimum between nb_ant, nb_start_links, nb_end_links
-** this number is the maximum of paths that we search
-*/
-
-static int		init_lemin(t_lemin *l, t_queue **find_end, t_room **current_room, t_room **room_to_push)
+int		init_lemin(t_lemin *l, t_queue **end, t_room **current, t_room **push)
 {
 	l->queue = NULL;
-	*find_end = NULL;
-	*current_room = NULL;
-	*room_to_push = NULL;
-	if (!(init_bfs(l, current_room)))
+	*end = NULL;
+	*current = NULL;
+	*push = NULL;
+	if (!(init_bfs(l, current)))
 		return (error_msg(ERR_MALLOC_4));
 	return (1);
 }
@@ -79,7 +28,7 @@ static int		init_lemin(t_lemin *l, t_queue **find_end, t_room **current_room, t_
 ** init values declared in lemin function
 */
 
-int				lemin(t_lemin *l)
+int		lemin(t_lemin *l)
 {
 	int		i;
 	t_bfs	b;
