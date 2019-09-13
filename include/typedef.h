@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 06:04:38 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:33:22 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
-	long				nb_ant;
 	int					max_paths;
+	long				nb_ant;
+	long				nb_stock;
 	char				**tab;
 	struct s_room		*room;
 	struct s_path		*path;

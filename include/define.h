@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 05:56:34 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:32:38 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@
 # define ERR_MALLOC_12 "error in update_paths - failed malloc"
 # define ERR_MALLOC_13 "error in update_paths - return error from fill_path"
 # define ERR_MALLOC_14 "error in fill_path - failed malloc"
+
+# define ERR_LEMIN_1 "error in init_lemin"
+# define ERR_LEMIN_2 "error in update_graph"
 
 #endif

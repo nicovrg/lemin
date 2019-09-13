@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 05:48:15 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:34:33 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int				lemin(t_lemin *l)
 
 	nb_path = 1;
 	if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
-		return (0);
+		return (error_msg(ERR_LEMIN_1));
 	queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
 	while (l->max_paths && bfs(&queue_state, &current_room, &room_to_push) == 1)
@@ -102,9 +102,9 @@ int				lemin(t_lemin *l)
 		put_links_to_full(&find_end);
 		free_queue(&(l->queue));
 		if (!(init_lemin(l, &find_end, &current_room, &room_to_push)))
-			return (0);
+			return (error_msg(ERR_LEMIN_1));
 		if (!update_graph(l))
-			return (0);
+			return (error_msg(ERR_LEMIN_2));
 		queue_state = l->queue;
 		l->max_paths--;
 		nb_path++;
