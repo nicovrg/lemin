@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 00:22:47 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 05:49:15 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int				main(void)
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
 	// print_rooms(&lem);
+	ft_putendl("");
+	ft_putendl("");
+	ft_putendl("");
+	ft_putendl("");
 	print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
