@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:33:22 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:43:22 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef	struct			s_lemin
 	struct s_queue 		*queue;
 }						t_lemin;
 
-typedef struct			s_norme
+typedef struct			s_parse
 {
 	char				*line;
 	int					count;
@@ -72,6 +72,6 @@ typedef struct			s_norme
 	int					start;
 	int					end;
 	struct s_links		*ptr_link;
-}						t_norme;
+}						t_parse;
 
 #endif

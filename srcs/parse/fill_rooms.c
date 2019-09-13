@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   fill_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/10 03:25:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:43:43 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
 
-int		fill_rooms(t_lemin *l, t_norme *norme)
+int		fill_rooms(t_lemin *l, t_parse *parse)
 {
 	t_room	*tmp;
 	t_room	*new;
 	
 	tmp = l->room;
-	while (l->room && tmp->next && (ft_strncmp(tmp->name, norme->line,
-	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
-	|| ft_strlen(tmp->name) != ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))))
+	while (l->room && tmp->next && (ft_strncmp(tmp->name, parse->line,
+	ft_strlen(parse->line) - ft_strlen(ft_strchr(parse->line, ' ')))
+	|| ft_strlen(tmp->name) != ft_strlen(parse->line) - ft_strlen(ft_strchr(parse->line, ' '))))
 		tmp = tmp->next;
-	if (tmp && !ft_strncmp(tmp->name, norme->line,
-	ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' '))) 
-	&& ft_strlen(tmp->name) == ft_strlen(norme->line) - ft_strlen(ft_strchr(norme->line, ' ')))
+	if (tmp && !ft_strncmp(tmp->name, parse->line,
+	ft_strlen(parse->line) - ft_strlen(ft_strchr(parse->line, ' '))) 
+	&& ft_strlen(tmp->name) == ft_strlen(parse->line) - ft_strlen(ft_strchr(parse->line, ' ')))
 		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
-	new->start = (norme->var == 1 || norme->var == 4) ? 1 : 0;
-	new->end = (norme->var == 2 || norme->var == 3) ? 1 : 0;
-	if (norme->var >= 3)
-		norme->var = (norme->var == 3) ? 1 : 2;
+	new->start = (parse->var == 1 || parse->var == 4) ? 1 : 0;
+	new->end = (parse->var == 2 || parse->var == 3) ? 1 : 0;
+	if (parse->var >= 3)
+		parse->var = (parse->var == 3) ? 1 : 2;
 	else
-		norme->var = 0;
-	if (!(new->name = ft_strsub(norme->line, 0,
-	ft_strchr(norme->line, ' ') - norme->line)))
+		parse->var = 0;
+	if (!(new->name = ft_strsub(parse->line, 0,
+	ft_strchr(parse->line, ' ') - parse->line)))
 		return (0);
 	new->next = NULL;
 	new->links = NULL;
@@ -49,7 +49,7 @@ int		fill_rooms(t_lemin *l, t_norme *norme)
 
 /*
 ** ==================== fill_rooms ====================
-** fill_rooms() append the room in norme->line at then end of t_room struct
+** fill_rooms() append the room in parse->line at then end of t_room struct
 ** tmp if the last elem of the list
 ** new is the new elem we add to the list
 ** go to the end of the list and allocate a new t_room

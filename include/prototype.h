@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/12 01:55:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:43:43 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			check_map_validity(t_lemin *l);
 int			check_coords_in_room(char *line);
 int			is_tubes(t_lemin *l, char *line, int *status);
 
-int			fill_rooms(t_lemin *l, t_norme *norme);
+int			fill_rooms(t_lemin *l, t_parse *parse);
 
 int			fill_tubes(t_lemin *l, char *line);
 
