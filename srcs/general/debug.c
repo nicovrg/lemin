@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 05:50:30 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/14 06:19:41 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ int		print_paths(t_path **paths)
 	while (tmp_path)
 	{
 		tmp_lst_room = tmp_path->lst_rooms;
+		ft_printf("\x1b[35m======================== PATH ======================\n\x1b[0m");
 		while (tmp_lst_room)
 		{
-			ft_printf("PTR_ROOM = %s\n", tmp_lst_room->room->name);
+			ft_printf("\x1b[35mPTR_ROOM = %s\n\x1b[0m", tmp_lst_room->room->name);
 			tmp_lst_room = tmp_lst_room->next;
 		}
-		ft_printf("---------------------------------------------------\n\n\n\n");
+		ft_printf("\x1b[35m===================================================\n\n\n\n\x1b[0m");
 		tmp_path = tmp_path->next;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 08:57:10 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/14 06:15:58 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int				main(void)
 		return (free_all(1, &lem));
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
+	// ft_putstr("\n\n=========================\n");
 	// print_rooms(&lem);
-	print_paths(&lem.path);
+	// print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
 	return (0);
