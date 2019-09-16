@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/11 23:42:43 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 05:50:30 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 int				free_paths(t_path **paths)
 {
-	t_path		*tmp;
-	t_inpath	*links;
-	t_inpath	*index;
+	t_path		*tmp_path;
+	t_lst_room	*tmp_lst_room;
+	t_lst_room	*lst_room;
 
 	while (*paths)
 	{
-		tmp = (*paths);
-		links = tmp->lst_rooms;
-		while (links)
+		tmp_path = (*paths);
+		lst_room = tmp_path->lst_rooms;
+		while (lst_room)
 		{
-			index = links;
-			links = links->next;
-			free(index);
+			tmp_lst_room = lst_room;
+			free(tmp_lst_room);
+			lst_room = lst_room->next;
 		}
 		(*paths) = (*paths)->next;
-		free(tmp);
+		free(tmp_path);
 	}
 	return (1);
 }

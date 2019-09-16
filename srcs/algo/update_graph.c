@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   update_graph.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:36:08 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/12 03:57:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/13 07:41:49 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static	int		fill_path(t_inpath **lst_rooms, t_links **links)
+static	int		fill_path(t_lst_room **lst_rooms, t_links **links)
 {
 	t_links		*tmp_link;
-	t_inpath	*new_inpath;
-	t_inpath	*tmp_inpath;
+	t_lst_room	*new_lst_room;
+	t_lst_room	*tmp_lst_room;
 
 	tmp_link = (*links);
-	tmp_inpath = (*lst_rooms);
+	tmp_lst_room = (*lst_rooms);
 	while (tmp_link && tmp_link->coming->end != 1)
 	{
-		new_inpath = NULL;
+		new_lst_room = NULL;
 		if (tmp_link->full == 1 && tmp_link->same_link->full != 1)
 		{
-			if (!(new_inpath = (t_inpath *)malloc(sizeof(t_inpath))))
+			if (!(new_lst_room = (t_lst_room *)malloc(sizeof(t_lst_room))))
 				return (error_msg(ERR_MALLOC_14));
-			new_inpath->next = NULL;
-			new_inpath->room = tmp_link->same_link->coming;
-			tmp_inpath->next = new_inpath;
-			tmp_inpath = tmp_inpath->next;
+			new_lst_room->next = NULL;
+			new_lst_room->room = tmp_link->same_link->coming;
+			tmp_lst_room->next = new_lst_room;
+			tmp_lst_room = tmp_lst_room->next;
 			tmp_link = tmp_link->same_link->coming->links;
 		}
-		tmp_link = tmp_link->next;
+		else
+			tmp_link = tmp_link->next;
 	}
 	return (1);
 }
@@ -49,7 +50,7 @@ static	int		update_paths(t_links **links, t_path **updated_paths)
 		tmp_path = tmp_path->next;
 	if (!(new_path = (t_path *)malloc(sizeof(t_path))))
 		return (error_msg(ERR_MALLOC_12));
-	if (!(new_path->lst_rooms = (t_inpath *)malloc(sizeof(t_inpath))))
+	if (!(new_path->lst_rooms = (t_lst_room *)malloc(sizeof(t_lst_room))))
 		return (error_msg(ERR_MALLOC_12));
 	new_path->lst_rooms->room = (*links)->coming;
 	new_path->lst_rooms->next = NULL;
@@ -92,3 +93,51 @@ int				update_graph(t_lemin *l)
 ** ==================== update_graph ====================
 ** 
 */
+
+
+// static	int		fill_path(t_lst_room **lst_rooms, t_links **links)
+// {
+// 	static int i = 1;
+// 	ft_printf("\x1b[36m==================== Call fill_path number %d ====================\x1b[0m\n", i);
+// 	t_links		*tmp_link;
+// 	t_lst_room	*new_lst_room;
+// 	t_lst_room	*tmp_lst_room;
+
+// 	tmp_link = (*links);
+// 	tmp_lst_room = (*lst_rooms);
+// 	while (tmp_link && tmp_link->coming->end != 1)
+// 	{
+// 		new_lst_room = NULL;
+// 		// if (i == 2)
+// 		// {
+// 			if (tmp_link->full == 1 && tmp_link->same_link->full != 1)
+// 			{
+// 				ft_printf("\x1b[32m1- tmp_lst_room->name = %-5s\ttmp_link->room = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\t\x1b[0m", tmp_lst_room->room->name, tmp_link->room, tmp_link->full, tmp_link->same_link->full);
+// 				ft_printf("\x1b[31mswap => %s-%s\n\x1b[0m", tmp_link->room, tmp_link->same_link->coming->links->room);
+// 			}
+// 			else
+// 				ft_printf("2- tmp_lst_room->name = %-5s\ttmp_link->room = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\n", tmp_lst_room->room->name, tmp_link->room, tmp_link->full, tmp_link->same_link->full);
+// 		// }
+// 		if (tmp_link->full == 1 && tmp_link->same_link->full != 1)
+// 		{
+// 			if (!(new_lst_room = (t_lst_room *)malloc(sizeof(t_lst_room))))
+// 				return (error_msg(ERR_MALLOC_14));
+// 			new_lst_room->next = NULL;
+// 			new_lst_room->room = tmp_link->same_link->coming;
+// 			tmp_lst_room->next = new_lst_room;
+// 			tmp_lst_room = tmp_lst_room->next;
+// 			// if (i == 3)
+// 				// ft_printf("tmp_lst_room->name = %s\n", tmp_lst_room->room->name);
+// 			tmp_link = tmp_link->same_link->coming->links;
+// 		}
+// 		else
+// 		// if (tmp_link && tmp_link->room && tmp_link->next && tmp_link->next->room && i == 3)
+// 		// 	ft_printf("\x1b[31miterate => %s-%s\n\x1b[0m", tmp_link->room, tmp_link->next->room);
+// 			tmp_link = tmp_link->next;
+// 	}
+// 	if (tmp_lst_room && tmp_lst_room->room && tmp_link && tmp_link->same_link && tmp_link->room)
+// 		ft_printf("\x1b[32m3- tmp_lst_room->name = %-5s\ttmp_link->room = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\n\x1b[0m", tmp_lst_room->room->name, tmp_link->room, tmp_link->full, tmp_link->same_link->full);
+// 		// ft_printf("tmp_lst_room->name = %-5s\ttmp_link->room = %-5s\ttmp_link->full = %d\ttmp_link->same_link->full = %d\n", tmp_lst_room->room->name, tmp_link->room, tmp_link->full, tmp_link->same_link->full);
+// 	i++;
+// 	return (1);
+// }

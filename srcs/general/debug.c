@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/12 03:50:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/14 06:19:41 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,19 @@ int		print_queue(t_queue **queue)
 int		print_paths(t_path **paths)
 {
 	t_path		*tmp_path;
-	t_inpath	*tmp_inpath;
+	t_lst_room	*tmp_lst_room;
 
 	tmp_path = *paths;
 	while (tmp_path)
 	{
-		tmp_inpath = tmp_path->lst_rooms;
-		while (tmp_inpath)
+		tmp_lst_room = tmp_path->lst_rooms;
+		ft_printf("\x1b[35m======================== PATH ======================\n\x1b[0m");
+		while (tmp_lst_room)
 		{
-			ft_printf("PTR_ROOM = %s\n", tmp_inpath->room->name);
-			tmp_inpath = tmp_inpath->next;
+			ft_printf("\x1b[35mPTR_ROOM = %s\n\x1b[0m", tmp_lst_room->room->name);
+			tmp_lst_room = tmp_lst_room->next;
 		}
-		ft_printf("---------------------------------------------------\n\n\n\n");
+		ft_printf("\x1b[35m===================================================\n\n\n\n\x1b[0m");
 		tmp_path = tmp_path->next;
 	}
 	return (1);
