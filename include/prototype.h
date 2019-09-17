@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 08:49:44 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/17 04:41:50 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			put_links_to_full(t_queue **find_end);
 
 int			update_graph(t_lemin *l);
 
-int			test_graph(t_lemin *l);
+long		test_graph(t_lemin *l, t_path **updated_path);
 
 int			nb_max_paths(t_lemin *l);
 

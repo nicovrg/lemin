@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/14 06:15:58 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/17 04:47:41 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
+	l->temp_render = 0;
+	l->shortest_path = 0;
 	l->stock = 0;
 	l->max_paths = 0;
 	l->room = NULL;
@@ -38,7 +40,7 @@ int				main(void)
 		return (free_all(1, &lem));
 	// ft_putstr("\n\n=========================\n");
 	// print_rooms(&lem);
-	// print_paths(&lem.path);
+	print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
 	return (0);
