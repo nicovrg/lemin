@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/17 04:58:13 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/17 05:46:20 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int				main(void)
 		return (free_all(1, &lem));
 	if (!(lem.path))
 		return (free_all(1, &lem));
+	print_render(&lem);
 	// ft_putstr("\n\n=========================\n");
 	// print_rooms(&lem);
-	print_paths(&lem.path);
+	// print_paths(&lem.path);
 	ft_putendl("FINISH");
 	free_all(0, &lem);
 	return (0);

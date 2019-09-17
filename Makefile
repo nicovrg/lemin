@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+         #
+#    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/13 08:49:31 by nicolasv         ###   ########.fr        #
+#    Updated: 2019/09/17 05:46:59 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRC_ALGO = 			bfs.c\
 					test_graph.c\
 					count_kchoz.c\
 					update_graph.c\
-					put_links_to_full.c
+					put_links_to_full.c\
+					print_render.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
 OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))

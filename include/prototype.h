@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/17 04:41:50 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/17 05:46:44 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int			update_graph(t_lemin *l);
 long		test_graph(t_lemin *l, t_path **updated_path);
 
 int			nb_max_paths(t_lemin *l);
+
+int			print_render(t_lemin *l);
 
 /*
 ** ==================== parse ====================
