@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/17 05:46:44 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 04:17:39 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			init_bfs(t_lemin *l, t_room **current_room);
 int			bfs(t_queue **queue_state, t_room **current_room, t_room **room_to_push);
 
 int			init_queue(t_lemin *l, t_room **room);
-int			push_queue(t_queue **queue, t_room **room_to_push, t_links **links);
+int			push_queue(t_queue **queue, t_room **room_to_push, t_links **links, t_links ***tab);
 
 t_room*		find_start_room(t_lemin *l);
 
