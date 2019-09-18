@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 04:17:39 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 23:10:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int			print_paths(t_path **paths);
 ** test_graph.c
 ** update_path.c
 ** count_kchoz.c
+** print_render.c
+** buffer.c
 */
+
 int			init_lemin(t_lemin *l, t_queue **end, t_room **current, t_room **push);
 int			lemin(t_lemin *l);
 
@@ -67,6 +70,10 @@ long		test_graph(t_lemin *l, t_path **updated_path);
 int			nb_max_paths(t_lemin *l);
 
 int			print_render(t_lemin *l);
+
+int			addchar_buff(int print, int index, char *buff, char char_to_append);
+int			addnbr_buff(int index, char *buff, int nb_to_append);
+int			addstr_buff(int index, char *buff, char *str_to_append);
 
 /*
 ** ==================== parse ====================
