@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_render.c                                     :+:      :+:    :+:   */
+/*   print_renderrrr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 23:54:43 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 01:49:51 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int 	print_ant(int index, char *buff, int ant, char *room_name)
+int 	print_ant(int ant, char *room_name, t_lemin *l)
 {
-	addchar_buff(0, index, buff, 'L');
-	addnbr_buff(index, buff,ant);
-	addchar_buff(0, index, buff, '-');
-	addstr_buff(index, buff, room_name);
+	addchar_buff(0, 'L', l);
+	addnbr_buff(ant, l);
+	addchar_buff(0, '-', l);
+	addstr_buff(room_name, l);
 	return (1);
 }
 
@@ -41,18 +41,23 @@ int		still_ants_in_path(t_lemin *l)
 	return (0);
 }
 
-int		move_from_start(t_lemin *l, char *buff, int index)
+int		move_from_start(t_lemin *l)
 {
-	t_path *tmp_path;
+	int		i;
+	t_path	*tmp_path;
 
+	i = 0;
 	tmp_path = l->path;
 	while (tmp_path)
 	{
 		if (l->stock > tmp_path->length || tmp_path->length == l->final_short_path)
 		{
+			if (i > 0 || l->check_space == 1)
+				addchar_buff(0, ' ', l);
+			i++;
 			l->stock--;
 			tmp_path->lst_rooms->next->room->ant = l->nb_ant - l->stock;
-			print_ant(index, buff, tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name);
+			print_ant(tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name, l);
 			// ft_printf("L%d-%s ", tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name);
 		}
 		tmp_path = tmp_path->next;
@@ -60,12 +65,14 @@ int		move_from_start(t_lemin *l, char *buff, int index)
 	return (1);
 }
 
-int		swap_ants(t_lemin *l, char *buff, int index)
+int		swap_ants(t_lemin *l)
 {
+	int			i;
 	int			tmp_ant1;
 	t_path		*tmp_path;
 	t_lst_room	*tmp_lst_room;
 
+	i = 0;
 	tmp_ant1 = 0;
 	tmp_path = l->path;
 	while (tmp_path)
@@ -77,8 +84,14 @@ int		swap_ants(t_lemin *l, char *buff, int index)
 				tmp_lst_room->room->ant = 0;
 			ft_swap_ints(&tmp_ant1, &(tmp_lst_room->room->ant));
 			if (tmp_ant1 && tmp_lst_room->next)
-				print_ant(index, buff, tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name);
+			{
+				if (i > 0)
+					addchar_buff(0, ' ', l);
+				i++;
+				print_ant(tmp_ant1, tmp_lst_room->next->room->name, l);
 				// ft_printf("L%d-%s ", tmp_ant1, tmp_lst_room->next->room->name);
+				l->check_space = 1;
+			}
 			tmp_lst_room = tmp_lst_room->next;
 		}
 		tmp_path = tmp_path->next;		
@@ -102,23 +115,22 @@ int		print_tab(t_lemin *l)
 
 int		print_moves(t_lemin *l)
 {
-	int		index_buff;
-	char	buff[BUFF_SIZE];
-
-	index_buff = 0;
-	ft_bzero(buff, BUFF_SIZE);
 	l->stock = l->nb_ant;
 	while (l->stock)
 	{
-		swap_ants(l, buff, index_buff);
-		move_from_start(l, buff, index_buff);
-		ft_putchar('\n');
+		if (l->stock != l->nb_ant)
+			swap_ants(l);
+		move_from_start(l);
+		addchar_buff(0, '\n', l);
+		// ft_putendl("");
 	}
 	while (still_ants_in_path(l))
 	{
-		swap_ants(l, buff, index_buff);
-		ft_putchar('\n');
+		swap_ants(l);
+		addchar_buff(0, '\n', l);
+		// ft_putendl("");
 	}
+	l->buff[l->index_buff - 1] = 0;
 	return (1);
 }
 
@@ -126,5 +138,7 @@ int		print_render(t_lemin *l)
 {
 	print_tab(l);
 	print_moves(l);
+	addchar_buff(1, 0, l);
+	// ft_putendl("coucou");
 	return (1);
 }

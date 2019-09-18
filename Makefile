@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/18 23:22:58 by nivergne         ###   ########.fr        #
+#    Updated: 2019/09/19 01:47:49 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC_ALGO = 			bfs.c\
 					count_kchoz.c\
 					update_graph.c\
 					put_links_to_full.c\
-					print_render.c\
+					print_renderrrr.c\
 					buffer.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))

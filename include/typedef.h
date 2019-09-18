@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 23:23:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 01:39:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
+	int					check_space;
+	int					index_buff;
+	char				buff[SIZE_BUFF];
 	int					final_short_path;
 	int					shortest_path;
 	int					max_paths;

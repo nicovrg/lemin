@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 23:10:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 00:19:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int			nb_max_paths(t_lemin *l);
 
 int			print_render(t_lemin *l);
 
-int			addchar_buff(int print, int index, char *buff, char char_to_append);
-int			addnbr_buff(int index, char *buff, int nb_to_append);
-int			addstr_buff(int index, char *buff, char *str_to_append);
+int			addchar_buff(int print, char char_to_append, t_lemin *l);
+int			addnbr_buff(int nb_to_append, t_lemin *l);
+int			addstr_buff(char *str_to_append, t_lemin *l);
 
 /*
 ** ==================== parse ====================

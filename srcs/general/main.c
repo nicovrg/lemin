@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 04:41:16 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 01:33:10 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ static	int		init_main(t_lemin *l)
 	l->shortest_path = 0;
 	l->stock = 0;
 	l->max_paths = 0;
+	l->index_buff = 0;
+	l->check_space = 0;
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
 	l->tab = NULL;
+	ft_bzero(&(l->buff), BUFF_SIZE);
 	return (1);
 }
 

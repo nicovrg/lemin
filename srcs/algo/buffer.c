@@ -6,26 +6,26 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 21:03:07 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 23:54:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 01:07:49 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		addchar_buff(int print, int index, char *buff, char char_to_append)
+int		addchar_buff(int print, char char_to_append, t_lemin *l)
 {
 	if (print == 0)
-		buff[index] = char_to_append;
+		l->buff[l->index_buff] = char_to_append;
 	else if (print == 1)
 	{
-		index = 0;
-		ft_putstr(buff);
-		ft_bzero(buff, BUFF_SIZE);
+		l->index_buff = 0;
+		ft_putstr(l->buff);
+		ft_bzero(l->buff, BUFF_SIZE);
 		return (1);
 	}
-	index++;
-	if (index == BUFF_SIZE - 1)
-		addchar_buff(1, index, buff, 0);
+	l->index_buff++;
+	if (l->index_buff == BUFF_SIZE - 1)
+		addchar_buff(1, 0, l);
 	return (1);
 }
 
@@ -33,20 +33,21 @@ int		addchar_buff(int print, int index, char *buff, char char_to_append)
 ** ==================== add_buff ====================
 ** append a char to buff, also check if need to print 
 */
-int		addnbr_buff(int index, char *buff, int nb_to_append)
+
+int		addnbr_buff(int nb_to_append, t_lemin *l)
 {
 	if (nb_to_append < 0)
 	{
-		addchar_buff(0, index, buff, '-');
+		addchar_buff(0, '-', l);
 		nb_to_append = -nb_to_append;
 	}
 	if (nb_to_append >= 10)
 	{
-		addnbr_buff(index, buff, nb_to_append / 10);
-		addchar_buff(0, index, buff, nb_to_append % 10 + '0');
+		addnbr_buff(nb_to_append / 10, l);
+		addchar_buff(0, nb_to_append % 10 + '0', l);
 	}
 	else
-		addchar_buff(0, index, buff, nb_to_append % 10 + '0');
+		addchar_buff(0, nb_to_append % 10 + '0', l);
 	return (1);
 }
 
@@ -55,7 +56,7 @@ int		addnbr_buff(int index, char *buff, int nb_to_append)
 ** append an int to buff recursively calling itself and addchar_buff
 */
 
-int		addstr_buff(int index, char *buff, char *str_to_append)
+int		addstr_buff(char *str_to_append, t_lemin *l)
 {
 	int	i;
 
@@ -64,7 +65,7 @@ int		addstr_buff(int index, char *buff, char *str_to_append)
 	{
 		while (str_to_append[i])
 		{
-			addchar_buff(0, index, buff, str_to_append[i]);
+			addchar_buff(0, str_to_append[i], l);
 			i++;
 		}
 	}
