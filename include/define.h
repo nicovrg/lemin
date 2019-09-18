@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/13 07:32:38 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/18 05:18:09 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
+
+# define BUFF_SIZE 64
 
 # define ERR_PARSE_1 "error in check_lines - fail to append room to room list"
 # define ERR_PARSE_2 "error in check_lines - empty line"

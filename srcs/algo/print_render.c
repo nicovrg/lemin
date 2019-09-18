@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 03:48:47 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 05:24:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int		swap_ants(t_lemin *l)
 
 int		print_moves(t_lemin *l)
 {
+	// char buff[BUFF_SIZE];
+
 	l->stock = l->nb_ant;
 	while (l->stock)
 	{

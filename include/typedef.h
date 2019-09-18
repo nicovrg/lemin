@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/17 04:43:42 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 05:21:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
+
+#include "define.h"
 
 typedef struct			s_lst_room
 {
@@ -56,10 +58,10 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
-	int					max_paths;
-	long				temp_render;
 	int					final_short_path;
 	int					shortest_path;
+	int					max_paths;
+	long				temp_render;
 	long				nb_ant;
 	long				stock;
 	char				**tab;
