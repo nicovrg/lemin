@@ -6,23 +6,22 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 22:51:21 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 22:56:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
 
-static int				free_link(t_links **new, t_parse *parse)
+static int	free_link(t_links **new, t_parse *parse)
 {
 	ft_strdel(&((*new)->room));
 	ft_memdel((void**)new);
 	parse->ptr_link = NULL;
-	// free(*new);
 	return (1);
 }
 
-static int				index_tubes(t_links **new, t_room **tmp, t_parse *parse)
+static int	index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 {
 	t_links	*buf;
 
@@ -47,19 +46,23 @@ static int				index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 	return (1);
 }
 
-/* ==================== index_tubes ====================
+/*
+** ==================== index_tubes ====================
 ** append tube on the room
-** tmp is a copy of room 
+** tmp is a copy of room
 ** (to keep the room address at the start of rooms)
 */
 
-static int				fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new, t_lemin *l)
+static int	fill_tubes_first_room(t_parse *parse, t_room **tmp,
+t_links **new, t_lemin *l)
 {
-	if (!ft_strncmp((*tmp)->name, parse->line, ft_strchr(parse->line, '-') - parse->line))
+	if (!ft_strncmp((*tmp)->name, parse->line,
+	ft_strchr(parse->line, '-') - parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(parse->line, ft_strchr(parse->line, '-') - parse->line + 1, ft_strlen(ft_strchr(parse->line, '-') + 1))))
+		if (!((*new)->room = ft_strsub(parse->line, ft_strchr(parse->line, '-')
+		- parse->line + 1, ft_strlen(ft_strchr(parse->line, '-') + 1))))
 			return (0);
 		(*new)->same_link = NULL;
 		parse->ptr_link = (*new);
@@ -74,18 +77,20 @@ static int				fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new,
 	return (1);
 }
 
-
-/* ==================== fill_tubes_first_room ====================
+/*
+** ==================== fill_tubes_first_room ====================
 ** send to index_tube the address of after the '-'
 */
 
-static int				fill_tubes_last_room(t_parse *parse, t_room **tmp, t_links **new, char *buf)
+static int	fill_tubes_last_room(t_parse *parse, t_room **tmp,
+t_links **new, char *buf)
 {
 	if (!ft_strcmp((*tmp)->name, parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(parse->line) - 1)))
+		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf)
+		- ft_strlen(parse->line) - 1)))
 			return (0);
 		if (parse->ptr_link)
 			parse->ptr_link->same_link = (*new);
@@ -98,12 +103,12 @@ static int				fill_tubes_last_room(t_parse *parse, t_room **tmp, t_links **new, 
 	return (1);
 }
 
-
-/* ==================== fill_tubes_last_room ====================
+/*
+** ==================== fill_tubes_last_room ====================
 ** send to index_tube the address of before the '-'
 */
 
-int						fill_tubes(t_lemin *l, char *line)
+int			fill_tubes(t_lemin *l, char *line)
 {
 	char	*buf;
 	t_room	*tmp;
