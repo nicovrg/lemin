@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 03:48:47 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 22:10:57 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		move_from_start(t_lemin *l)
 	tmp_path = l->path;
 	while (tmp_path)
 	{
-		if (l->stock > tmp_path->length || tmp_path->length == l->final_short_path)
+		if (l->stock > tmp_path->stop_ants)
 		{
 			l->stock--;
 			tmp_path->lst_rooms->next->room->ant = l->nb_ant - l->stock;
@@ -92,11 +92,33 @@ int		print_moves(t_lemin *l)
 	return (1);
 }
 
+// int		put_stop_ants_in_paths(t_lemin *l)
+// {
+// 	t_path	*tmp_path;
+// 	t_path	*parse_paths;
+
+// 	tmp_path = l->path;
+// 	while (tmp_path)
+// 	{
+// 		parse_paths = l->path;
+// 		while (parse_paths && tmp_path->length > l->final_short_path)
+// 		{
+// 			if (parse_paths != tmp_path && tmp_path->length > parse_paths->length)
+// 				tmp_path->stop_ants = tmp_path->stop_ants + (tmp_path->length - parse_paths->length);
+// 			parse_paths = parse_paths->next;
+// 		}
+// 		tmp_path = tmp_path->next;
+// 	}
+// 	return (1);
+// }
+
 int		print_render(t_lemin *l)
 {
 	int		i;
 
 	i = 0;
+	// put_stop_ants_in_paths(l);
+	// print_paths(&(l->path));
 	while (l->tab[i])
 	{
 		ft_putendl(l->tab[i]);

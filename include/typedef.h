@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/17 04:43:42 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 21:28:02 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct			s_lst_room
 typedef struct			s_path
 {
 	int					length;
+	int					stop_ants;
 	struct s_lst_room	*lst_rooms;
 	struct s_path		*next;
 }						t_path;

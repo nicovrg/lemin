@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/14 06:19:41 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/18 21:45:04 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		print_paths(t_path **paths)
 	{
 		tmp_lst_room = tmp_path->lst_rooms;
 		ft_printf("\x1b[35m======================== PATH ======================\n\x1b[0m");
+		ft_printf("STOP_ANTS = %d\n", tmp_path->stop_ants);
 		while (tmp_lst_room)
 		{
 			ft_printf("\x1b[35mPTR_ROOM = %s\n\x1b[0m", tmp_lst_room->room->name);

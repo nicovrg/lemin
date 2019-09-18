@@ -6,13 +6,13 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:36:08 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/17 04:51:43 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 21:41:38 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static	int		count_lst_rooms(t_lst_room **lst_rooms)
+static int	count_lst_rooms(t_lst_room **lst_rooms)
 {
 	int			ret;
 	t_lst_room	*tmp_lst_rooms;
@@ -27,7 +27,7 @@ static	int		count_lst_rooms(t_lst_room **lst_rooms)
 	return (ret);
 }
 
-static	int		fill_path(t_lst_room **lst_rooms, t_links **links)
+static int	fill_path(t_lst_room **lst_rooms, t_links **links)
 {
 	t_links		*tmp_link;
 	t_lst_room	*new_lst_room;
@@ -54,7 +54,7 @@ static	int		fill_path(t_lst_room **lst_rooms, t_links **links)
 	return (1);
 }
 
-static	int		update_paths(t_lemin *l, t_links **links, t_path **updated_paths)
+static int	update_paths(t_lemin *l, t_links **links, t_path **updated_paths)
 {
 	t_path *new_path;
 	t_path *tmp_path;
@@ -67,6 +67,7 @@ static	int		update_paths(t_lemin *l, t_links **links, t_path **updated_paths)
 		return (error_msg(ERR_MALLOC_12));
 	if (!(new_path->lst_rooms = (t_lst_room *)malloc(sizeof(t_lst_room))))
 		return (error_msg(ERR_MALLOC_12));
+	new_path->stop_ants = 0;
 	new_path->lst_rooms->room = (*links)->coming;
 	new_path->lst_rooms->next = NULL;
 	new_path->next = NULL;
@@ -87,7 +88,7 @@ static	int		update_paths(t_lemin *l, t_links **links, t_path **updated_paths)
 ** 
 */
 
-int				update_graph(t_lemin *l)
+int			update_graph(t_lemin *l)
 {
 	long	ret;
 	t_path  *updated_paths;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/13 08:53:56 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/18 22:51:21 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static int				index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 
 	(*new)->next = NULL;
 	(*new)->coming = (*tmp);
-	// if (!((*new)->coming = ft_strdup((*tmp)->name)))
-	// 	return (0);
 	(*new)->full = 0;
 	if (!((*tmp)->links))
 		(*tmp)->links = *new;
@@ -57,9 +55,6 @@ static int				index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 
 static int				fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new, t_lemin *l)
 {
-	// parse->ptr_link = l->room;
-	// while (parse->ptr_link && ft_strcmp(parse->ptr_link->name, ft_strchr(parse->line, '-') + 1))
-	// 	parse->ptr_link = parse->ptr_link->next;
 	if (!ft_strncmp((*tmp)->name, parse->line, ft_strchr(parse->line, '-') - parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
@@ -70,8 +65,6 @@ static int				fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new,
 		parse->ptr_link = (*new);
 		if (!index_tubes(new, tmp, parse))
 			return (0);
-		// (*new)->ptr_room = parse->ptr_link;
-		// parse->ptr_link = l->room;
 		parse->line = ft_strchr(parse->line, '-') + 1;
 		*tmp = l->room;
 		parse->count++;
@@ -88,9 +81,6 @@ static int				fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new,
 
 static int				fill_tubes_last_room(t_parse *parse, t_room **tmp, t_links **new, char *buf)
 {
-	// while (parse->ptr_link
-	// && ft_strncmp(parse->ptr_link->name, buf, ft_strlen(buf) - ft_strlen(parse->line) - 1))
-	// 	parse->ptr_link = parse->ptr_link->next;
 	if (!ft_strcmp((*tmp)->name, parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
@@ -102,7 +92,6 @@ static int				fill_tubes_last_room(t_parse *parse, t_room **tmp, t_links **new, 
 		(*new)->same_link = parse->ptr_link;
 		if (!index_tubes(new, tmp, parse))
 			return (0);
-		// (*new)->ptr_room = parse->ptr_link;
 		parse->count++;
 	}
 	*tmp = (*tmp)->next;
