@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 02:18:06 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 02:24:47 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
+	int					check_newline;
 	int					check_space;
 	int					index_buff;
 	char				buff[SIZE_BUFF];

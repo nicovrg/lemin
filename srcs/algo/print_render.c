@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_renderrrr.c                                  :+:      :+:    :+:   */
+/*   print_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 02:19:19 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 02:35:48 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		move_from_start(t_lemin *l)
 			l->stock--;
 			tmp_path->lst_rooms->next->room->ant = l->nb_ant - l->stock;
 			print_ant(tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name, l);
-			// ft_printf("L%d-%s ", tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name);
+			l->check_newline = 1;
 		}
 		tmp_path = tmp_path->next;
 	}
@@ -91,8 +91,8 @@ int		swap_ants(t_lemin *l)
 					addchar_buff(0, ' ', l);
 				i++;
 				print_ant(tmp_ant1, tmp_lst_room->next->room->name, l);
-				// ft_printf("L%d-%s ", tmp_ant1, tmp_lst_room->next->room->name);
 				l->check_space = 1;
+				l->check_newline = 1;
 			}
 			tmp_lst_room = tmp_lst_room->next;
 		}
@@ -123,16 +123,17 @@ int		print_moves(t_lemin *l)
 		if (l->stock != l->nb_ant)
 			swap_ants(l);
 		move_from_start(l);
-		addchar_buff(0, '\n', l);
-		// ft_putendl("");
+		if (l->check_newline == 1)
+			addchar_buff(0, '\n', l);
+		l->check_newline = 0;
 	}
 	while (still_ants_in_path(l))
 	{
 		swap_ants(l);
-		addchar_buff(0, '\n', l);
-		// ft_putendl("");
+		if (l->check_newline == 1)
+			addchar_buff(0, '\n', l);
+		l->check_newline = 0;		
 	}
-	l->buff[l->index_buff - 1] = 0;
 	return (1);
 }
 
@@ -141,6 +142,5 @@ int		print_render(t_lemin *l)
 	print_tab(l);
 	print_moves(l);
 	addchar_buff(1, 0, l);
-	// ft_putendl("coucou");
 	return (1);
 }
