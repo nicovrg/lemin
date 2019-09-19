@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 23:54:42 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:19:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/14 06:19:41 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ int		print_queue(t_queue **queue)
 
 int		print_paths(t_path **paths)
 {
-	t_path	*tmp_path;
-	t_links	*tmp_links;
+	t_path		*tmp_path;
+	t_lst_room	*tmp_lst_room;
 
-	tmp_path = (*paths);
+	tmp_path = *paths;
 	while (tmp_path)
 	{
-		ft_printf("PATH = %d\n---------------------------------------------------\n", tmp_path->nb_path);
-		tmp_links = tmp_path->lst_rooms;
-		while (tmp_links)
+		tmp_lst_room = tmp_path->lst_rooms;
+		ft_printf("\x1b[35m======================== PATH ======================\n\x1b[0m");
+		while (tmp_lst_room)
 		{
-			ft_printf("LINK: %s\n", tmp_links->room);
-			tmp_links = tmp_links->next;
+			ft_printf("\x1b[35mPTR_ROOM = %s\n\x1b[0m", tmp_lst_room->room->name);
+			tmp_lst_room = tmp_lst_room->next;
 		}
-		ft_printf("---------------------------------------------------\n\n\n\n");
+		ft_printf("\x1b[35m===================================================\n\n\n\n\x1b[0m");
 		tmp_path = tmp_path->next;
 	}
 	return (1);
@@ -56,10 +56,9 @@ int		print_rooms(t_lemin *l)
 		tmp_links = tmp_room->links;
 		while (tmp_links)
 		{
-			ft_printf("TUBE : %s\t%d\n", tmp_links->room, tmp_links->discovered);
-			if (tmp_links->ptr_room)
-				ft_printf("PTR_ROOM = %s\n", tmp_links->ptr_room->name);
-			ft_printf("COMING = %s\n", tmp_links->coming);
+			ft_printf("TUBE : %s\t%d\n", tmp_links->room, tmp_links->full);
+			// ft_printf("SAME_LINK = %s\n", tmp_links->same_link->room);
+			// ft_printf("COMING = %s\n", tmp_links->coming->name);
 			tmp_links = tmp_links->next;
 		}
 		ft_printf("---------------------------------------------------\n\n\n\n");

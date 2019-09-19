@@ -6,12 +6,14 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:03:26 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/04 03:34:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 01:39:24 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
+
+# define SIZE_BUFF 4096
 
 # define ERR_PARSE_1 "error in check_lines - fail to append room to room list"
 # define ERR_PARSE_2 "error in check_lines - empty line"
@@ -25,6 +27,13 @@
 # define ERR_MALLOC_7 "error in fill_lst_rooms - fail to malloc new_room"
 # define ERR_MALLOC_8 "error in fill_lst_rooms - fail to strdup new_room->room"
 # define ERR_MALLOC_9 "error in lemin - fill_path return incorrect value"
-# define ERR_MALLOC_10 "error in fill_lst_rooms - failled malloc in helper_flr"
+# define ERR_MALLOC_10 "error in fill_lst_rooms - failed malloc in helper_flr"
+# define ERR_MALLOC_11 "error in update_grath - failed malloc new_path in update_grath"
+# define ERR_MALLOC_12 "error in update_paths - failed malloc"
+# define ERR_MALLOC_13 "error in update_paths - return error from fill_path"
+# define ERR_MALLOC_14 "error in fill_path - failed malloc"
+
+# define ERR_LEMIN_1 "error in init_lemin"
+# define ERR_LEMIN_2 "error in update_graph"
 
 #endif

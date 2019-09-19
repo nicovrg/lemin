@@ -3,76 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/10 03:18:26 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 01:39:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-typedef	struct		s_zelda
-{
-	char			*name;
-	struct s_zelda	*next;
-}					t_zelda;
+#include "define.h"
 
-typedef struct		s_links
+typedef struct			s_lst_room
 {
-	char			*coming;
-	char			*room;
-	int				discovered;
-	struct s_room	*ptr_room;
-	struct s_links	*next;
-}					t_links;
+	struct s_room		*room;
+	struct s_lst_room	*next;
+}						t_lst_room;
 
-typedef struct		s_room
+typedef struct			s_path
 {
-	char			*name;
-	int				start;
-	int				end;
-	int				discovered;
-	t_links			*links;
-	struct s_room	*next;
-}					t_room;
+	int					length;
+	struct s_lst_room	*lst_rooms;
+	struct s_path		*next;
+}						t_path;
 
-typedef struct		s_path
+typedef struct			s_links
 {
-	int				nb_path;
-	t_links			*lst_rooms;
-	struct s_path	*next;
-}					t_path;
+	int					full;
+	char				*room;
+	struct s_room		*coming;
+	struct s_links		*same_link;
+	struct s_links		*next;
+}						t_links;
 
-typedef struct		s_queue
+typedef struct			s_room
 {
-	t_room			*room;
-	t_links			*link;
-	struct s_queue	*prev_link;
-	struct s_queue	*prev;
-	struct s_queue	*next;
-}					t_queue;
+	int					ant;
+	int					end;
+	int					start;
+	char				*name;
+	struct s_links		*links;
+	struct s_room		*next;
+}						t_room;
 
-typedef	struct		s_lemin
+typedef struct			s_queue
 {
-	long			nb_ant;
-	int				max_paths;
-	char			**tab;
-	t_room			*room;
-	t_path			*path;
-	t_queue 		*queue;
-	t_zelda 		*zelda;
-}					t_lemin;
+	struct s_room		*room;
+	struct s_links		*link;
+	struct s_queue		*prev_link;
+	struct s_queue		*prev;
+	struct s_queue		*next;
+}						t_queue;
 
-typedef struct		s_norme
+typedef	struct			s_lemin
 {
-	char			*line;
-	int				count;
-	int				var;
-	int				start;
-	int				end;
-	t_room			*ptr_link;
-}					t_norme;
+	int					check_space;
+	int					index_buff;
+	char				buff[SIZE_BUFF];
+	int					final_short_path;
+	int					shortest_path;
+	int					max_paths;
+	long				temp_render;
+	long				nb_ant;
+	long				stock;
+	char				**tab;
+	struct s_room		*room;
+	struct s_path		*path;
+	struct s_queue 		*queue;
+}						t_lemin;
+
+typedef struct			s_bfs
+{
+	struct s_queue		*find_end;
+	struct s_queue		*queue_state;
+	struct s_room		*room_to_push;
+	struct s_room		*current_room;
+}						t_bfs;
+
+
+typedef struct			s_parse
+{
+	char				*line;
+	int					count;
+	int					var;
+	int					start;
+	int					end;
+	struct s_links		*ptr_link;
+}						t_parse;
 
 #endif

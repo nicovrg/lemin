@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/10 03:22:25 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/18 04:33:25 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,22 @@
 
 int				free_paths(t_path **paths)
 {
-	t_path	*tmp;
-	t_links	*links;
-	t_links	*index;
+	t_path		*tmp_path;
+	t_lst_room	*tmp_lst_room;
+	t_lst_room	*lst_room;
 
 	while (*paths)
 	{
-		tmp = (*paths);
-		links = tmp->lst_rooms;
-		while (links)
+		tmp_path = (*paths);
+		lst_room = tmp_path->lst_rooms;
+		while (lst_room)
 		{
-			index = links;
-			ft_strdel(&(index->room));
-			links = links->next;
-			free(index);
+			tmp_lst_room = lst_room;
+			lst_room = lst_room->next;
+			free(tmp_lst_room);
 		}
 		(*paths) = (*paths)->next;
-		free(tmp);
+		free(tmp_path);
 	}
 	return (1);
 }
@@ -48,7 +47,7 @@ static int		free_rooms_and_links(t_room **rooms)
 	{
 		index = buf;
 		ft_strdel(&(index->room));
-		ft_strdel(&(index->coming));
+		// ft_strdel(&(index->coming));
 		buf = buf->next;
 		free(index);
 	}
@@ -78,6 +77,8 @@ int				free_all(int var, t_lemin *l)
 	i = 0;
 	if (l->queue)
 		free_queue(&(l->queue));
+	if (l->path)
+		free_paths(&(l->path));
 	while (l->room)
 		free_rooms_and_links(&(l->room));
 	while (l->tab && l->tab[i])
@@ -87,8 +88,6 @@ int				free_all(int var, t_lemin *l)
 	}
 	if (l->tab)
 		(free(l->tab));
-	if (l->path)
-		free_paths(&(l->path));
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (0);
