@@ -6,7 +6,7 @@
 #    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/19 04:21:59 by qgirard          ###   ########.fr        #
+#    Updated: 2019/09/19 05:46:46 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ obj/%.o: srcs/%.c
 
 debug: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)debug$(GRN)		[OK]$(END)"
-	@$(CC) $(CFLAGS) $(INC_PATH) -g3 $(OBJ) $(MLX) -L libft -lft -o $(NAME)_debug
+	@$(CC) $(CFLAGS) $(INC_PATH) -g3 $(OBJ) -L libft -lft -o $(NAME)_debug
 
 fsanitize: makelib obj $(LIB) $(OBJ)
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)fsanitize$(GRN)	[OK]$(END)"
