@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_renderrrr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 01:49:51 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 02:19:19 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ int		move_from_start(t_lemin *l)
 
 	i = 0;
 	tmp_path = l->path;
+	i = 0;
 	while (tmp_path)
 	{
-		if (l->stock > tmp_path->length || tmp_path->length == l->final_short_path)
+		if (l->stock > tmp_path->stop_ants)
 		{
 			if (i > 0 || l->check_space == 1)
 				addchar_buff(0, ' ', l);
@@ -74,6 +75,7 @@ int		swap_ants(t_lemin *l)
 
 	i = 0;
 	tmp_ant1 = 0;
+	i = 0;
 	tmp_path = l->path;
 	while (tmp_path)
 	{

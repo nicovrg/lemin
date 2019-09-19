@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 01:33:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 02:19:30 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static	int		init_main(t_lemin *l)
 	l->shortest_path = 0;
 	l->stock = 0;
 	l->max_paths = 0;
-	l->index_buff = 0;
 	l->check_space = 0;
 	l->room = NULL;
 	l->path = NULL;
@@ -44,7 +43,6 @@ int				main(void)
 	if (!(lem.path))
 		return (free_all(1, &lem));
 	print_render(&lem);
-	// ft_putstr("\n\n=========================\n");
 	// print_rooms(&lem);
 	// print_paths(&lem.path);
 	// ft_putendl("FINISH");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototype.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 00:19:23 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 02:17:47 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int			bfs(t_queue **queue_state, t_room **current_room, t_room **room_to_push);
 
 int			init_queue(t_lemin *l, t_room **room);
 int			push_queue(t_queue **queue, t_room **room_to_push, t_links **links, t_links ***tab);
+int			push_room(t_room **room_to_push, t_links **tmp_links, t_queue **queue_state, t_links ***tab);
 
-t_room*		find_start_room(t_lemin *l);
+t_room		*find_start_room(t_lemin *l);
 
 int			put_links_to_full(t_queue **find_end);
 

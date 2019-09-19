@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 04:27:24 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 00:16:04 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,32 @@ int		push_queue(t_queue **queue, t_room **room_to_push, t_links **links, t_links
 /*
 ** ==================== push_queue ====================
 ** add an element at the bottom of the queue
+*/
+
+int	push_room(t_room **room_to_push, t_links **tmp_links,
+t_queue **queue_state, t_links ***tab)
+{
+	int		i;
+
+	i = 0;
+	while ((*tab) && (*tab)[i])
+	{
+		if ((*tab)[i] == *tmp_links)
+			return (0);
+		i++;
+	}
+	if ((*room_to_push)->start != 1 && (*tmp_links)->full == 0)
+	{
+		if (!(*queue_state)->prev_link)
+			return (1);
+		if (ft_strcmp((*tmp_links)->room,
+		(*queue_state)->prev_link->room->name))
+			return (1);
+	}
+	return (0);
+}
+
+/*
+** ==================== push_room ====================
+** check if the room meet condition to be added to the queue
 */
