@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 01:39:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 03:57:44 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-#include "define.h"
+# include "define.h"
 
 typedef struct			s_lst_room
 {
@@ -24,6 +24,7 @@ typedef struct			s_lst_room
 typedef struct			s_path
 {
 	int					length;
+	int					stop_ants;
 	struct s_lst_room	*lst_rooms;
 	struct s_path		*next;
 }						t_path;
@@ -58,6 +59,7 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
+	int					check_newline;
 	int					check_space;
 	int					index_buff;
 	char				buff[SIZE_BUFF];
@@ -70,7 +72,7 @@ typedef	struct			s_lemin
 	char				**tab;
 	struct s_room		*room;
 	struct s_path		*path;
-	struct s_queue 		*queue;
+	struct s_queue		*queue;
 }						t_lemin;
 
 typedef struct			s_bfs
@@ -80,7 +82,6 @@ typedef struct			s_bfs
 	struct s_room		*room_to_push;
 	struct s_room		*current_room;
 }						t_bfs;
-
 
 typedef struct			s_parse
 {

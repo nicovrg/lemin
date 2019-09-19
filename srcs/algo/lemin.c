@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/17 03:26:43 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 00:56:07 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ int		init_lemin(t_lemin *l, t_queue **end, t_room **current, t_room **push)
 ** init values declared in lemin function
 */
 
+int		put_find_end(t_lemin *l, t_bfs *b)
+{
+	b->find_end = l->queue;
+	while (b->find_end && (b->find_end)->room->end != 1)
+		b->find_end = (b->find_end)->next;
+	if (!b->find_end)
+		return (0);
+	return (1);
+}
+
 int		lemin(t_lemin *l)
 {
 	int		i;
@@ -38,18 +48,16 @@ int		lemin(t_lemin *l)
 		return (error_msg(ERR_LEMIN_1));
 	b.queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
-	while (l->max_paths && bfs(&(b.queue_state), &(b.current_room), &(b.room_to_push)) == 1)
+	while (l->max_paths
+	&& bfs(&(b.queue_state), &(b.current_room), &(b.room_to_push)) == 1)
 	{
-		b.find_end = l->queue;
-		while (b.find_end && (b.find_end)->room->end != 1)
-			b.find_end = (b.find_end)->next;
-		if (!b.find_end)
+		if (!put_find_end(l, &b))
 			return (1);
 		put_links_to_full(&(b.find_end));
 		if (!update_graph(l))
 			return (error_msg(ERR_LEMIN_2));
 		free_queue(&(l->queue));
-		if (!(init_bfs(l,  &(b.current_room))))
+		if (!(init_bfs(l, &(b.current_room))))
 			return (error_msg(ERR_LEMIN_1));
 		b.queue_state = l->queue;
 		l->max_paths--;

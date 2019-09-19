@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_rooms_and_links.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/05 01:14:27 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/18 22:50:39 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int		check_coords_in_room(char *line)
 	return (1);
 }
 
-/* ==================== check_coords_in_room ====================
+/*
+** ==================== check_coords_in_room ====================
 ** check_coords_in_room() check if coords are valids
 */
 
@@ -66,7 +67,8 @@ int		is_tubes(t_lemin *l, char *line, int *status)
 	return (1);
 }
 
-/* ==================== is_tubes ====================
+/*
+** ==================== is_tubes ====================
 ** is_tubes() check if line represent a tube
 ** then call fill_tubes();
 */

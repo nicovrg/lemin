@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_renderrrr.c                                  :+:      :+:    :+:   */
+/*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 05:44:32 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 01:49:51 by nivergne         ###   ########.fr       */
+/*   Created: 2019/09/19 04:19:39 by qgirard           #+#    #+#             */
+/*   Updated: 2019/09/19 04:31:15 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-int 	print_ant(int ant, char *room_name, t_lemin *l)
-{
-	addchar_buff(0, 'L', l);
-	addnbr_buff(ant, l);
-	addchar_buff(0, '-', l);
-	addstr_buff(room_name, l);
-	return (1);
-}
 
 int		still_ants_in_path(t_lemin *l)
 {
@@ -50,18 +41,31 @@ int		move_from_start(t_lemin *l)
 	tmp_path = l->path;
 	while (tmp_path)
 	{
-		if (l->stock > tmp_path->length || tmp_path->length == l->final_short_path)
+		if (l->stock > tmp_path->stop_ants)
 		{
 			if (i > 0 || l->check_space == 1)
 				addchar_buff(0, ' ', l);
 			i++;
 			l->stock--;
 			tmp_path->lst_rooms->next->room->ant = l->nb_ant - l->stock;
-			print_ant(tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name, l);
-			// ft_printf("L%d-%s ", tmp_path->lst_rooms->next->room->ant, tmp_path->lst_rooms->next->room->name);
+			print_ant(tmp_path->lst_rooms->next->room->ant,
+			tmp_path->lst_rooms->next->room->name, l);
+			l->check_newline = 1;
 		}
 		tmp_path = tmp_path->next;
 	}
+	return (1);
+}
+
+int		print_the_swap(t_lemin *l, int *i, int *tmp_ant1,
+t_lst_room **tmp_lst_room)
+{
+	if (*i > 0)
+		addchar_buff(0, ' ', l);
+	(*i)++;
+	print_ant(*tmp_ant1, (*tmp_lst_room)->next->room->name, l);
+	l->check_space = 1;
+	l->check_newline = 1;
 	return (1);
 }
 
@@ -84,61 +88,10 @@ int		swap_ants(t_lemin *l)
 				tmp_lst_room->room->ant = 0;
 			ft_swap_ints(&tmp_ant1, &(tmp_lst_room->room->ant));
 			if (tmp_ant1 && tmp_lst_room->next)
-			{
-				if (i > 0)
-					addchar_buff(0, ' ', l);
-				i++;
-				print_ant(tmp_ant1, tmp_lst_room->next->room->name, l);
-				// ft_printf("L%d-%s ", tmp_ant1, tmp_lst_room->next->room->name);
-				l->check_space = 1;
-			}
+				print_the_swap(l, &i, &tmp_ant1, &tmp_lst_room);
 			tmp_lst_room = tmp_lst_room->next;
 		}
-		tmp_path = tmp_path->next;		
+		tmp_path = tmp_path->next;
 	}
-	return (1);
-}
-
-int		print_tab(t_lemin *l)
-{
-	int		index_tab;
-
-	index_tab = 0;
-	while (l->tab[index_tab])
-	{
-		ft_putendl(l->tab[index_tab]);
-		index_tab++;
-	}
-	ft_putchar('\n');
-	return (1);
-}
-
-int		print_moves(t_lemin *l)
-{
-	l->stock = l->nb_ant;
-	while (l->stock)
-	{
-		if (l->stock != l->nb_ant)
-			swap_ants(l);
-		move_from_start(l);
-		addchar_buff(0, '\n', l);
-		// ft_putendl("");
-	}
-	while (still_ants_in_path(l))
-	{
-		swap_ants(l);
-		addchar_buff(0, '\n', l);
-		// ft_putendl("");
-	}
-	l->buff[l->index_buff - 1] = 0;
-	return (1);
-}
-
-int		print_render(t_lemin *l)
-{
-	print_tab(l);
-	print_moves(l);
-	addchar_buff(1, 0, l);
-	// ft_putendl("coucou");
 	return (1);
 }

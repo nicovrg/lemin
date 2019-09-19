@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   find_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 04:20:19 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/06 00:00:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/18 23:15:08 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-t_room*		find_start_room(t_lemin *l)
+t_room	*find_start_room(t_lemin *l)
 {
 	t_room	*tmp_room;
-		
+
 	tmp_room = l->room;
 	while (tmp_room)
 	{
@@ -31,10 +31,10 @@ t_room*		find_start_room(t_lemin *l)
 ** return a copy of the pointer on the starting room
 */
 
-t_room*		find_room(t_lemin *l, char *name)
+t_room	*find_room(t_lemin *l, char *name)
 {
 	t_room	*tmp_room;
-		
+
 	tmp_room = l->room;
 	while (tmp_room)
 	{

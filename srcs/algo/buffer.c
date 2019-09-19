@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 21:03:07 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 01:07:49 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/19 04:09:42 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		addchar_buff(int print, char char_to_append, t_lemin *l)
 
 /*
 ** ==================== add_buff ====================
-** append a char to buff, also check if need to print 
+** append a char to buff, also check if need to print
 */
 
 int		addnbr_buff(int nb_to_append, t_lemin *l)
