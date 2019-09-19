@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 22:39:05 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 01:48:42 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static	int		init_main(t_lemin *l)
 	l->shortest_path = 0;
 	l->stock = 0;
 	l->max_paths = 0;
+	l->check_space = 0;
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;

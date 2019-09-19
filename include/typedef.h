@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/18 21:28:02 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 01:50:18 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct			s_queue
 
 typedef	struct			s_lemin
 {
+	int					check_newline;
+	int					check_space;
 	int					max_paths;
 	long				temp_render;
 	int					final_short_path;

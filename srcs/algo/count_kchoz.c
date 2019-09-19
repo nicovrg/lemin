@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_kchoz.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 08:34:18 by nicolasv          #+#    #+#             */
-/*   Updated: 2019/09/13 08:34:50 by nicolasv         ###   ########.fr       */
+/*   Updated: 2019/09/18 23:14:21 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int				nb_max_paths(t_lemin *l)
 		return (nb_start_links);
 	if (nb_end_links <= nb_start_links && nb_end_links <= l->nb_ant)
 		return (nb_end_links);
-	return (1);	
+	return (1);
 }
 
 /*
