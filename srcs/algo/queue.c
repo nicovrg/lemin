@@ -6,13 +6,13 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 02:08:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 00:16:04 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 04:35:59 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int	init_queue(t_lemin *l, t_room **current_room)
+int			init_queue(t_lemin *l, t_room **current_room)
 {
 	t_queue		*new;
 
@@ -56,7 +56,8 @@ t_links		**realloc_tab_links(t_links ***tab, t_links **links)
 	return (new);
 }
 
-int		push_queue(t_queue **queue, t_room **room_to_push, t_links **links, t_links ***tab)
+int			push_queue(t_queue **queue, t_room **room_to_push,
+t_links **links, t_links ***tab)
 {
 	t_queue		*new;
 	t_queue		*tmp_queue;
@@ -82,7 +83,7 @@ int		push_queue(t_queue **queue, t_room **room_to_push, t_links **links, t_links
 ** add an element at the bottom of the queue
 */
 
-int	push_room(t_room **room_to_push, t_links **tmp_links,
+int			push_room(t_room **room_to_push, t_links **tmp_links,
 t_queue **queue_state, t_links ***tab)
 {
 	int		i;

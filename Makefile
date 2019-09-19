@@ -6,7 +6,7 @@
 #    By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/19 02:35:59 by qgirard          ###   ########.fr        #
+#    Updated: 2019/09/19 04:21:59 by qgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRC_ALGO = 			bfs.c\
 					update_graph.c\
 					put_links_to_full.c\
 					print_render.c\
-					buffer.c
+					buffer.c\
+					move_ants.c
 
 SRC_ALGO := $(addprefix algo/, $(SRC_ALGO))
 OBJ_ALGO := $(addprefix algo/, $(addsuffix .o, $(basename $(notdir $(SRC_ALGO)))))

@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 08:34:18 by nicolasv          #+#    #+#             */
-/*   Updated: 2019/09/18 23:14:21 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 05:30:51 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ static int		count_links(t_room **room)
 ** ==================== count_links ====================
 ** count the number of links of a room
 */
+
+int				count_lst_rooms(t_lst_room **lst_rooms)
+{
+	int			ret;
+	t_lst_room	*tmp_lst_rooms;
+
+	ret = 0;
+	tmp_lst_rooms = *lst_rooms;
+	while (tmp_lst_rooms)
+	{
+		ret++;
+		tmp_lst_rooms = tmp_lst_rooms->next;
+	}
+	return (ret);
+}
 
 int				nb_max_paths(t_lemin *l)
 {

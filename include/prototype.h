@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 03:56:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/09/19 05:31:23 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,15 @@ int			update_graph(t_lemin *l);
 long		test_graph(t_lemin *l, t_path **updated_path);
 
 int			nb_max_paths(t_lemin *l);
+int			count_lst_rooms(t_lst_room **lst_rooms);
 
 int			print_render(t_lemin *l);
+int			print_ant(int ant, char *room_name, t_lemin *l);
+
+int			swap_ants(t_lemin *l);
+int			move_from_start(t_lemin *l);
+int			still_ants_in_path(t_lemin *l);
+
 
 int			addchar_buff(int print, char char_to_append, t_lemin *l);
 int			addnbr_buff(int nb_to_append, t_lemin *l);
