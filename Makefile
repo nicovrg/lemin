@@ -6,22 +6,16 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/22 23:54:01 by nivergne         ###   ########.fr        #
+#    Updated: 2019/09/23 00:03:09 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = lem-in
 
-INC_PATH := include/
-SRC_PATH := src/
-OBJ_PATH := obj/
-
-
-INC = -I./include
-INC_PATH = -Iinclude/ -Ilibft/include
-
+include mk/include.mk
 include mk/src.mk
+include mk/obj.mk
 include mk/colors.mk
 
 CC = gcc
@@ -53,6 +47,6 @@ include mk/clean.mk
 
 re: fclean all
 
-.PHONY: all clean fclean re libft_clean proj_clean
+.PHONY: all clean fclean re makelib g3 fsanitize bitcoin minotaure bitcoin_autore
 
 -include $(DEPS)
