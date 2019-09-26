@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 20:01:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/09/24 00:59:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static	int		init_main(t_lemin *l)
 	l->max_paths = 0;
 	l->check_space = 0;
 	l->check_newline = 0;
+	l->index_buff = 0;
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
