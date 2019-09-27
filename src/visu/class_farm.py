@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-print "import class_farm succesfull"
+# print "import class_farm succesfull"
 
 class farm:
     """this class represent our graph"""
