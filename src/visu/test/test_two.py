@@ -49,14 +49,16 @@ def farm_parser():
 
  
 ant_farm = farm_parser()
-print "Ants: "
-print ant_farm.ants
-print "links: "
-print ant_farm.links
-print "moves: "
-print ant_farm.moves
-g=nx.Graph()
-g.add_nodes_from(ant_farm.nodes)
-g.add_edges_from(ant_farm.links)
-nx.draw(g, with_labels=True)
-plt.show()
+print "Ants:\t", ant_farm.ants
+print "Start:\t", ant_farm.start
+print "End:\t", ant_farm.end
+print "\nrooms: \n", ant_farm.nodes
+print "\nlinks: \n", ant_farm.links
+print "\nmoves: \n", ant_farm.moves
+print type(ant_farm.ants)
+
+# g=nx.Graph()
+# g.add_nodes_from(ant_farm.nodes)
+# g.add_edges_from(ant_farm.links)
+# nx.draw(g, with_labels=True)
+# plt.show()
