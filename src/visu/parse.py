@@ -1,8 +1,6 @@
 #!/usr/bin/python
 import re
 import sys
-import networkx as nx
-import matplotlib.pyplot as plt
 
 from class_ant_farm import ant_farm
 from get_farm_data import get_ants, get_start, get_end, get_room, get_link, get_move
@@ -31,7 +29,7 @@ def check_status(farm, status, line):
     status = None
     return status
 
-def parser():
+def parse():
     """create an ant_farm object, parse lemin outpout to fill it's values"""
     status = None
     farm = ant_farm()
@@ -53,16 +51,4 @@ def parser():
         elif (reg_dict["is_move"].search(line)):
             get_move(farm, line)
     farm.print_ant_farm()
-
-
-def main():
-    parser()
-
-main()
-
-# G = nx.Graph()
-# G.add_node(1)
-# nx.draw(g, with_labels=True)
-# plt.show()
-# make && ./lem-in < maps/sujet.map4 | python src/visu/visu.py
-# make && ./lem-in < maps/sujet.map4 | python src/visu/test.py
+    return farm

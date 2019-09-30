@@ -7,8 +7,8 @@ class ant_farm:
         self.ants   = None
         self.start  = None
         self.end    = None
-        self.rooms  = []
         self.pos    = {}
+        self.rooms  = []
         self.links  = []
         self.moves  = []
 
