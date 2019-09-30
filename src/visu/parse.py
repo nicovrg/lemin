@@ -4,7 +4,7 @@ import sys
 import networkx as nx
 import matplotlib.pyplot as plt
 
-from class_farm import ant_farm
+from class_ant_farm import ant_farm
 from get_farm_data import get_ants, get_start, get_end, get_room, get_link, get_move
 
 def regex_compile():

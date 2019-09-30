@@ -1,6 +1,5 @@
 #!/usr/bin/python
-
-class   :
+class ant_farm:
     """this class represent our graph"""
 
     def __init__(self):
