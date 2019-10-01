@@ -2,7 +2,7 @@
 import re
 import sys
 
-from class_ant_farm import ant_farm
+from class_ant_farm import ant_farm_class
 from get_farm_data import get_ants, get_start, get_end, get_room, get_link, get_move
 
 def regex_compile():
@@ -30,9 +30,9 @@ def check_status(farm, status, line):
     return status
 
 def parse():
-    """create an ant_farm object, parse lemin outpout to fill it's values"""
+    """parse lemin outpout to create, set and return the ant_farm object"""
     status = None
-    farm = ant_farm()
+    farm = ant_farm_class()
     reg_dict = regex_compile()
     
     get_ants(farm)
@@ -52,3 +52,16 @@ def parse():
             get_move(farm, line)
     farm.print_ant_farm()
     return farm
+
+# parse 
+#   create and object farm
+#   precompile regex we will use for parsing 
+#   read on lemin output on stdin to fill farm
+#       - str -> number of ants 
+#       - str -> name of start room
+#       - str -> name of end room
+#       - list -> name of each rooms
+#       - dict -> name of rooms as keys
+#           - tuple -> position of the room
+#   return the object farm
+
