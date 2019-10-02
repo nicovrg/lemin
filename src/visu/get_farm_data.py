@@ -21,6 +21,7 @@ def get_room(farm, line):
 def get_link(farm, line):
     line_split = line.strip().split("-")
     farm.links.append(line_split)
+    print (type(farm.links))
 
 def get_move(farm, line):
     final = []
@@ -35,9 +36,12 @@ def get_move(farm, line):
         final.append(pre_final)
     farm.moves.append(final)
 
+
 # - str -> number of ants 
-# - str -> name of start room
-# - str -> name of end room
-# - list -> name of each rooms
+# - str -> start room
+# - str -> end room
+# - list -> rooms
 # - dict -> name of rooms as keys
 #     - tuple -> position of the room
+# - list -> links
+# - list -> moves 

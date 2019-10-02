@@ -46,10 +46,10 @@ def parse():
             status = "comment"
         elif (reg_dict["is_room"].search(line)):
             get_room(farm, line)
-        elif (reg_dict["is_link"].search(line)):
-            get_link(farm, line)
         elif (reg_dict["is_move"].search(line)):
             get_move(farm, line)
+        elif (reg_dict["is_link"].search(line)):
+            get_link(farm, line)
     farm.print_ant_farm()
     return farm
 
@@ -58,10 +58,12 @@ def parse():
 #   precompile regex we will use for parsing 
 #   read on lemin output on stdin to fill farm
 #       - str -> number of ants 
-#       - str -> name of start room
-#       - str -> name of end room
-#       - list -> name of each rooms
+#       - str -> start room
+#       - str -> end room
+#       - list -> rooms
 #       - dict -> name of rooms as keys
 #           - tuple -> position of the room
+#       - list -> links
+#       - list -> moves 
 #   return the object farm
 

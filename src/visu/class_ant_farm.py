@@ -14,10 +14,7 @@ class ant_farm_class:
 
     def __repr__(self):
         """print object structure"""
-        return "ants: {}\nstart: {}\nend: {}\n\nrooms: {}\n\npos: {}\n\nlinks {}\n\nmoves {}\n\n".format(self.ants, self.start, self.end, self.rooms, self.pos, self.links, self.moves)
-
-    def __getitem__(self):
-        return self
+        return "ants:\t{}\nstart:\t{}\nend:\t{}\n\nrooms: {}\n\npos: {}\n\nlinks {}\n\nmoves {}\n\n".format(self.ants, self.start, self.end, self.rooms, self.pos, self.links, self.moves)
 
     def print_ant_farm(self):
         """print the object"""

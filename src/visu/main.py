@@ -14,12 +14,14 @@ main()
 #         create and object farm
 #         precompile regex we will use for parsing 
 #         read on lemin output on stdin to fill farm
-#             - str -> number of ants 
-#             - str -> name of start room
-#             - str -> name of end room
-#             - list -> name of each rooms
-#             - dict -> name of rooms as keys
-#                 - tuple -> position of the room
+#           - str -> number of ants 
+#           - str -> start room
+#           - str -> end room
+#           - list -> rooms
+#           - dict -> name of rooms as keys
+#               - tuple -> position of the room
+#           - list -> links
+#           - list -> moves 
 #       return the object farm
 #   create an empty graph with no nodes and no edges
 #
