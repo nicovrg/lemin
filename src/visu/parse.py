@@ -3,7 +3,7 @@ import re
 import sys
 
 from class_ant_farm import ant_farm_class
-from get_farm_data import get_ants, get_start, get_end, get_room, get_link, get_move
+from parse_tools import get_ants, get_start, get_end, get_room, get_link, get_move
 
 def regex_compile():
     """pre compile all regex we need to parse map"""
@@ -63,7 +63,7 @@ def parse():
 #       - list -> rooms
 #       - dict -> name of rooms as keys
 #           - tuple -> position of the room
-#       - list -> links
-#       - list -> moves 
+#       - list of list -> links
+#       - list of list -> moves 
 #   return the object farm
 

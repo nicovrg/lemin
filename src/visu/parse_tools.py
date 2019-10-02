@@ -21,9 +21,9 @@ def get_room(farm, line):
 def get_link(farm, line):
     line_split = line.strip().split("-")
     farm.links.append(line_split)
-    print (type(farm.links))
 
 def get_move(farm, line):
+    pre_final = []
     final = []
     line_split = line.strip().split(" ")
     for move in line_split:
@@ -43,5 +43,5 @@ def get_move(farm, line):
 # - list -> rooms
 # - dict -> name of rooms as keys
 #     - tuple -> position of the room
-# - list -> links
-# - list -> moves 
+# - list of list -> links
+# - list of list -> moves 

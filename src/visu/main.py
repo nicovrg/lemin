@@ -20,8 +20,8 @@ main()
 #           - list -> rooms
 #           - dict -> name of rooms as keys
 #               - tuple -> position of the room
-#           - list -> links
-#           - list -> moves 
+#           - list of list -> links
+#           - list of list -> moves 
 #       return the object farm
 #   create an empty graph with no nodes and no edges
 #
