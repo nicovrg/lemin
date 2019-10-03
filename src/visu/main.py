@@ -1,10 +1,9 @@
 #!/usr/bin/python
-import parse.parse as p
-import display.display as d
+import parse.parse as parse
+import display.display as display
 
 def main():
-    # parse()
-    d.display(p.parse())
+    display.display(parse.parse())
 
 main()
 
