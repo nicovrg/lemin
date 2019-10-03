@@ -9,7 +9,7 @@ main()
 
 # main call display
 #   display call parse
-#       parse 
+#       parse: ->
 #         create and object farm
 #         precompile regex we will use for parsing 
 #         read on lemin output on stdin to fill farm
@@ -22,7 +22,7 @@ main()
 #           - list of list -> links
 #           - list of list -> moves 
 #       return the object farm
-#   create an empty graph with no nodes and no edges
+#   display: <-
 #
 #
 #

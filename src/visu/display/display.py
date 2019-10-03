@@ -44,22 +44,18 @@ def display(farm):
 	list_ant = create_ants(farm, graph, nodes_coord, steps)
 	animation(graph, nodes_coord, steps, farm, list_ant, fig)
 
-# create an empty graph object with no nodes and no edges
-# add the list of rooms as nodes to the graph object 
-# add the list of links as edges to the graph object 
-# create a dict of positions of each node in the graph object, key is name and store tuples of x, y
-# set the number of step
 
-# call create ant (return a list of ants)
-#	we create a list of ants
-#   for each ant we give it a number, path, location, journey and color (check doc in class_ant.py for more info)
-#   then we return that list
 
-# we then build a figure with matplotlib plt.figure (it's like the top level component of the window)
+# display:
+#	set the number of steps
+#	create the image container using plt.figure
+#	get graph object from function create_graph (doc below)
+#	get nodes_coord (a dict) from nx,nx.spring_layout (return a dict of nodes positions)
+#	get list_ant from create_ants (doc in draw_ants and class ant)
+#	call animation (the function using update image as callback - see doc bellow)
 
-# then we call matplotlib animation function
-#	we give it the fig object, the name of the callback function, the parameters to pass to that function, the number of frames to draw, the intervall between frames in milliseconds, a bool to say to loop
-#	
-#	
-#	
+# create_graph:
+#	create a nx object graph and add it nodes and edges from our farm object rooms and links
+
+# update_image:
 #	
