@@ -11,8 +11,8 @@ class ant_class():
 		self.journey = None
 		self.color = None
 
-	def set_location(self, farm, dict_nodes_pos):
-		self.current_location = dict_nodes_pos[farm.start]
+	def set_location(self, farm, nodes_coord):
+		self.current_location = nodes_coord[farm.start]
 
 	def set_node_path(self, farm):
 		chill_in_start = True
@@ -26,14 +26,14 @@ class ant_class():
 			if chill_in_start:
 				self.node_path.append(farm.start)
 
-	def set_journey(self, farm, dict_nodes_pos, num_steps):
+	def set_journey(self, farm, nodes_coord, steps):
 		i = 0
 		location_list = []
 		while i < len(self.node_path) - 1:
-				start = dict_nodes_pos[self.node_path[i]]
-				end = dict_nodes_pos[self.node_path[i + 1]]
-				x = np.linspace(start[0], end[0], num = num_steps)
-				y = np.linspace(start[1], end[1], num = num_steps)
+				start = nodes_coord[self.node_path[i]]
+				end = nodes_coord[self.node_path[i + 1]]
+				x = np.linspace(start[0], end[0], num = steps)
+				y = np.linspace(start[1], end[1], num = steps)
 				location_list.extend(zip(x, y))
 				i += 1
 		self.journey = location_list

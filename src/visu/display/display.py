@@ -13,14 +13,19 @@ text_color = '#EEEEEE'
 background_color = '#15202b'
 default_node_color = '#282828'
 
-def update(num, graph, dict_nodes_pos, num_steps, farm, list_ant, fig):
+def animation(graph, nodes_coord, steps, farm, list_ant, fig):
+	fig.clear()
+	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig), frames = len(farm.moves) * steps, interval = 200, repeat = False)
+	plt.show()
+
+def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig):
 	fig.clear()
 	node_size = 500
-	tunnels = nx.draw_networkx_edges(graph, dict_nodes_pos, edge_color=link_color, width=2.0)
-	nodes = draw_nodes(graph, farm, dict_nodes_pos, default_node_color, node_size, link_color)
+	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color=link_color, width=2.0)
+	nodes = draw_nodes(graph, farm, nodes_coord, default_node_color, node_size, link_color)
 	draw_ants(list_ant, num)
 	labels_dict = create_labels(farm)
-	room_names = nx.draw_networkx_labels(graph, dict_nodes_pos, font_size = 8, labels = labels_dict, font_family = 'sans-serif', font_color = text_color)
+	room_names = nx.draw_networkx_labels(graph, nodes_coord, font_size = 8, labels = labels_dict, font_family = 'sans-serif', font_color = text_color)
 	fig.set_facecolor(background_color)
 	plt.axis('off')
 
@@ -32,16 +37,12 @@ def create_graph(farm):
 
 def display(farm):
 	"""principal display function"""
-	graph = create_graph(farm)
-	dict_nodes_pos = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = 'weight', scale = 1.0)
-	
-	num_steps = 5
-	list_ant = create_ants(farm, graph, dict_nodes_pos, num_steps)
-
+	steps = 5
 	fig = plt.figure()
-	fig.clear()
-	ani = anim.FuncAnimation(fig, update, fargs = (graph, dict_nodes_pos, num_steps, farm, list_ant, fig), frames = len(farm.moves) * num_steps, interval = 200, repeat = False)
-	plt.show()
+	graph = create_graph(farm)
+	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = 'weight', scale = 1.0)
+	list_ant = create_ants(farm, graph, nodes_coord, steps)
+	animation(graph, nodes_coord, steps, farm, list_ant, fig)
 
 # create an empty graph object with no nodes and no edges
 # add the list of rooms as nodes to the graph object 
