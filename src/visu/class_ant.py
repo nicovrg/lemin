@@ -2,19 +2,19 @@
 import numpy as np
 
 class ant_class():
-    """this class represent an ant -- see doc belows"""
+	"""this class represent an ant -- see doc belows"""
 
-    def __init__(self, num):
-		self.number = num
+	def __init__(self, num):
 		self.current_location = None
+		self.number = num
 		self.node_path = None
 		self.journey = None
 		self.color = None
 
-    def set_location(self, farm, dict_nodes_pos):
-        self.current_location = dict_nodes_pos[farm.start]
+	def set_location(self, farm, dict_nodes_pos):
+		self.current_location = dict_nodes_pos[farm.start]
 
-    def set_node_path(self, farm):
+	def set_node_path(self, farm):
 		chill_in_start = True
 		self.node_path = []
 		self.node_path.append(farm.start)
@@ -26,17 +26,17 @@ class ant_class():
 			if chill_in_start:
 				self.node_path.append(farm.start)
 
-    def set_journey(self, farm, dict_nodes_pos, num_steps):
-        i = 0
-        location_list = []
-        while i < len(self.node_path) - 1:
-            start = dict_nodes_pos[self.node_path[i]]
-            end = dict_nodes_pos[self.node_path[i + 1]]
-            x = np.linspace(start[0], end[0], num = num_steps)
-            y = np.linspace(start[1], end[1], num = num_steps)
-            location_list.extend(zip(x, y))
-            i += 1
-        self.journey = location_list
+	def set_journey(self, farm, dict_nodes_pos, num_steps):
+		i = 0
+		location_list = []
+		while i < len(self.node_path) - 1:
+				start = dict_nodes_pos[self.node_path[i]]
+				end = dict_nodes_pos[self.node_path[i + 1]]
+				x = np.linspace(start[0], end[0], num = num_steps)
+				y = np.linspace(start[1], end[1], num = num_steps)
+				location_list.extend(zip(x, y))
+				i += 1
+		self.journey = location_list
 
 # set_location:
 # 	the ant will start in start room so we must give it
