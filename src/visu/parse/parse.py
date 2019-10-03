@@ -1,8 +1,7 @@
 #!/usr/bin/python
 import re
 import sys
-
-from class_ant_farm import ant_farm_class
+import class_directory.class_ant_farm as c_farm
 from parse_tools import get_ants, get_start, get_end, get_room, get_link, get_move
 
 def regex_compile():
@@ -32,7 +31,7 @@ def check_status(farm, status, line):
 def parse():
     """parse lemin outpout to create, set and return the ant_farm object"""
     status = None
-    farm = ant_farm_class()
+    farm = c_farm.ant_farm_class()
     reg_dict = regex_compile()
     
     get_ants(farm)

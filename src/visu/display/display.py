@@ -2,8 +2,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.animation as anim
-
-from class_ant import ant_class
+import class_directory.class_ant as c_ant
 
 link_color = '#282828'
 text_color = '#EEEEEE'
@@ -32,11 +31,9 @@ def draw_nodes(graph, farm, dict_nodes_pos, node_color, node_size, link_color):
 		nodes[name] = node
 	return (nodes)
 
-
 def draw_ant(position, color):
 	ant = plt.plot([position[0]], [position[1]], color = color, marker = '.', markersize = 20.0)
 	return (ant)
-
 
 def create_labels(farm):
 	labels_dict = dict([(farm.start,'START'), (farm.end,'END')])
@@ -73,7 +70,7 @@ def update(num, graph, dict_nodes_pos, num_steps, farm, list_ant, fig):
 def create_ants(farm, graph, dict_nodes_pos, num_steps):
 	list_ant = []
 	for num in range (1, int(farm.ants) + 1):
-		ant = ant_class(num)
+		ant = c_ant.ant_class(num)
 		ant.set_node_path(farm)
 		ant.set_location(farm, dict_nodes_pos)
 		ant.set_journey(farm, dict_nodes_pos, num_steps)
