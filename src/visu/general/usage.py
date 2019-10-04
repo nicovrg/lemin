@@ -39,7 +39,7 @@ def usage():
     print("\t{}-[color]_links:{} change the links color".format(green, end))
     print("\t{}-[color]_background:{} change the background color".format(green, end))
     print
-    print("\t{}[colors]:{} {}red, {}orange, {}yellow, {}green, {}blue, {}darkblue, {}purple, {}pink".format(green, end, red, orange, yellow, green, cyan, blue, purple, pink))
+    print("\t{}{}[colors]:{} {}red, {}orange, {}yellow, {}green, {}blue, {}darkblue, {}purple, {}pink".format(bold, green, end, red, orange, yellow, green, cyan, blue, purple, pink))
     print
     print(" {}{}{}matplotlib test options:{}".format(underline, bold, cyan, end))
     print
@@ -48,6 +48,11 @@ def usage():
     print("\t{}-graph_one:{} draw first graph".format(green, end))
     print("\t{}-graph_two:{} draw second graph".format(green, end))
     print("\t{}-graph_three:{} draw third graph".format(green, end))
+    print("\t{}-graph_four:{} draw fourth graph".format(green, end))
+    print("\t{}-figure_one:{} draw first figure".format(green, end))
+    print("\t{}-figure_two:{} draw second figure".format(green, end))
+    print("\t{}-figure_three:{} draw third figure".format(green, end))
+    print("\t{}-image_one:{} draw first image".format(green, end))
     print("\t{}-draw_line:{} draw a line on the window (interactive)".format(green, end))
     print("\t{}-draw_rectangle:{} draw a rectangle on the window (interactive)".format(green, end))
     print
