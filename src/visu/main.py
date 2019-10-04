@@ -13,6 +13,11 @@ def usage():
     print "options:" 
     print "\t-farm: print the farm structure in terminal"
     print "\t-nodes_name: print rooms names in visu\n"
+    print "\t-dark_theme: change the theme settings\n"
+    print "\t-blue_theme: change the theme settings\n"
+    print "\t-fast: change the step settings from 5 to 2\n"
+    print "\t-slow: change the step settings from 5 to 1\n"
+    print "\t-repeat: change the repeat settings from False to True\n"
     print "compile:"
     print "\tmake && ./lem-in < maps/sujet.map4 | python src/visu/main.py"
 
@@ -40,18 +45,10 @@ main()
 #	    call animation (the function using update image as callback - see doc bellow)
 
 # options: 
-#   -help: print usage
-#   -theme:  
+#   -theme: add more theme
 #   -path: highlight paths
-#   -zoom: 
+#   -zoom: events
 
-# toggle names or not
-# do zoom
-# do path color
 # pause drawing function
-# print parse struct
-
-# focus start
-# focus end
 
 # make && ./lem-in < maps/sujet.map4 | python src/visu/main.py

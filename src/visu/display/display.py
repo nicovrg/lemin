@@ -6,27 +6,22 @@ import class_directory.class_ant as c_ant
 
 from draw_nodes import draw_nodes
 from draw_ants import create_ants, draw_ants
-from display_tools import create_labels
+from display_tools import create_theme, create_labels
 
-link_color = '#101010'
-text_color = '#EEEEEE'
-background_color = '#15202b'
-default_node_color = '#282828'
-
-def animation(graph, nodes_coord, steps, farm, list_ant, fig, args):
-	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, args), frames = len(farm.moves) * steps, interval = 200, repeat = False)
+def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
+	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
 	plt.show()
 
-def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, args):
+def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
 	node_size = 500
-	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color=link_color, width=2.0)
-	nodes = draw_nodes(graph, farm, nodes_coord, default_node_color, node_size, link_color)
+	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color = theme["link_color"], width = 2.0)
+	nodes = draw_nodes(graph, farm, nodes_coord, theme["default_node_color"], node_size, theme["link_color"])
 	draw_ants(list_ant, num)
 	labels_dict = create_labels(farm, args)
-	room_names = nx.draw_networkx_labels(graph, nodes_coord, font_size = 8, labels = labels_dict, font_family = 'sans-serif', font_color = text_color)
-	fig.set_facecolor(background_color)
-	plt.axis('off')
+	room_names = nx.draw_networkx_labels(graph, nodes_coord, font_size = 8, labels = labels_dict, font_family = "sans-serif", font_color = theme["text_color"])
+	fig.set_facecolor(theme["background_color"])
+	plt.axis("off")
 
 def create_graph(farm):
 	graph = nx.Graph()
@@ -36,12 +31,12 @@ def create_graph(farm):
 
 def display(farm, args):
 	"""principal display function"""
-	steps = 5
 	fig = plt.figure()
+	theme = create_theme(args)
 	graph = create_graph(farm)
-	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = 'weight', scale = 1.0)
-	list_ant = create_ants(farm, graph, nodes_coord, steps)
-	animation(graph, nodes_coord, steps, farm, list_ant, fig, args)
+	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
+	list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
+	animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
 
 # display:
 #	set the number of steps
