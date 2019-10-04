@@ -14,16 +14,10 @@ class ant_farm_class:
 
     def __repr__(self):
         """print object structure"""
-        return "ants:\t{}\nstart:\t{}\nend:\t{}\n\nrooms: {}\n\npos: {}\n\nlinks {}\n\nmoves {}\n\n".format(self.ants, self.start, self.end, self.rooms, self.pos, self.links, self.moves)
+        return "{} - ants:\t{}\n{} - start:\t{}\n{} - end:\t{}\n\n{} - rooms: \n{}\n\n{} - pos: \n{}\n\n{} - links \n{}\n\n{} - moves \n{}".format(type(self.ants), self.ants, type(self.start), self.start, type(self.end), self.end, type(self.rooms), self.rooms, type(self.pos), self.pos, type(self.links), self.links, type(self.moves), self.moves)
 
     def print_ant_farm(self):
         """print the object"""
-        print "Ants:\t", self.ants
-        print "Start:\t", self.start
-        print "End:\t", self.end
-        print "\nrooms:\n", self.rooms
-        print "\npos:\n", self.pos
-        print "\nlinks:\n", self.links
-        print "\nmoves:\n", self.moves
+        print "{} - ants:\t{}\n{} - start:\t{}\n{} - end:\t{}\n\n{} - rooms: \n{}\n\n{} - pos: \n{}\n\n{} - links \n{}\n\n{} - moves \n{}".format(type(self.ants), self.ants, type(self.start), self.start, type(self.end), self.end, type(self.rooms), self.rooms, type(self.pos), self.pos, type(self.links), self.links, type(self.moves), self.moves)
 
 # this object contain all data from our graph

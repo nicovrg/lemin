@@ -4,6 +4,12 @@ import sys
 import class_directory.class_ant_farm as c_farm
 from parse_tools import get_ants, get_start, get_end, get_room, get_link, get_move
 
+def check_args(args, option):
+    for arg in args:
+        if arg == option:
+            return True
+    return False
+
 def regex_compile():
     """pre compile all regex we need to parse map"""
     reg_dict = {}
@@ -28,7 +34,7 @@ def check_status(farm, status, line):
     status = None
     return status
 
-def parse():
+def parse(args):
     """parse lemin outpout to create, set and return the ant_farm object"""
     status = None
     farm = c_farm.ant_farm_class()
@@ -49,7 +55,8 @@ def parse():
             get_move(farm, line)
         elif (reg_dict["is_link"].search(line)):
             get_link(farm, line)
-    # farm.print_ant_farm()
+    if check_args(args, "-farm") == True:
+        farm.print_ant_farm()
     return farm
 
 # parse 
