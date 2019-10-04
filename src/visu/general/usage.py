@@ -20,9 +20,9 @@ def usage():
 
     print("{}{}{}compile:{}".format(underline, bold, cyan, end))
     print
-    print("\tmake && ./lem-in < maps/sujet.map4 | python src/visu/main.py -option")
+    print("\t{}{}make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -option{}".format(bold, blue, end))
     print
-    print("{}{}{}options visu:{}".format(underline, bold, cyan, end))
+    print("{}{}{}visu options:{}".format(underline, bold, cyan, end))
     print    
     print("\t{}press anykey:{} start without any option".format(green, end))
     print
@@ -41,7 +41,7 @@ def usage():
     print
     print("\t{}[color]:{} {}red, {}orange, {}yellow, {}green, {}blue, {}darkblue, {}purple, {}pink".format(green, end, red, orange, yellow, green, cyan, blue, purple, pink))
     print
-    print("{}{}{}options trip matplotlib:{}".format(underline, bold, cyan, end))
+    print("{}{}{}matplotlib test options:{}".format(underline, bold, cyan, end))
     print
     print("\t{}press anykey:{} start without any option".format(green, end))
     print

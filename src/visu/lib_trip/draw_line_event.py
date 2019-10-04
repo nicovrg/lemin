@@ -19,6 +19,7 @@ class LineBuilder:
 
 def draw_line():
     fig = plt.figure()
+    fig.set_facecolor("#101010")
     ax = fig.add_subplot(111)
     plt.axis("off")
     line, = ax.plot([0], [0])  # empty line
