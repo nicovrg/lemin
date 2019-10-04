@@ -7,7 +7,7 @@ import class_directory.class_ant as c_ant
 from draw_nodes import draw_nodes
 from draw_ants import create_ants, draw_ants
 from display_tools import create_labels
-from display_theme import create_theme
+from display_options import create_theme
 
 def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
@@ -17,7 +17,7 @@ def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, arg
 	fig.clear()
 	node_size = 500
 	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color = theme["link_color"], width = 2.0)
-	nodes = draw_nodes(graph, farm, nodes_coord, theme["default_node_color"], node_size, theme["link_color"])
+	nodes = draw_nodes(graph, farm, nodes_coord, theme["node_color"], node_size, theme["link_color"])
 	draw_ants(list_ant, num)
 	labels_dict = create_labels(farm, args)
 	room_names = nx.draw_networkx_labels(graph, nodes_coord, font_size = 8, labels = labels_dict, font_family = "sans-serif", font_color = theme["text_color"])
