@@ -49,7 +49,7 @@ def parse():
             get_move(farm, line)
         elif (reg_dict["is_link"].search(line)):
             get_link(farm, line)
-    farm.print_ant_farm()
+    # farm.print_ant_farm()
     return farm
 
 # parse 

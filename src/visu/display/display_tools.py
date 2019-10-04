@@ -10,3 +10,8 @@ def create_labels(farm):
 			room.lower()
 			labels_dict[room] = room
 	return labels_dict
+
+# create_labels:
+#	create a dictionary of keys farm.rooms and value farm.rooms value
+#	set farm.start and farm.end names to START and END for lisibility
+#	loop through farm.rooms to fill the dictionary of keys farm.rooms and value farm.rooms value

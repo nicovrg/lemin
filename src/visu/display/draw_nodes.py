@@ -1,10 +1,6 @@
 #!/usr/bin/python
 import networkx as nx
 
-def highlight_node(node, highlight_color):
-	node.set_color(highlight_color)
-	node.set_edgecolor(link_color)
-
 def draw_node(graph, nodes_coord, node_name, node_color, node_size, link_color):
 	node_list = []
 	node_list.append(node_name)
@@ -21,3 +17,11 @@ def draw_nodes(graph, farm, nodes_coord, node_color, node_size, link_color):
 			node = draw_node(graph, nodes_coord, name, node_color, node_size, link_color)
 		nodes[name] = node
 	return (nodes)
+
+# draw nodes:
+#	create a list of nodes
+#	for each room we call draw_node
+#	if the room is start / end we give different parameters to make it bigger
+
+# draw node:
+#	we call networkx method draw_networkx_nodes to draw the node

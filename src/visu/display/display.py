@@ -14,7 +14,6 @@ background_color = '#15202b'
 default_node_color = '#282828'
 
 def animation(graph, nodes_coord, steps, farm, list_ant, fig):
-	fig.clear()
 	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig), frames = len(farm.moves) * steps, interval = 200, repeat = False)
 	plt.show()
 
@@ -44,8 +43,6 @@ def display(farm):
 	list_ant = create_ants(farm, graph, nodes_coord, steps)
 	animation(graph, nodes_coord, steps, farm, list_ant, fig)
 
-
-
 # display:
 #	set the number of steps
 #	create the image container using plt.figure
@@ -58,4 +55,21 @@ def display(farm):
 #	create a nx object graph and add it nodes and edges from our farm object rooms and links
 
 # update_image:
-#	
+#	as update will be call to refresh the drawing, we need to clear our figure
+#	we choose the size of the node in px
+#	we drawn nodes
+#	we draw tunnels
+#	we draw ants
+#	we draw nodes names 
+#	we set the background color
+#	we unable the axis
+
+# animation:
+#	we call matplotlib.animation.FuncAnimation
+#	we give it all the parameters:
+#		fig: the image container
+#		update_image: the callback function that FuncAnimation will call again and again
+#		fargs: the list of args that update_image need
+#		frames: the number of frames to draw
+#		interval: the time in milisec before drawing each frame
+#		repeat: to set if we want to auto restart when all frames are drawn

@@ -43,4 +43,5 @@ def draw_three():
 	plt.ylabel('entry b')
 	plt.show()
 
-# https://matplotlib.org/tutorials/introductory/pyplot.html
+# funny drawings from https://matplotlib.org/tutorials/introductory/pyplot.html
+# nothing to do with our visu, just experimenting

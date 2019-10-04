@@ -36,12 +36,23 @@ def get_move(farm, line):
 		final.append(pre_final)
 	farm.moves.append(final)
 
+# get_ants:
+#	str -> number of ants 
 
-# - str -> number of ants 
-# - str -> start room
-# - str -> end room
-# - list -> rooms
-# - dict -> name of rooms as keys
-#     - tuple -> position of the room
-# - list of list -> links
-# - list of list -> moves 
+# get_start:
+#	str -> start room
+
+# get_end:
+#	str -> end room
+
+# get_rooms:
+#	list -> rooms
+#	dict -> name of rooms as keys
+#	  - tuple -> position of the room
+
+# get_links:
+#	list of list -> links
+
+# get_move:
+#	list of list -> moves 
+

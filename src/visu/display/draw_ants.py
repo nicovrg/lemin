@@ -22,3 +22,18 @@ def create_ants(farm, graph, nodes_coord, steps):
 		ant.color = ant_colors_list[num % 11]
 		list_ant.append(ant)
 	return (list_ant)
+
+# create ants:
+#	create a list of ant and a list of ant colors
+#	loop from ant 1 to number of ants + 1
+#	create an object ant
+#	call it's method to set it's path, location, journey and color
+#	append it to list of ants
+#	return list_ant
+
+# draw ants:
+#	loop through ant and check if ant number is less than the lenght of the ant journey
+#	call draw_ant
+
+# draw ant:
+#	call matplotlib plot method that will take x - y coordinates, color, type and size of the plot to draw	
