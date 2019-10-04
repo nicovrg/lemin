@@ -6,7 +6,8 @@ import class_directory.class_ant as c_ant
 
 from draw_nodes import draw_nodes
 from draw_ants import create_ants, draw_ants
-from display_tools import create_theme, create_labels
+from display_tools import create_labels
+from display_theme import create_theme
 
 def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
