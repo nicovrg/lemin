@@ -18,32 +18,32 @@ def usage():
     bold = "\x1b[1m"
     end = "\x1b[0m"
 
-    print("{}{}{}compile:{}".format(underline, bold, cyan, end))
+    print(" {}{}{}compile:{}".format(underline, bold, cyan, end))
     print
     print("\t{}{}make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -option{}".format(bold, blue, end))
     print
-    print("{}{}{}visu options:{}".format(underline, bold, cyan, end))
+    print(" {}{}{}visu options:{}".format(underline, bold, cyan, end))
     print    
-    print("\t{}press anykey:{} start without any option".format(green, end))
+    print("\t{}-visu:{} start visu, you can use options below".format(green, end))
     print
-    print("\t-{}help:{} print usage".format(green, end))
-    print("\t-{}nodes_name:{} print rooms names in visu".format(green, end))
-    print("\t-{}farm:{} print the farm structure in terminal".format(green, end))
-    print("\t-{}fast:{} change the step settings from 5 to 2".format(green, end))
-    print("\t-{}slow:{} change the step settings from 5 to 1".format(green, end))
-    print("\t-{}repeat:{} change the repeat settings from False to True".format(green, end))
+    print("\t{}-help:{} print usage".format(green, end))
+    print("\t{}-nodes_name:{} print rooms names in visu".format(green, end))
+    print("\t{}-farm:{} print the farm structure in terminal".format(green, end))
+    print("\t{}-fast:{} change the step settings from 5 to 2".format(green, end))
+    print("\t{}-slow:{} change the step settings from 5 to 1".format(green, end))
+    print("\t{}-repeat:{} change the repeat settings from False to True".format(green, end))
     print("\t{}-dark_theme:{} change the theme settings".format(green, end))
     print("\t{}-blue_theme:{} change the theme settings".format(green, end))
-    print("\t{}[color]_ant:{} change the ant color".format(green, end))
-    print("\t{}[color]_nodes{}: change the nodes color".format(green, end))
-    print("\t{}[color]_links:{} change the links color".format(green, end))
-    print("\t{}[color]_background:{} change the background color".format(green, end))
+    print("\t{}-[color]_ant:{} change the ant color".format(green, end))
+    print("\t{}-[color]_nodes{}: change the nodes color".format(green, end))
+    print("\t{}-[color]_links:{} change the links color".format(green, end))
+    print("\t{}-[color]_background:{} change the background color".format(green, end))
     print
-    print("\t{}[color]:{} {}red, {}orange, {}yellow, {}green, {}blue, {}darkblue, {}purple, {}pink".format(green, end, red, orange, yellow, green, cyan, blue, purple, pink))
+    print("\t{}[colors]:{} {}red, {}orange, {}yellow, {}green, {}blue, {}darkblue, {}purple, {}pink".format(green, end, red, orange, yellow, green, cyan, blue, purple, pink))
     print
-    print("{}{}{}matplotlib test options:{}".format(underline, bold, cyan, end))
+    print(" {}{}{}matplotlib test options:{}".format(underline, bold, cyan, end))
     print
-    print("\t{}press anykey:{} start without any option".format(green, end))
+    print("\t{}-lib_trip:{} start lib test for fun, you can use options below".format(green, end))
     print
     print("\t{}-graph_one:{} draw first graph".format(green, end))
     print("\t{}-graph_two:{} draw second graph".format(green, end))
