@@ -1,8 +1,10 @@
-toggle names or not
-do zoom
-do path color
-pause drawing function
-print parse struct
+Test leaks
+Test clang_static_analyser
+Test start-end
 
-focus start
-focus end
+Demander à qqun de casser le parseur
+
+Relire
+Readme + doc
+
+Allacrity?
