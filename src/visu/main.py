@@ -18,6 +18,9 @@ def usage():
     print "\t-fast: change the step settings from 5 to 2\n"
     print "\t-slow: change the step settings from 5 to 1\n"
     print "\t-repeat: change the repeat settings from False to True\n"
+    print "\t[color]_ant}: change the ant color\n"
+    print "\t[color]_background}: change the background color\n"
+    print "\t[color]: red, orange, yellow, green, blue, darkblue, purple, darkpurple, pink \n"
     print "compile:"
     print "\tmake && ./lem-in < maps/sujet.map4 | python src/visu/main.py"
 

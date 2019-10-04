@@ -28,7 +28,8 @@ def create_theme(args):
 		theme["text_color"] = "#EEEEEE"
 		theme["background_color"] = "#15202b"
 		theme["default_node_color"] = "#282828"
-		theme["ant_colors_list"] = ['#B61515', '#B66615', '#B6B615', '#66B615', '#15B615', '#15B666', '#15B6B6', '#1515B6', '#6615B6', '#B615B6', '#B61566']
+		theme["ant_colors_list"] = ['#15B6B6', '#15B6B6', '#1515B6', '#B615B6', '#6615B6', '#15B6B6', '#15B6B6', '#1515B6', '#B615B6', '#6615B6', '#6615B6']
+
 	if check_args(args, "-blue_theme") == True:
 		theme["steps"] = 5
 		theme["repeat"] = False
@@ -47,6 +48,47 @@ def create_theme(args):
 	# repeat
 	if check_args(args, "-repeat") == True:
 		theme["repeat"] = True
+
+	# ant color
+	if check_args(args, "-red_ant") == True:
+		theme["ant_colors_list"] = ['#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515', '#B61515']
+	elif check_args(args, "-orange_ant") == True:
+		theme["ant_colors_list"] = ['#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615', '#B66615']
+	elif check_args(args, "-yellow_ant") == True:
+		theme["ant_colors_list"] = ['#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615', '#B6B615']
+	elif check_args(args, "-green_ant") == True:
+		theme["ant_colors_list"] = ['#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615', '#15B615']
+	elif check_args(args, "-blue_ant") == True:
+		theme["ant_colors_list"] = ['#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6', '#15B6B6']
+	elif check_args(args, "-darkblue_ant") == True:
+		theme["ant_colors_list"] = ['#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6']
+	elif check_args(args, "-purple_ant") == True:
+		theme["ant_colors_list"] = ['#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6', '#B615B6']
+	elif check_args(args, "-darkpurple_ant") == True:
+		theme["ant_colors_list"] = ['#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6']
+	elif check_args(args, "-pink_ant") == True:
+		theme["ant_colors_list"] = ['#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566']
+
+	# background color
+	if check_args(args, "-red_background") == True:
+		theme["background_color"] = "#B61515"
+	elif check_args(args, "-orange_background") == True:
+		theme["background_color"] = "#B66615"
+	elif check_args(args, "-yellow_background") == True:
+		theme["background_color"] = "#B6B615"
+	elif check_args(args, "-green_background") == True:
+		theme["background_color"] = "#15B615"
+	elif check_args(args, "-blue_background") == True:
+		theme["background_color"] = "#15B6B6"
+	elif check_args(args, "-darkblue_background") == True:
+		theme["background_color"] = "#1515B6"
+	elif check_args(args, "-purple_background") == True:
+		theme["background_color"] = "#B615B6"
+	elif check_args(args, "-darkpurple_background") == True:
+		theme["background_color"] = "#6615B6"
+	elif check_args(args, "-pink_background") == True:
+		theme["background_color"] = "#B61566"
+
 	return theme
 
 # create_labels:
