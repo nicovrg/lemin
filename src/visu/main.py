@@ -1,23 +1,7 @@
 #!/usr/bin/python
 import sys
-
-import parse.parse as parse
-import display.display as display
-import general.usage as usage
-
-import lib_trip.image_one as image_one
-
-import lib_trip.graph_one as graph_one
-import lib_trip.graph_two as graph_two
-import lib_trip.graph_three as graph_three
-import lib_trip.graph_four as graph_four
-
-import lib_trip.figure_one as figure_one
-import lib_trip.figure_two as figure_two
-import lib_trip.figure_three as figure_three
-
-import lib_trip.draw_line_event as draw_line
-import lib_trip.draw_rectangle_event as draw_rectangle
+import dirty_import
+from dirty_import import parse, display, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle
 
 def check_args(args, option):
     for arg in args:
@@ -25,34 +9,12 @@ def check_args(args, option):
             return True
     return False
 
-def lib_trip(args):
-    if check_args(args, "-graph_one") == True:
-        graph_one.graph_one()
-    if check_args(args, "-graph_two") == True:
-        graph_two.graph_two()
-    if check_args(args, "-graph_three") == True:
-        graph_three.graph_three()
-    if check_args(args, "-graph_four") == True:
-        graph_four.graph_four()
-    if check_args(args, "-image_one") == True:
-        image_one.image_one()
-    if check_args(args, "-figure_one") == True:
-        figure_one.figure_one()
-    if check_args(args, "-figure_two") == True:
-        figure_two.figure_two()
-    if check_args(args, "-figure_three") == True:
-        figure_three.figure_three()
-    if check_args(args, "-draw_line") == True:
-        draw_line.draw_line()
-    if check_args(args, "-draw_rectangle") == True:
-        draw_line.draw_line()
-
 def visu_or_libtrip(args):
     test = args[1]
     if check_args(args, "-visu") == True:
         display.display(parse.parse(args), args)
     if check_args(args, "-lib_trip") == True:
-        lib_trip(args)
+        lib_trip.lib_trip(args)
     if check_args(args, "-help") == True:
         usage.usage()
 
@@ -62,7 +24,6 @@ def main():
         visu_or_libtrip(args)
     except IndexError:
         usage.usage()
-
 
 main()
 

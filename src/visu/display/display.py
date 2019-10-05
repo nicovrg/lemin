@@ -9,13 +9,29 @@ from draw_ants import create_ants, draw_ants
 from display_tools import create_labels
 from display_options import create_theme
 
+def onclick(event):
+    print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
+
+def on_key(event):
+	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
+	# return event.key
+	# if (event.key == "a"):
+	# 	animation.event_source.start()
+		# print "CA MARCHE!!!"
+		# theme["node_color"] = "#B61515"
+
 def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
-	ani = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
+	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
+	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
+	# if (on_key(e) == "a"):
+		# animation.event_source.stop()
+		# animation.event_source.start()
+	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
 	plt.show()
 
 def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
-	node_size = 500
+	node_size = theme["node_size"]
 	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color = theme["link_color"], width = 2.0)
 	nodes = draw_nodes(graph, farm, nodes_coord, theme["node_color"], node_size, theme["link_color"])
 	draw_ants(list_ant, num)

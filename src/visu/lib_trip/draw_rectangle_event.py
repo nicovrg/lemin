@@ -1,3 +1,7 @@
+#!/usr/bin/python
+import numpy as np
+import matplotlib.pyplot as plt
+
 class DraggableRectangle:
     def __init__(self, rect):
         self.rect = rect

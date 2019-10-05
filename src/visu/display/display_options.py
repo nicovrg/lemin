@@ -9,6 +9,7 @@ def check_args(args, option):
 def color_theme(theme, args):
 	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False:
 		theme["steps"] = 5
+		theme["node_size"] = 500
 		theme["repeat"] = False
 		theme["link_color"] = "#101010"
 		theme["text_color"] = "#EEEEEE"
@@ -18,6 +19,7 @@ def color_theme(theme, args):
 
 	if check_args(args, "-blue_theme") == True:
 		theme["steps"] = 5
+		theme["node_size"] = 500
 		theme["repeat"] = False
 		theme["link_color"] = "#549EDD"
 		theme["text_color"] = "#094DB9"
@@ -110,6 +112,24 @@ def color_ant(theme, args):
 		theme["ant_colors_list"] = ['#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566', '#B61566']
 	return theme
 
+def set_speed(theme, args):
+	if check_args(args, "-fast") == True:
+		theme["steps"] = 2
+	if check_args(args, "-slow") == True:
+		theme["steps"] = 10
+	return theme
+
+def set_repeat(theme, args):
+	if check_args(args, "-repeat") == True:
+		theme["repeat"] = True
+	return theme
+
+def set_node_size(theme, args):
+	if check_args(args, "-small_nodes") == True:
+		theme["node_size"] = 50
+	elif check_args(args, "-big_nodes") == True:
+		theme["node_size"] = 5000
+	return theme
 
 def create_theme(args):
 	theme = {}
@@ -118,14 +138,9 @@ def create_theme(args):
 	theme = color_nodes(theme, args)
 	theme = color_links(theme, args)
 	theme = color_ant(theme, args)
-
-	if check_args(args, "-fast") == True:
-		theme["steps"] = 2
-	if check_args(args, "-slow") == True:
-		theme["steps"] = 10
-	if check_args(args, "-repeat") == True:
-		theme["repeat"] = True
-
+	theme = set_speed(theme, args)
+	theme = set_repeat(theme, args)
+	theme = set_node_size(theme, args)
 	return theme
 
 # create_theme:
