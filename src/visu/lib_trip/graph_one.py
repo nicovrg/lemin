@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(num):
-    return np.exp(-num) * np.cos(2 * np.pi * num)
+	return np.exp(-num) * np.cos(2 * np.pi * num)
 
 def graph_one():
 	curve = np.arange(0.0, 5.0, 0.1)

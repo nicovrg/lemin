@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 def check_args(args, option):
-    for arg in args:
-        if arg == option:
-            return True
-    return False
+	for arg in args:
+		if arg == option:
+			return True
+	return False
 
 def create_labels(farm, args):
 	labels_dict = dict([(farm.start,"START"), (farm.end,"END")])

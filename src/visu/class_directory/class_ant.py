@@ -39,15 +39,15 @@ class ant_class():
 		self.journey = location_list
 
 # set_location:
-# 	the ant will start in start room so we must give it
+#	the ant will start in start room so we must give it
 #	the position nx.spring_layout gave to our start room
 
 # set_node_path:
-# 	we add to the ant object a list of room it must visit
+#	we add to the ant object a list of room it must visit
 #	we iterate on lemin output, if we see the ant we are creating link to any_room, we append that room to the path of our ant
-# 	turn represent a line of lemin output, and move is an element of that line
-# 	swap[0]: ant 
-# 	swap[1]: room
+#	turn represent a line of lemin output, and move is an element of that line
+#	swap[0]: ant 
+#	swap[1]: room
 #	chill_in_start is a trick variable:
 #	if there is no move from ant_num_x on this line, we add start to it's path
 #	so if ant_10 is moving after 5 turns, it will chill in start room during 5 turns!

@@ -1,15 +1,17 @@
 #!/usr/bin/python
+import sys
 
 def check_args(args, option):
-    for arg in args:
-        if arg == option:
-            return True
-    return False
+	for arg in args:
+		if arg == option:
+			return True
+	return False
 
 def color_theme(theme, args):
 	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False:
 		theme["steps"] = 5
 		theme["node_size"] = 500
+		theme["window_size"] = None
 		theme["repeat"] = False
 		theme["link_color"] = "#101010"
 		theme["text_color"] = "#EEEEEE"
@@ -20,6 +22,7 @@ def color_theme(theme, args):
 	if check_args(args, "-blue_theme") == True:
 		theme["steps"] = 5
 		theme["node_size"] = 500
+		theme["window_size"] = None
 		theme["repeat"] = False
 		theme["link_color"] = "#549EDD"
 		theme["text_color"] = "#094DB9"
@@ -132,10 +135,22 @@ def set_node_size(theme, args):
 	return theme
 
 def set_window_size(theme, args):
-	if check_args(args, "-small_window") == True:
-		theme["window_size"] = figsize = (12, 10)
-	elif check_args(args, "-big_window") == True:
-		theme["window_size"] = figsize = (12, 10)
+	flag = False
+	if check_args(args, "-window_size") == True:
+		for arg in args:
+			if (arg == "-window_size"):
+				flag = True
+		if flag == True:
+			line = arg.split(" ")
+		try:
+			x = (int)(line[0])
+			y = (int)(line[1])
+		except Exception:
+			print "default size taken, please choose a size between 0 and 20"
+			return theme
+		if (x >= 0 and x <= 20 and y >= 0 and y <= 20):
+			theme["window_size"] = (x, y)
+		print theme["window_size"]
 	return theme
 
 
@@ -151,6 +166,3 @@ def create_theme(args):
 	theme = set_node_size(theme, args)
 	theme = set_window_size(theme, args)
 	return theme
-
-# create_theme:
-#	set the colors according to the user theme choice
