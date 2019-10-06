@@ -12,9 +12,9 @@ from display_options import create_theme
 def onclick(event):
     print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
 
-def on_key(event, theme):
+def on_key(event):
 	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
-	return event.key, theme
+	return event.key
 	# if (event.key == "a"):
 	# 	animation.event_source.start()
 		# print "CA MARCHE!!!"
@@ -50,8 +50,11 @@ def create_graph(farm):
 
 def display(farm, args):
 	"""principal display function"""
-	fig = plt.figure()
 	theme = create_theme(args)
+	fig = plt.figure(figsize = (12, 10))
+	# fig = plt.figure(theme["figsize"] = (12, 10))
+	# mng = plt.get_current_fig_manager()
+	# mng.resize(*mng.window.maxsize())
 	graph = create_graph(farm)
 	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
 	list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)

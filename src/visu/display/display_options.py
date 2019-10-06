@@ -131,6 +131,14 @@ def set_node_size(theme, args):
 		theme["node_size"] = 5000
 	return theme
 
+def set_winow_size(theme, args):
+	if check_args(args, "-small_window") == True:
+		theme["window_size"] = 50
+	elif check_args(args, "-big_window") == True:
+		theme["window_size"] = 5000
+	return theme
+
+
 def create_theme(args):
 	theme = {}
 	theme = color_theme(theme, args)
@@ -141,6 +149,7 @@ def create_theme(args):
 	theme = set_speed(theme, args)
 	theme = set_repeat(theme, args)
 	theme = set_node_size(theme, args)
+	theme = set_window_size(theme, args)
 	return theme
 
 # create_theme:

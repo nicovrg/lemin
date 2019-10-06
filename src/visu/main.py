@@ -55,7 +55,6 @@ main()
 #   -theme: add more theme
 #   -path: highlight paths
 #   -zoom: events
-#   -node_size: 
 #   -background_image: 
 
 # pause drawing function
