@@ -12,9 +12,9 @@ from display_options import create_theme
 def onclick(event):
     print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
 
-def on_key(event, theme):
+def on_key(event):
 	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
-	return event.key, theme
+	return event.key
 	# if (event.key == "a"):
 	# 	animation.event_source.start()
 		# print "CA MARCHE!!!"
