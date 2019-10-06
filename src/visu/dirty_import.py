@@ -20,3 +20,5 @@ import lib_trip.figure_three as figure_three
 import lib_trip.print_event as print_event
 import lib_trip.draw_line_event as draw_line
 import lib_trip.draw_rectangle_event as draw_rectangle
+
+import lib_trip.zoom_test as zoom_test

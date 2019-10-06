@@ -62,3 +62,4 @@ main()
 
 # make && ./lem-in < maps/sujet.map4 | python src/visu/main.py
 # make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -blue_theme -darkblue_background -orange_ant -purple_nodes -red_links -help
+# make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -lib_trip -draw_subplots -graph_one -graph_two -graph_three -graph_four -figure_one -figure_two -print_event -draw_line -draw_rectangle -image_one

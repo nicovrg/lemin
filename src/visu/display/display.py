@@ -12,9 +12,9 @@ from display_options import create_theme
 def onclick(event):
     print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
 
-def on_key(event):
+def on_key(event, theme):
 	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
-	# return event.key
+	return event.key, theme
 	# if (event.key == "a"):
 	# 	animation.event_source.start()
 		# print "CA MARCHE!!!"
@@ -23,8 +23,10 @@ def on_key(event):
 def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
 	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
-	# if (on_key(e) == "a"):
-		# animation.event_source.stop()
+	test = on_key
+	if (test == "a"):
+		print "CA MARCHE!!!"
+		animation.event_source.stop()
 		# animation.event_source.start()
 	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
 	plt.show()

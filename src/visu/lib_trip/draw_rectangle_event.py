@@ -9,12 +9,9 @@ class DraggableRectangle:
 
     def connect(self):
         'connect to all the events we need'
-        self.cidpress = self.rect.figure.canvas.mpl_connect(
-            'button_press_event', self.on_press)
-        self.cidrelease = self.rect.figure.canvas.mpl_connect(
-            'button_release_event', self.on_release)
-        self.cidmotion = self.rect.figure.canvas.mpl_connect(
-            'motion_notify_event', self.on_motion)
+        self.cidpress = self.rect.figure.canvas.mpl_connect('button_press_event', self.on_press)
+        self.cidrelease = self.rect.figure.canvas.mpl_connect('button_release_event', self.on_release)
+        self.cidmotion = self.rect.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
 
     def on_press(self, event):
         'on button press we will see if the mouse is over us and store some data'
@@ -33,13 +30,11 @@ class DraggableRectangle:
         x0, y0, xpress, ypress = self.press
         dx = event.xdata - xpress
         dy = event.ydata - ypress
-        #print('x0=%f, xpress=%f, event.xdata=%f, dx=%f, x0+dx=%f' %
-        #      (x0, xpress, event.xdata, dx, x0+dx))
+        print('x0 = %f, xpress = %f, event.xdata = %f, dx = %f, x0+dx = %f' % (x0, xpress, event.xdata, dx, x0+dx))
         self.rect.set_x(x0+dx)
         self.rect.set_y(y0+dy)
 
         self.rect.figure.canvas.draw()
-
 
     def on_release(self, event):
         'on release we reset the press data'

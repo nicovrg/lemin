@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import figure_one, figure_three, figure_two, graph_four, graph_one, graph_three, graph_two, image_one, lib_trip, print_event, draw_line_event, draw_rectangle_event, draw_subplots
+import figure_one, figure_three, figure_two, graph_four, graph_one, graph_three, graph_two, image_one, lib_trip, print_event, draw_line_event, draw_rectangle_event, draw_subplots, zoom_test
 
 def check_args(args, option):
     for arg in args:
@@ -33,3 +33,5 @@ def lib_trip(args):
         draw_rectangle_event.draw_rectangle()
     if check_args(args, "-print_event") == True:
         print_event.print_event()
+    if check_args(args, "-zoom_test") == True:
+        zoom_test.zoom_test()
