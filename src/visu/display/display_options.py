@@ -133,9 +133,9 @@ def set_node_size(theme, args):
 
 def set_winow_size(theme, args):
 	if check_args(args, "-small_window") == True:
-		theme["window_size"] = 50
+		theme["window_size"] = figsize = (12, 10)
 	elif check_args(args, "-big_window") == True:
-		theme["window_size"] = 5000
+		theme["window_size"] = figsize = (12, 10)
 	return theme
 
 
