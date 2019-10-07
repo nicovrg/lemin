@@ -14,7 +14,7 @@ def draw_ants(list_ant, num):
 def create_ants(farm, graph, nodes_coord, steps, theme):
 	list_ant = []
 	for num in range (1, int(farm.ants) + 1):
-		ant = c_ant.ant_class(num)
+		ant = c_ant.Ant_class(num)
 		ant.set_node_path(farm)
 		ant.set_location(farm, nodes_coord)
 		ant.set_journey(farm, nodes_coord, theme["steps"])

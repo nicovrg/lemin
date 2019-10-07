@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import numpy as np
 
-class ant_class():
+class Ant_class():
 	"""this class represent an ant -- see doc belows"""
 
 	def __init__(self, num):

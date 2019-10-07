@@ -37,7 +37,7 @@ def check_status(farm, status, line):
 def parse(args):
 	"""parse lemin outpout to create, set and return the ant_farm object"""
 	status = None
-	farm = c_farm.ant_farm_class()
+	farm = c_farm.Ant_farm_class()
 	reg_dict = regex_compile()
 	
 	get_ants(farm)
