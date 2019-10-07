@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/19 03:51:49 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/07 10:01:18 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static	int		init_main(t_lemin *l)
 {
 	l->nb_ant = 0;
+	l->index_buff = 0;
 	l->temp_render = 0;
 	l->shortest_path = 0;
 	l->stock = 0;
