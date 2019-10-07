@@ -6,4 +6,6 @@ test 10 10
 end 2 3
 test-start
 test-test
+end-start
+start-test
 end-test

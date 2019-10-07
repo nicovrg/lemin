@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/07 11:51:44 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/07 14:43:28 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int		is_tubes(t_lemin *l, char *line, int *status)
 			hyphen++;
 		i++;
 	}
-	if (hyphen > 1 || (!ft_strncmp(buf, line, ft_strchr(line, '-') - line)
-	&& ft_strlen(buf) == (size_t)(ft_strchr(line, '-') - line))
-	|| !fill_tubes(l, line))
-		return (0);
+	if ((ft_strncmp(buf, line, ft_strchr(line, '-') - line)
+	|| ft_strlen(buf) != (size_t)(ft_strchr(line, '-') - line)))
+		if (hyphen > 1 || !fill_tubes(l, line))
+			return (0);
 	return (1);
 }
 
