@@ -15,5 +15,6 @@ def graph_three():
 	ax = Axes3D(fig)
 	ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.viridis)
 	plt.show()
+
 # funny drawings from https://matplotlib.org/tutorials/introductory/pyplot.html
 # nothing to do with our visu, just experimenting
