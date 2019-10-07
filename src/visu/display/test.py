@@ -1,34 +1,42 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as ani
 
-def find_nearest(array,value):
-    idx = (np.abs(array-value)).argmin()
-    return array[idx]
+fig, ax = plt.subplots()
+txt = fig.text(0.5,0.5,'0')
 
-# Simple mouse click function to store coordinates
-def onclick(event):
-    global ix, iy
-    ix, iy = event.xdata, event.ydata
+def update_time():
+    t = 0
+    t_max = 10
+    while t<t_max:
+        t += anim.direction
+        yield t
 
-    # print 'x = %d, y = %d'%(
-    #     ix, iy)
+def update_plot(t):
+    txt.set_text('%s'%t)
+    return txt
 
-    # assign global variable to access outside of function
-    global coords
-    coords.append((ix, iy))
+def on_press(event):
+    if event.key.isspace():
+        if anim.running:
+            anim.event_source.stop()
+            print "=========================="
+        else:
+            anim.event_source.start()
+        anim.running ^= True
+    elif event.key == 'left':
+        anim.direction = -1
+    elif event.key == 'right':
+        anim.direction = +1
 
-    # Disconnect after 2 clicks
-    if len(coords) == 2:
-        fig.canvas.mpl_disconnect(cid)
-        plt.close(1)
-    return
+    # Manually update the plot
+    if event.key in ['left','right']:
+        t = anim.frame_seq.next()
+        update_plot(t)
+        plt.draw()
 
-
-x = np.arange(-10,10)
-y = x**2
-
-fig = plt.figure(1)
-ax = fig.add_subplot(111)
-ax.plot(x,y)
-coords = []
+fig.canvas.mpl_connect('key_press_event', on_press)
+anim = ani.FuncAnimation(fig, update_plot, frames=update_time,
+                         interval=1000, repeat=True)
+anim.running = True
+anim.direction = +1
 plt.show()

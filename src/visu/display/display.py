@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import sys
 import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.animation as anim
@@ -9,31 +10,33 @@ from draw_ants import create_ants, draw_ants
 from display_tools import create_labels
 from display_options import create_theme
 
-# def onclick(event):
-# 	print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
+def onclick(event):
+	print("button: {}".format(event.button))
+	# anim.FuncAnimation.pause
+	# print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
 
 def on_key(event):
-	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
-	if (event.key == "a"):
-		print "CA MARCHE!!!"
-		animation.event_source.stop()
-		# animation.event_source.start()
-		# theme["node_color"] = "#B61515"
-	return event.key
+	print("key: {}".format(event.key))
+	# print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
+	# if (event.key == "a"):
+	#	print "CA MARCHE!!!"
+	#	animation.event_source.stop()
+	#	animation.event_source.start()
+	#	theme["node_color"] = "#B61515"
+	# return event.key
 
-def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
-	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
-	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
-	test = on_key
-	if (test == "a"):
-		print "CA MARCHE!!!"
-		animation.event_source.stop()
-		# animation.event_source.start()
-	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 200, repeat = theme["repeat"])
+def call_animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
+	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 1, repeat = theme["repeat"])
 	plt.show()
+	# if (test == "a"):
+	# 	print "CA MARCHE!!!"
+	# 	animation.event_source.stop()
+		# animation.event_source.start()
 
 def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
+	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
+	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
 	node_size = theme["node_size"]
 	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edge_color = theme["link_color"], width = 2.0)
 	nodes = draw_nodes(graph, farm, nodes_coord, theme["node_color"], node_size, theme["link_color"])
@@ -56,7 +59,8 @@ def display(farm, args):
 	graph = create_graph(farm)
 	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
 	list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
-	animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
+	call_animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
+
 
 # display:
 #	set the number of steps

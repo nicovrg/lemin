@@ -16,7 +16,6 @@ class DraggableRectangle:
 	def on_press(self, event):
 		'on button press we will see if the mouse is over us and store some data'
 		if event.inaxes != self.rect.axes: return
-
 		contains, attrd = self.rect.contains(event)
 		if not contains: return
 		print('event contains', self.rect.xy)
@@ -33,7 +32,6 @@ class DraggableRectangle:
 		print('x0 = %f, xpress = %f, event.xdata = %f, dx = %f, x0+dx = %f' % (x0, xpress, event.xdata, dx, x0+dx))
 		self.rect.set_x(x0+dx)
 		self.rect.set_y(y0+dy)
-
 		self.rect.figure.canvas.draw()
 
 	def on_release(self, event):

@@ -27,6 +27,18 @@ def main():
 
 main()
 
+# theme = create_theme(args)
+# fig = plt.figure(figsize = theme["window_size"])
+# graph = create_graph(farm)
+# nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
+# list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
+# animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
+
+
+# def onclick(event):
+# 	print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
+
+
 # main
 #	we get the command line arguments
 

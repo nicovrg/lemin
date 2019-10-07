@@ -9,7 +9,7 @@ def check_args(args, option):
 
 def color_theme(theme, args):
 	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False:
-		theme["steps"] = 5
+		theme["steps"] = 15
 		theme["node_size"] = 500
 		theme["window_size"] = None
 		theme["repeat"] = False
@@ -20,7 +20,7 @@ def color_theme(theme, args):
 		theme["ant_colors_list"] = ['#15B6B6', '#15B6B6', '#1515B6', '#B615B6', '#6615B6', '#15B6B6', '#15B6B6', '#1515B6', '#B615B6', '#6615B6', '#6615B6']
 
 	if check_args(args, "-blue_theme") == True:
-		theme["steps"] = 5
+		theme["steps"] = 15
 		theme["node_size"] = 500
 		theme["window_size"] = None
 		theme["repeat"] = False
