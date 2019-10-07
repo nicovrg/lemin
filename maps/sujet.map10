@@ -1,7 +1,9 @@
 8
 ##start
 start 0 1
+test 10 10
 ##end
 end 2 3
-start-end
-end-start
+test-start
+test-test
+end-test

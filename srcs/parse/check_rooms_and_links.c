@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:42:42 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 22:50:39 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/07 11:51:44 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		is_tubes(t_lemin *l, char *line, int *status)
 {
 	int		i;
 	int		hyphen;
+	char	*buf;
 
 	i = 0;
 	hyphen = 0;
@@ -56,13 +57,16 @@ int		is_tubes(t_lemin *l, char *line, int *status)
 		return (0);
 	if (!ft_strchr(line, '-'))
 		return (0);
+	buf = ft_strchr(line, '-') + 1;
 	while (line && line[i])
 	{
 		if (line[i] == '-')
 			hyphen++;
 		i++;
 	}
-	if (hyphen > 1 || !fill_tubes(l, line))
+	if (hyphen > 1 || (!ft_strncmp(buf, line, ft_strchr(line, '-') - line)
+	&& ft_strlen(buf) == (size_t)(ft_strchr(line, '-') - line))
+	|| !fill_tubes(l, line))
 		return (0);
 	return (1);
 }
