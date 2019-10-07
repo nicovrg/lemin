@@ -9,16 +9,17 @@ from draw_ants import create_ants, draw_ants
 from display_tools import create_labels
 from display_options import create_theme
 
-def onclick(event):
-	print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
+# def onclick(event):
+# 	print("button_press_event: button = {}, x1 = {}, y1 = {}, x2 = {}, y2 = {}".format(event.button, event.x, event.y, event.xdata, event.ydata))
 
 def on_key(event):
 	print("key_press_event: key = {}, x = {}, y = {}".format(event.key, event.xdata, event.ydata))
-	return event.key
-	# if (event.key == "a"):
-	# 	animation.event_source.start()
-		# print "CA MARCHE!!!"
+	if (event.key == "a"):
+		print "CA MARCHE!!!"
+		animation.event_source.stop()
+		# animation.event_source.start()
 		# theme["node_color"] = "#B61515"
+	return event.key
 
 def animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
