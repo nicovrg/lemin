@@ -2,14 +2,14 @@
 import matplotlib.pyplot as plt
 import class_directory.class_ant as c_ant
 
-def draw_ant(position, color):
-	ant = plt.plot([position[0]], [position[1]], color = color, marker = '.', markersize = 20.0)
+def draw_ant(position, color, theme):
+	ant = plt.plot([position[0]], [position[1]], color = color, marker = '.', markersize = theme["markersize"])
 	return (ant)
 
-def draw_ants(list_ant, num):
+def draw_ants(list_ant, num, theme):
 	for ant in list_ant:
 		if num < len(ant.journey):
-			draw_ant(ant.journey[num], ant.color)
+			draw_ant(ant.journey[num], ant.color, theme)
 
 def create_ants(farm, graph, nodes_coord, steps, theme):
 	list_ant = []

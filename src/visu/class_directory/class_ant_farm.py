@@ -4,13 +4,14 @@ class Ant_farm_class:
 
 	def __init__(self):
 		"""init a the data to none and empty"""
-		self.ants	= None
-		self.start	= None
-		self.end	= None
-		self.pos	= {}
-		self.rooms	= []
-		self.links	= []
-		self.moves	= []
+		self.ants		= None
+		self.start		= None
+		self.end		= None
+		self.pos		= {}
+		self.rooms		= []
+		self.links		= []
+		self.used_links	= []
+		self.moves		= []
 
 	def __repr__(self):
 		"""print object structure"""

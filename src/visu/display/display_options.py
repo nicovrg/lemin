@@ -7,10 +7,24 @@ def check_args(args, option):
 			return True
 	return False
 
-def color_theme(theme, args):
+def check_graph_size(farm, theme):
+	if (len(farm.rooms)) > 1 and (len(farm.rooms)) < 100:
+		theme["markersize"] = 20.0
+		theme["node_size"] = 500
+		theme["window_size"] = (4, 3)
+	elif (len(farm.rooms)) > 100 and (len(farm.rooms)) < 1000:
+		theme["markersize"] = 5.0
+		theme["node_size"] = 50
+		theme["window_size"] = (16, 12)
+	elif (len(farm.rooms)) > 1000:
+		theme["markersize"] = 5.0
+		theme["node_size"] = 5
+		theme["window_size"] = (18, 16)
+	return theme
+
+def color_theme(theme, args, farm):
 	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False:
 		theme["steps"] = 15
-		theme["node_size"] = 500
 		theme["window_size"] = None
 		theme["repeat"] = False
 		theme["link_color"] = "#101010"
@@ -21,7 +35,6 @@ def color_theme(theme, args):
 
 	if check_args(args, "-blue_theme") == True:
 		theme["steps"] = 15
-		theme["node_size"] = 500
 		theme["window_size"] = None
 		theme["repeat"] = False
 		theme["link_color"] = "#549EDD"
@@ -127,11 +140,13 @@ def set_repeat(theme, args):
 		theme["repeat"] = True
 	return theme
 
-def set_node_size(theme, args):
-	if check_args(args, "-small_nodes") == True:
+def set_size(theme, args):
+	if check_args(args, "-small") == True:
 		theme["node_size"] = 50
-	elif check_args(args, "-big_nodes") == True:
+		theme["markersize"] = 5.0
+	elif check_args(args, "-big") == True:
 		theme["node_size"] = 5000
+		theme["markersize"] = 50.0
 	return theme
 
 def set_window_size(theme, args):
@@ -150,19 +165,18 @@ def set_window_size(theme, args):
 			return theme
 		if (x >= 0 and x <= 20 and y >= 0 and y <= 20):
 			theme["window_size"] = (x, y)
-		print theme["window_size"]
 	return theme
 
-
-def create_theme(args):
+def create_theme(args, farm):
 	theme = {}
-	theme = color_theme(theme, args)
+	theme = color_theme(theme, args, farm)
+	theme = check_graph_size(farm, theme)
 	theme = color_background(theme, args)
 	theme = color_nodes(theme, args)
 	theme = color_links(theme, args)
 	theme = color_ant(theme, args)
 	theme = set_speed(theme, args)
 	theme = set_repeat(theme, args)
-	theme = set_node_size(theme, args)
+	theme = set_size(theme, args)
 	theme = set_window_size(theme, args)
 	return theme
