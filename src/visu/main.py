@@ -53,7 +53,7 @@ try:
 		animation = anim.FuncAnimation(fig, callback_draw, fargs = (graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args), frames = len(farm.moves) * theme["steps"], interval = 1, repeat = theme["repeat"])
 		plt.show()
 	if check_args(args, "-lib_trip") == True:
-		lib_trip.lib_trip(args)
+		lib_trip(args)
 	if check_args(args, "-help") == True:
 		usage()
 except IndexError:
