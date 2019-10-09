@@ -5,28 +5,28 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as anim
 import class_directory.class_ant as c_ant
 
-from import_dirty import parse, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle, draw_nodes, create_ants, draw_ants, create_graph, create_labels, create_theme, set_links_colors, check_args
+from import_dirty import *
 
-def onclick(event):
+def on_click(event):
 	print("button: {}".format(event.button))
 
 def on_key(event):
-	print("key: {}".format(event.key))
-	nonlocal anim_running
+	print("key: {}\tevent source: {}".format(event.key, animation.event_source))
+	global anim_running
 	if (event.key == "p"):
-		if anim_running == True:
+		if anim_running:
 			animation.event_source.stop()
 			anim_running = False
-		elif anim_running == False:
+		else:
 			animation.event_source.start()
 			anim_running = True
-	print flag
-
+	if (event.key == "o"):
+		theme["background_color"] = "#15B6B6"
 
 def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
 	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
-	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
+	id_mouse = fig.canvas.mpl_connect("button_press_event", on_click)
 	node_size = theme["node_size"]
 	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edgelist = farm.links, edge_color = theme["link_color"], width = 2.0)
 	for path in farm.used_links:

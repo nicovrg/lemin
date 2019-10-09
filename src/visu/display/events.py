@@ -1,26 +1,17 @@
 # #!/usr/bin/python
-# import sys
-# import numpy as np
 # import matplotlib.pyplot as plt
+# import matplotlib.animation as anim
 
+# def on_click(event):
+# 	print("button: {}".format(event.button))
 
-# def press(event):
-#	print('press', event.key)
-#	sys.stdout.flush()
-#	if event.key == 'x':
-#		visible = xl.get_visible()
-#		xl.set_visible(not visible)
-#		fig.canvas.draw()
-
-# # Fixing random state for reproducibility
-# np.random.seed(19680801)
-
-
-# fig, ax = plt.subplots()
-
-# fig.canvas.mpl_connect('key_press_event', press)
-
-# ax.plot(np.random.rand(12), np.random.rand(12), 'go')
-# xl = ax.set_xlabel('easy come, easy go')
-# ax.set_title('Press a key')
-# plt.show()
+# def on_key(event):
+# 	print("key: {}\tevent source: {}".format(event.key, animation.event_source))
+# 	global anim_running
+# 	if (event.key == "p"):
+# 		if anim_running:
+# 			animation.event_source.stop()
+# 			anim_running = False
+# 		else:
+# 			animation.event_source.start()
+# 			anim_running = True
