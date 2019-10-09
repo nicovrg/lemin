@@ -22,3 +22,8 @@ import lib_trip.draw_line_event as draw_line
 import lib_trip.draw_rectangle_event as draw_rectangle
 
 import lib_trip.zoom_test as zoom_test
+
+from display.draw_nodes import draw_nodes
+from display.draw_ants import create_ants, draw_ants
+from display.display_tools import create_labels
+from display.display_options import create_theme

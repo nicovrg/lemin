@@ -57,9 +57,9 @@ def on_key(event):
 	if (event.key == "a"):
 		animation.event_source.stop()
 
-def call_animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
-	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 1, repeat = theme["repeat"])
-	plt.show()
+# def call_animation(graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
+# 	animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, steps, farm, list_ant, fig, theme, args), frames = len(farm.moves) * steps, interval = 1, repeat = theme["repeat"])
+# 	plt.show()
 
 def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
@@ -82,15 +82,15 @@ def create_graph(farm):
 	graph.add_edges_from(farm.links)
 	return graph
 
-def display(farm, args):
-	"""principal display function"""
-	theme = create_theme(args, farm)
-	fig = plt.figure(figsize = theme["window_size"])
-	graph = create_graph(farm)
-	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
-	list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
-	set_links_colors(farm, list_ant)
-	call_animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
+# def display(farm, args):
+# 	"""principal display function"""
+# 	theme = create_theme(args, farm)
+# 	fig = plt.figure(figsize = theme["window_size"])
+# 	graph = create_graph(farm)
+# 	nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
+# 	list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
+# 	set_links_colors(farm, list_ant)
+# 	call_animation(graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args)
 
 # display:
 #	set the number of steps
