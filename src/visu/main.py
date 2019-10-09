@@ -6,46 +6,7 @@ import matplotlib.animation as anim
 import class_directory.class_ant as c_ant
 
 import dirty_import
-from dirty_import import parse, display, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle, draw_nodes, create_ants, draw_ants, create_labels, create_theme
-
-def convert_path_to_links(paths):
-	links = []
-	all_links = []
-	for path in paths:
-		for node, next in zip(path, path[1:]):
-			link = [node, next]
-			links.append(link)
-		all_links.append(links)
-		links = []
-	return (all_links)
-
-def get_ants(farm):
-	ants = []
-	for move in farm.moves[0]:
-		ants.append(move[0])
-	return (ants)
-
-def get_paths(farm, list_ant, ants):
-	paths = []
-	for ant in ants:
-		paths.append(list_ant[int(ant) - 1].node_path)
-	return (paths)
-
-def remove_links_in_original_list(farm):
-	for path in farm.used_links:
-		for link in path:
-			if link in farm.links:
-				farm.links.remove(link)
-			link = list(reversed(link))
-			if link in farm.links:
-				farm.links.remove(link)
-
-def set_links_colors(farm, list_ant):
-	nb_path = len(farm.moves[0])
-	ants = get_ants(farm)
-	paths = get_paths(farm, list_ant, ants)
-	farm.used_links = convert_path_to_links(paths)
-	remove_links_in_original_list(farm)
+from dirty_import import parse, display, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle, draw_nodes, create_ants, draw_ants, create_labels, create_theme, set_links_colors
 
 def onclick(event):
 	print("button: {}".format(event.button))
@@ -54,7 +15,6 @@ def on_key(event):
 	print("key: {}".format(event.key))
 	if (event.key == "a"):
 		animation.event_source.stop()
-
 
 def check_args(args, option):
 	for arg in args:

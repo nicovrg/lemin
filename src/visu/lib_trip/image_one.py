@@ -8,7 +8,7 @@ from matplotlib.patches import PathPatch
 	
 def image_one():
 	with cbook.get_sample_data('ada.png') as image_file:
-	    image = plt.imread(image_file)
+		image = plt.imread(image_file)
 	fig, ax = plt.subplots()
 	ax.imshow(image)
 	ax.axis('off')
