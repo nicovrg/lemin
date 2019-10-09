@@ -1,11 +1,6 @@
 #!/usr/bin/python
 import sys
-
-def check_args(args, option):
-	for arg in args:
-		if arg == option:
-			return True
-	return False
+from general.check_args import check_args
 
 def check_graph_size(farm, theme):
 	if (len(farm.rooms)) > 1 and (len(farm.rooms)) < 100:

@@ -30,8 +30,8 @@ def usage():
 	print("\t{}-farm:{} print the farm structure in terminal".format(green, end))
 	print("\t{}-fast:{} change the step settings from 5 to 2".format(green, end))
 	print("\t{}-slow:{} change the step settings from 5 to 1".format(green, end))
-	# print("\t{}-small:{} change the node size setting from 50 to 5000 and ant size from ".format(green, end))
-	# print("\t{}-big:{} change the node size setting from 500 to 5000".format(green, end))
+	print("\t{}-small:{} change the node size setting to 50 ant size to 5".format(green, end))
+	print("\t{}-big:{} change the node size setting to 5000 ant size to 50".format(green, end))
 	print("\t{}-repeat:{} change the repeat settings from False to True".format(green, end))
 	print("\t{}-nodes_name:{} print rooms names in visu".format(green, end))
 	print("\t{}-window-size:{} next argument must be size 'x y' or it will launch with basic settings".format(green, end))
@@ -61,7 +61,6 @@ def usage():
 	print("\t{}-draw_rectangle:{} draw a rectangle on the window (interactive)".format(green, end))
 	print
 	print("  {}{}{}events:{}".format(underline, bold, cyan, end))
-	print   
+	print
 	print("\t{}press key p:{} play/pause animation".format(green, end))
 	print
-  

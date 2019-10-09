@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as anim
 import class_directory.class_ant as c_ant
 
-import dirty_import
-from dirty_import import parse, display, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle, draw_nodes, create_ants, draw_ants, create_labels, create_theme, set_links_colors
+from import_dirty import parse, usage, lib_trip, image_one, draw_subplots, graph_one, graph_two, graph_three, graph_four, figure_one, figure_two, figure_three, print_event, draw_line, draw_rectangle, draw_nodes, create_ants, draw_ants, create_graph, create_labels, create_theme, set_links_colors, check_args
 
 def onclick(event):
 	print("button: {}".format(event.button))
@@ -16,13 +15,7 @@ def on_key(event):
 	if (event.key == "a"):
 		animation.event_source.stop()
 
-def check_args(args, option):
-	for arg in args:
-		if arg == option:
-			return True
-	return False
-
-def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
+def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
 	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
 	id_mouse = fig.canvas.mpl_connect("button_press_event", onclick)
@@ -37,25 +30,18 @@ def update_image(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, arg
 	fig.set_facecolor(theme["background_color"])
 	plt.axis("off")
 
-def create_graph(farm):
-	graph = nx.Graph()
-	graph.add_nodes_from(farm.rooms)
-	graph.add_edges_from(farm.links)
-	return graph
-
-
 args = sys.argv
 try:
 	test = args[1]
 	if check_args(args, "-visu") == True:
-		farm = parse.parse(args)
+		farm = parse(args)
 		theme = create_theme(args, farm)
 		graph = create_graph(farm)
 		nodes_coord = nx.spring_layout(graph, dim = 2, k = None, pos = None, fixed = None, iterations = 50, weight = "weight", scale = 1.0)
 		list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
 		set_links_colors(farm, list_ant)
 		fig = plt.figure(figsize = theme["window_size"])
-		animation = anim.FuncAnimation(fig, update_image, fargs = (graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args), frames = len(farm.moves) * theme["steps"], interval = 1, repeat = theme["repeat"])
+		animation = anim.FuncAnimation(fig, callback_draw, fargs = (graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args), frames = len(farm.moves) * theme["steps"], interval = 1, repeat = theme["repeat"])
 		plt.show()
 	if check_args(args, "-lib_trip") == True:
 		lib_trip.lib_trip(args)
