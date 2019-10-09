@@ -9,8 +9,8 @@ from display.display_tools import create_labels
 from display.display_options import create_theme
 from display.highlight_path import set_links_colors
 
-from general.check_args import check_args
 from general.usage import usage
+from general.check_args import check_args
 
 from lib_trip.lib_trip import lib_trip
 from lib_trip.image_one import image_one

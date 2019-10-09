@@ -12,8 +12,16 @@ def onclick(event):
 
 def on_key(event):
 	print("key: {}".format(event.key))
-	if (event.key == "a"):
-		animation.event_source.stop()
+	nonlocal anim_running
+	if (event.key == "p"):
+		if anim_running == True:
+			animation.event_source.stop()
+			anim_running = False
+		elif anim_running == False:
+			animation.event_source.start()
+			anim_running = True
+	print flag
+
 
 def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
@@ -41,14 +49,15 @@ try:
 		list_ant = create_ants(farm, graph, nodes_coord, theme["steps"], theme)
 		set_links_colors(farm, list_ant)
 		fig = plt.figure(figsize = theme["window_size"])
+		anim_running = True
 		animation = anim.FuncAnimation(fig, callback_draw, fargs = (graph, nodes_coord, theme["steps"], farm, list_ant, fig, theme, args), frames = len(farm.moves) * theme["steps"], interval = 1, repeat = theme["repeat"])
 		plt.show()
 	if check_args(args, "-lib_trip") == True:
 		lib_trip.lib_trip(args)
 	if check_args(args, "-help") == True:
-		usage.usage()
+		usage()
 except IndexError:
-	usage.usage()
+	usage()
 
 
 # theme = create_theme(args)
