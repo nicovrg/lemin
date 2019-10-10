@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_rooms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 23:10:40 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/09 10:13:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				fill_rooms(t_lemin *l, t_parse *parse)
 		return (0);
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
 		return (0);
+		
 	init_rooms_values(&new, parse);
 	if (!(new->name = ft_strsub(parse->line, 0,
 	ft_strchr(parse->line, ' ') - parse->line)))
