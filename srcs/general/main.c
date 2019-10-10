@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/07 11:33:53 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/10 14:31:37 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static	int		init_main(t_lemin *l)
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
-	l->tab = NULL;
+	if (!(l->tab = (char **)ft_memalloc(sizeof(char *) * (30000))))
+		return (0);
 	ft_bzero(&(l->buff), BUFF_SIZE);
 	return (1);
 }
@@ -35,7 +36,8 @@ int				main(void)
 {
 	t_lemin lem;
 
-	init_main(&lem);
+	if (!init_main(&lem))
+		return (free_all(1, &lem));
 	if (!check_lines(&lem))
 		return (free_all(1, &lem));
 	if (!check_map_validity(&lem))

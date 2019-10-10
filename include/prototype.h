@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/10/07 12:25:05 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/10 14:50:32 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int			print_ant(int ant, char *room_name, t_lemin *l);
 int			swap_ants(t_lemin *l);
 int			move_from_start(t_lemin *l);
 int			still_ants_in_path(t_lemin *l);
-
 
 int			addchar_buff(int print, char char_to_append, t_lemin *l);
 int			addnbr_buff(int nb_to_append, t_lemin *l);

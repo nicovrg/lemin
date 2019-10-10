@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 01:56:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 22:38:52 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/10 14:15:55 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,7 @@ int				free_all(int var, t_lemin *l)
 		ft_strdel(&((l->tab)[i]));
 		i++;
 	}
-	if (l->tab)
-		(free(l->tab));
+	free(l->tab);
 	if (var == 1)
 		ft_putendl("ERROR");
 	return (0);
