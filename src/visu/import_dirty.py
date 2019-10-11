@@ -7,7 +7,6 @@ from display.create_graph import create_graph
 from display.display_tools import create_labels
 from display.display_options import create_theme
 from display.highlight_path import set_links_colors
-# from display.events import on_click, on_key
 
 from general.usage import usage
 from general.check_args import check_args
