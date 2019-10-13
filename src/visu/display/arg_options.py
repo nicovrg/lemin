@@ -24,7 +24,7 @@ def color_theme(theme, args, farm):
 		theme["repeat"] = False
 		theme["link_color"] = "#101010"
 		theme["text_color"] = "#EEEEEE"
-		theme["background_color"] = "#15202b"
+		theme["background_color"] = "#15202B"
 		theme["node_color"] = "#282828"
 		theme["ant_colors_list"] = ['#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6']
 	if check_args(args, "-blue_theme") == True:

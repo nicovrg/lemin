@@ -5,7 +5,8 @@ from display.draw_nodes import draw_nodes
 from display.draw_ants import create_ants, draw_ants
 from display.create_graph import create_graph
 from display.display_tools import create_labels
-from display.display_options import create_theme
+from display.arg_options import create_theme
+from display.event_options import *
 from display.highlight_path import set_links_colors
 
 from general.usage import usage

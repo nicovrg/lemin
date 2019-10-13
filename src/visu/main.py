@@ -12,16 +12,12 @@ def on_click(event):
 
 def on_key(event):
 	print("key: {}\tevent source: {}".format(event.key, animation.event_source))
+	global theme
 	global anim_running
 	if (event.key == "p"):
-		if anim_running:
-			animation.event_source.stop()
-			anim_running = False
-		else:
-			animation.event_source.start()
-			anim_running = True
+		anim_running = play_pause(animation, anim_running)
 	if (event.key == "o"):
-		theme["background_color"] = "#15B6B6"
+		theme = switch_background(theme)
 
 def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
