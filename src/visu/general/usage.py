@@ -18,9 +18,23 @@ def usage():
 	bold = "\x1b[1m"
 	end = "\x1b[0m"
 
+	print
 	print("  {}{}{}compile:{}".format(underline, bold, cyan, end))
 	print
 	print("\t{}{}make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -option{}".format(bold, blue, end))
+	print
+	print("  {}{}{}events:{}".format(underline, bold, cyan, end))
+	print
+	print("\t{}press key p:{} play/pause animation".format(green, end))
+	print("\t{}press key z:{} increment node size".format(green, end))
+	print("\t{}press key x:{} decrement node size".format(green, end))
+	print("\t{}press key c:{} increment ant size".format(green, end))
+	print("\t{}press key v:{} decrement ant size".format(green, end))
+	print
+	print("\t{}press key d:{} switch background color".format(green, end))
+	print("\t{}press key f:{} switch node color".format(green, end))
+	print("\t{}press key g:{} switch link color".format(green, end))
+	print("\t{}press key h:{} reset theme".format(green, end))
 	print
 	print("  {}{}{}visu options:{}".format(underline, bold, cyan, end))
 	print
@@ -59,8 +73,4 @@ def usage():
 	print("\t{}-draw_subplots:{} draw 4 subplots on the window".format(green, end))
 	print("\t{}-draw_line:{} draw a line on the window (interactive)".format(green, end))
 	print("\t{}-draw_rectangle:{} draw a rectangle on the window (interactive)".format(green, end))
-	print
-	print("  {}{}{}events:{}".format(underline, bold, cyan, end))
-	print
-	print("\t{}press key p:{} play/pause animation".format(green, end))
 	print

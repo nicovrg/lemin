@@ -18,7 +18,7 @@ def check_graph_size(farm, theme):
 	return theme
 
 def color_theme(theme, args, farm):
-	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False:
+	if check_args(args, "-dark_theme") == True or check_args(args, "-dark_theme") == False or flag == True:
 		theme["steps"] = 15
 		theme["window_size"] = None
 		theme["repeat"] = False
@@ -27,7 +27,7 @@ def color_theme(theme, args, farm):
 		theme["background_color"] = "#15202B"
 		theme["node_color"] = "#282828"
 		theme["ant_colors_list"] = ['#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6']
-	if check_args(args, "-blue_theme") == True:
+	if check_args(args, "-blue_theme") == True and flag == False:
 		theme["steps"] = 15
 		theme["window_size"] = None
 		theme["repeat"] = False

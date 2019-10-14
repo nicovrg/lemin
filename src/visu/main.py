@@ -16,8 +16,22 @@ def on_key(event):
 	global anim_running
 	if (event.key == "p"):
 		anim_running = play_pause(animation, anim_running)
-	if (event.key == "o"):
-		theme = switch_background(theme)
+	elif (event.key == "z"):
+		up_node_size(theme)
+	elif (event.key == "x"):
+		down_node_size(theme)
+	elif (event.key == "c"):
+		up_ant_size(theme)
+	elif (event.key == "v"):
+		down_ant_size(theme)
+	elif (event.key == "d"):
+		switch_background_color(theme)
+	elif (event.key == "f"):
+		switch_node_color(theme)
+	elif (event.key == "g"):
+		switch_link_color(theme)
+	elif (event.key == "h"):
+		reset_theme(theme)
 
 def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
