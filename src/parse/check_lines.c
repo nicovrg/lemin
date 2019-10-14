@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 02:17:19 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/10 14:49:27 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/15 00:19:55 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int			check_lines(t_lemin *l)
 	{
 		if (!line[0])
 			return (error_while_gnl(&line, ERR_PARSE_2));
-		if (i >= 30000)
+		if (i >= 20000)
 			if (!(l->tab = ft_realloctab(&(l->tab))))
 				return (0);
 		if (!((l->tab)[i] = ft_strdup(line)))

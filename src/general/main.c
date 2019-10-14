@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/14 23:57:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/10/15 00:19:57 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	int		init_main(t_lemin *l)
 	l->room = NULL;
 	l->path = NULL;
 	l->queue = NULL;
-	if (!(l->tab = (char **)ft_memalloc(sizeof(char *) * (30000))))
+	if (!(l->tab = (char **)ft_memalloc(sizeof(char *) * (20000))))
 		return (0);
 	ft_bzero(&(l->buff), BUFF_SIZE);
 	return (1);
