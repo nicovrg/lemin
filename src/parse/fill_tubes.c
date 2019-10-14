@@ -6,7 +6,7 @@
 /*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/09/18 22:56:51 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/10 14:32:21 by qgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ static int	index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 static int	fill_tubes_first_room(t_parse *parse, t_room **tmp,
 t_links **new, t_lemin *l)
 {
-	if (!ft_strncmp((*tmp)->name, parse->line,
-	ft_strchr(parse->line, '-') - parse->line))
+	if ((*tmp)->name[0] == parse->line[0]
+	&& !ft_strncmp((*tmp)->name, parse->line,
+	ft_strchr(parse->line, '-') - parse->line) && ft_strlen((*tmp)->name)
+	== (size_t)(ft_strchr(parse->line, '-') - parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
@@ -85,7 +87,8 @@ t_links **new, t_lemin *l)
 static int	fill_tubes_last_room(t_parse *parse, t_room **tmp,
 t_links **new, char *buf)
 {
-	if (!ft_strcmp((*tmp)->name, parse->line))
+	if ((*tmp)->name[0] == parse->line[0]
+	&& !ft_strcmp((*tmp)->name, parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
