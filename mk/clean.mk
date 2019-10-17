@@ -6,14 +6,14 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 23:51:03 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/22 23:51:03 by nivergne         ###   ########.fr        #
+#    Updated: 2019/10/15 15:13:44 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-clean_lib:
-	@make -C libft clean
+# clean_lib:
 
-clean: clean_lib
+clean:
+	@make -C libft clean
 	@/bin/rm -fr obj
 
 fclean: clean

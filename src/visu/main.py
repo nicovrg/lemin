@@ -35,12 +35,15 @@ def on_key(event):
 
 def callback_draw(num, graph, nodes_coord, steps, farm, list_ant, fig, theme, args):
 	fig.clear()
+	index = 0
 	id_key = fig.canvas.mpl_connect("key_press_event", on_key)
 	id_mouse = fig.canvas.mpl_connect("button_press_event", on_click)
 	node_size = theme["node_size"]
 	tunnels = nx.draw_networkx_edges(graph, nodes_coord, edgelist = farm.links, edge_color = theme["link_color"], width = 2.0)
 	for path in farm.used_links:
-		nx.draw_networkx_edges(graph, nodes_coord, edgelist = path, edge_color = "#15B6B6", width = 2.0)
+		color = theme["path_color"][index % 5]
+		nx.draw_networkx_edges(graph, nodes_coord, edgelist = path, edge_color = color, width = 2.0)
+		index += 1
 	nodes = draw_nodes(graph, farm, nodes_coord, theme["node_color"], node_size, theme["link_color"])
 	draw_ants(list_ant, num, theme)
 	labels_dict = create_labels(farm, args)

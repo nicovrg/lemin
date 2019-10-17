@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 05:04:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/10/14 23:57:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/10/15 17:32:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int			print_paths(t_path **paths);
 ** buffer.c
 */
 
+/*
+** BLASBLA
+*/
 int			init_lemin(t_lemin *l, t_queue **end, t_room **current,
 			t_room **push);
 int			lemin(t_lemin *l);

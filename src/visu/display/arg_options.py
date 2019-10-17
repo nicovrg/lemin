@@ -26,6 +26,7 @@ def color_theme(theme, args, farm):
 		theme["text_color"] = "#EEEEEE"
 		theme["background_color"] = "#15202B"
 		theme["node_color"] = "#282828"
+		theme["path_color"] = ["#15B6B6", "#0548C9", "#6615B6", "#62ADE9", "#15B6B6"]
 		theme["ant_colors_list"] = ['#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6']
 	if check_args(args, "-blue_theme") == True and flag == False:
 		theme["steps"] = 15
@@ -35,6 +36,7 @@ def color_theme(theme, args, farm):
 		theme["text_color"] = "#094DB9"
 		theme["background_color"] = "#013FC1"
 		theme["node_color"] = "#AAD1ED"
+		theme["path_color"] = ["#15B6B6", "#15B6B6", "#15B6B6", "#0548C9", "#BFD9EA", "#62ADE9", "#0548C9", "#BFD9EA", "#62ADE9", "#15B6B6", "#15B6B6"]
 		theme["ant_colors_list"] = ["#BFD9EA", "#62ADE9", "#0548C9", "#BFD9EA", "#62ADE9", "#0548C9", "#BFD9EA", "#62ADE9", "#0548C9", "#BFD9EA", "#62ADE9"]
 	return theme
 
