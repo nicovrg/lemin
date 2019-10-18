@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:55:24 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/19 00:56:07 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/19 00:01:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ int		lemin(t_lemin *l)
 		return (error_msg(ERR_LEMIN_1));
 	b.queue_state = l->queue;
 	l->max_paths = nb_max_paths(l);
-	while (l->max_paths
-	&& bfs(&(b.queue_state), &(b.current_room), &(b.room_to_push)) == 1)
+	while (l->max_paths && bfs(&(b.queue_state), &(b.current_room), &(b.room_to_push)) == 1)
 	{
 		if (!put_find_end(l, &b))
 			return (1);

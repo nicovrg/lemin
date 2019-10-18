@@ -6,13 +6,13 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 01:40:55 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/15 00:19:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/10/19 00:00:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 #include "libft.h"
-// #include "time_exe.h"
+#include "time_exe.h"
 
 static	int		init_main(t_lemin *l)
 {
@@ -42,16 +42,17 @@ int				main(void)
 		return (free_all(1, &lem));
 	if (!check_lines(&lem))
 		return (free_all(1, &lem));
-	// time_exe("parsing - check_map_validity");
+	time_exe("parsing - check_map_validity");
 	if (!check_map_validity(&lem))
 		return (free_all(1, &lem));
-	// time_exe("algo - lemin");
+	time_exe("algo - lemin");
 	if (!lemin(&lem))
 		return (free_all(1, &lem));
-	// time_exe("print / free");	
+	time_exe("print / free");	
 	if (!(lem.path))
 		return (free_all(1, &lem));
 	print_render(&lem);
+	print_time();
 	free_all(0, &lem);
 	return (0);
 }

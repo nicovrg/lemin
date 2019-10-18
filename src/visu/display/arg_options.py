@@ -11,7 +11,7 @@ def check_graph_size(farm, theme):
 		theme["markersize"] = 5.0
 		theme["node_size"] = 50
 		theme["window_size"] = (16, 12)
-	elif (len(farm.rooms)) > 1000:
+	else:
 		theme["markersize"] = 5.0
 		theme["node_size"] = 5
 		theme["window_size"] = (18, 16)

@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/23 00:25:59 by nivergne         ###   ########.fr        #
+#    Updated: 2019/10/18 19:28:25 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) | makelib
 	@echo "$(BOL)$(GRN)LEMIN			$(BLU)compile$(GRN)		[OK]$(END)"
-	@$(CC) $(INC_PATH) $(OBJ) $(MLX) -L libft -lft -o $(NAME)
+	@$(CC) $(INC_PATH) $(OBJ) -L libft -lft -o $(NAME)
 
 makelib:
 	@$(MAKE) -C libft

@@ -6,10 +6,10 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 23:55:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/09/22 23:55:26 by nivergne         ###   ########.fr        #
+#    Updated: 2019/10/18 19:30:28 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-INC_PATH := include/
 INC = -I./include
+INC_PATH := include/
 INC_PATH = -Iinclude/ -Ilibft/include
