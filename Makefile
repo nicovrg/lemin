@@ -6,7 +6,7 @@
 #    By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/10/20 01:04:41 by nicolasv         ###   ########.fr        #
+#    Updated: 2019/10/20 01:06:40 by nicolasv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,9 @@ obj/%.o: src/%.c
 	@mkdir -p obj
 	@mkdir -p $(dir $@)
 	@echo "$(BOLD)$(CYAN)lemin		$(BLUE)$(patsubst obj/%, %, $(basename $@))	$(GREEN)[OK]$(END)"
-	@printf "\033[A"
+	@printf "$(UP_LINE)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_PATH) -o $@ -c $<
-	@printf "\33[2K"
+	@printf "$(ERASE_LINE)"
 
 include mk/bitcoin.mk
 include mk/debug.mk
