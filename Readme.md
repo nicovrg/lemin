@@ -72,11 +72,11 @@ pip3 install matplotlib
 
 ![simple](img/lemin_visu_usage.png)
 
-Simple graph:
+### Simple graph:
 ![simple](img/lemin_visu_one.mov)
 
-Medium graph:
+### Medium graph:
 ![simple](img/lemin_visu_two.png)
 
-Big graph:
+### Big graph:
 ![simple](img/lemin_visu_three.png)
