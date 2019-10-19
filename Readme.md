@@ -42,14 +42,12 @@ At the end of the project, we figured out parsing was taking as much as three qu
 bfs
 edmond karp
 
-## Terminal display
+## Output format
 
-Once we now witch configuration is the best, we put it in a buffer and print it when it's full or when there is nothing left to add in it. This output will be use by the graphic display
+Once we now witch configuration is the best, we put it in a buffer and print it when it's full or when there is nothing left to add in it. This output will be use by the graphic display.
 
 
 ## Graphic display
-
-### Prerequisites
 
 The visual mode for this project requires networkX and matplotlib. To install them: 
 
