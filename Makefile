@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
+#    By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 01:57:16 by nivergne          #+#    #+#              #
-#    Updated: 2019/10/18 19:28:25 by nivergne         ###   ########.fr        #
+#    Updated: 2019/10/20 01:04:41 by nicolasv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ DEPS = $(subst .o,.d,$(OBJ))
 all: $(NAME)
 
 $(NAME): $(OBJ) | makelib
-	@echo "$(BOL)$(GRN)LEMIN			$(BLU)compile$(GRN)		[OK]$(END)"
+	@echo "$(BOLD)$(GREEN)LEMIN			$(BLUE)compile$(GREEN)		[OK]$(END)"
 	@$(CC) $(INC_PATH) $(OBJ) -L libft -lft -o $(NAME)
 
 makelib:
@@ -36,7 +36,7 @@ makelib:
 obj/%.o: src/%.c
 	@mkdir -p obj
 	@mkdir -p $(dir $@)
-	@echo "Building$(BLU) $(patsubst obj/%,%,$(basename $@))$(END)"
+	@echo "$(BOLD)$(CYAN)lemin		$(BLUE)$(patsubst obj/%, %, $(basename $@))	$(GREEN)[OK]$(END)"
 	@printf "\033[A"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_PATH) -o $@ -c $<
 	@printf "\33[2K"
