@@ -12,7 +12,10 @@ def draw_nodes(graph, farm, nodes_coord, node_color, node_size, link_color):
 	nodes = {}
 	for name in farm.rooms:
 		if name == farm.start or name == farm.end:
-			node = draw_node(graph, nodes_coord, name, node_color, node_size * 2.5, link_color)
+			if (len(farm.rooms)) < 100:
+				node = draw_node(graph, nodes_coord, name, "#151560", node_size * 2.5, link_color)
+			else:
+				node = draw_node(graph, nodes_coord, name, "#1515B6", node_size * 14, link_color)		
 		else:
 			node = draw_node(graph, nodes_coord, name, node_color, node_size, link_color)
 		nodes[name] = node

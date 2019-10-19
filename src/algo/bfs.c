@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 01:19:51 by nivergne          #+#    #+#             */
-/*   Updated: 2019/09/30 01:53:53 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/10/19 20:07:52 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static int	init_values(int *end, t_links ***tab, t_links **tmp_links)
 	return (1);
 }
 
-int			bfs(t_queue **queue_state, t_room **current_room,
-t_room **room_to_push)
+int			bfs(t_queue **queue_state, t_room **current_room, t_room **room_to_push)
 {
 	int			end;
 	t_links		**tab;

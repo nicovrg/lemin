@@ -8,7 +8,7 @@ def check_graph_size(farm, theme):
 		theme["node_size"] = 500
 		theme["window_size"] = (6, 5)
 	elif (len(farm.rooms)) > 100 and (len(farm.rooms)) < 1000:
-		theme["markersize"] = 5.0
+		theme["markersize"] = 12.0
 		theme["node_size"] = 50
 		theme["window_size"] = (16, 12)
 	else:
@@ -27,7 +27,7 @@ def color_theme(theme, args, farm):
 		theme["background_color"] = "#15202B"
 		theme["node_color"] = "#282828"
 		theme["path_color"] = ["#15B6B6", "#0548C9", "#6615B6", "#62ADE9", "#15B6B6"]
-		theme["ant_colors_list"] = ['#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6', '#1515B6']
+		theme["ant_colors_list"] = ['#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6', '#6615B6']
 	if check_args(args, "-blue_theme") == True and flag == False:
 		theme["steps"] = 15
 		theme["window_size"] = None

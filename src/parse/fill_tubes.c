@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tubes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 02:39:11 by qgirard           #+#    #+#             */
-/*   Updated: 2019/10/10 14:32:21 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/19 20:10:47 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static int	index_tubes(t_links **new, t_room **tmp, t_parse *parse)
 ** (to keep the room address at the start of rooms)
 */
 
-static int	fill_tubes_first_room(t_parse *parse, t_room **tmp,
-t_links **new, t_lemin *l)
+static int	fill_tubes_first_room(t_parse *parse, t_room **tmp, t_links **new, t_lemin *l)
 {
 	if ((*tmp)->name[0] == parse->line[0]
 	&& !ft_strncmp((*tmp)->name, parse->line,
@@ -63,8 +62,7 @@ t_links **new, t_lemin *l)
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(parse->line, ft_strchr(parse->line, '-')
-		- parse->line + 1, ft_strlen(ft_strchr(parse->line, '-') + 1))))
+		if (!((*new)->room = ft_strsub(parse->line, ft_strchr(parse->line, '-') - parse->line + 1, ft_strlen(ft_strchr(parse->line, '-') + 1))))
 			return (0);
 		(*new)->same_link = NULL;
 		parse->ptr_link = (*new);
@@ -84,16 +82,14 @@ t_links **new, t_lemin *l)
 ** send to index_tube the address of after the '-'
 */
 
-static int	fill_tubes_last_room(t_parse *parse, t_room **tmp,
-t_links **new, char *buf)
+static int	fill_tubes_last_room(t_parse *parse, t_room **tmp, t_links **new, char *buf)
 {
 	if ((*tmp)->name[0] == parse->line[0]
 	&& !ft_strcmp((*tmp)->name, parse->line))
 	{
 		if (!((*new) = (t_links *)malloc(sizeof(t_links))))
 			return (0);
-		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf)
-		- ft_strlen(parse->line) - 1)))
+		if (!((*new)->room = ft_strsub(buf, 0, ft_strlen(buf) - ft_strlen(parse->line) - 1)))
 			return (0);
 		if (parse->ptr_link)
 			parse->ptr_link->same_link = (*new);

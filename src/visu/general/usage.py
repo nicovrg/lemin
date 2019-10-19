@@ -22,6 +22,7 @@ def usage():
 	print("  {}{}{}compile:{}".format(underline, bold, cyan, end))
 	print
 	print("\t{}{}make && ./lem-in < maps/sujet.map4 | python src/visu/main.py -option{}".format(bold, blue, end))
+	print("\t{}{}make && ./lem-in < maps/maps/medium_three_paths | python src/visu/main.py -visu -darkpurple_ant -repeat -window_size \"8 6\"{}".format(bold, blue, end))
 	print
 	print("  {}{}{}events:{}".format(underline, bold, cyan, end))
 	print
@@ -30,6 +31,7 @@ def usage():
 	print("\t{}press key x:{} decrement node size".format(green, end))
 	print("\t{}press key c:{} increment ant size".format(green, end))
 	print("\t{}press key v:{} decrement ant size".format(green, end))
+	print("\t{}press key o:{} zoom".format(green, end))
 	print
 	print("\t{}press key d:{} switch background color".format(green, end))
 	print("\t{}press key f:{} switch node color".format(green, end))

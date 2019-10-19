@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_graph.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qgirard <qgirard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nicolasv <nicolasv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 08:46:17 by nicolasv          #+#    #+#             */
-/*   Updated: 2019/09/19 04:52:56 by qgirard          ###   ########.fr       */
+/*   Updated: 2019/10/19 20:08:54 by nicolasv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ int		put_stop_ants_in_paths(t_lemin *l, t_path **updated_path)
 		parse_paths = *updated_path;
 		while (parse_paths && tmp_path->length > l->shortest_path)
 		{
-			if (parse_paths != tmp_path
-			&& tmp_path->length > parse_paths->length)
-				tmp_path->stop_ants = tmp_path->stop_ants
-				+ (tmp_path->length - parse_paths->length);
+			if (parse_paths != tmp_path && tmp_path->length > parse_paths->length)
+				tmp_path->stop_ants = tmp_path->stop_ants + tmp_path->length - parse_paths->length;
 			parse_paths = parse_paths->next;
 		}
 		tmp_path = tmp_path->next;

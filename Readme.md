@@ -5,11 +5,16 @@ It's an opportunity to work on graph traversal algorithm such as dfs/bfs (deepth
 edmond karp
 
 
-## Rules
+## Input format
 
+Here is a map example:
+![simple](img/lemin_subject_example.png)
+
+```
 Ant: a unit of flow
 Room: node
 Link: edge
+```
 
 At the begining of the game, all ants are packed in start. 
 Each turn ants can move, but they can't be multiple ants in a room or a link (except start and end rooms).
@@ -26,9 +31,6 @@ The fourth and optionnal part is a visualisator that read the algorithm output a
 
 ## Parsing
 
-Maps are represented with 
-
-
 We read stdin to get all infos (number of ants, all rooms, all links between rooms ...)
 
 We use mainly list because they are easy to use and allow us to manipulate and record data with a lot of freedom. We could have use a hash table, a binary tree or a table of list but we didn't spend time implementing this because we under estimate the time parsing would take. 
@@ -44,55 +46,30 @@ edmond karp
 
 Once we now witch configuration is the best, we put it in a buffer and print it when it's full or when there is nothing left to add in it. This output will be use by the graphic display
 
+
 ## Graphic display
-
-
-# Ants in a Maze
-
-Lem-in is a project where ants are guided through an anthill from a start to finish node. Each anthill is a graph of nodes and tunnels. The goal is to find the combination of paths that result in the least number of turns, while maintaining a max flow rate of one ant per node per turn. 
-
-## Examples
-
-An example graph where three ants travel along a single path, taking a total of four turns to reach the end node:
-![simple](img/simple.gif)
-
-An example graph where seventeen ants travel along four equidistant paths, taking a total of seven turns to reach the end node:
-![4paths](img/4paths.gif)
-
-An example graph where ten ants travel along three paths of different lengths, taking a total of six turns to reach the end node:
-![4paths](img/3paths.gif)
-
-
-## Getting Started
-
-To run this repo, download it and `make`. There are a number of example anthills in the folder test\_maps. Of course you can also create your own anthills and watch the ants march through.
-
-The non-visual mode of solving the graph can be run with `./lem-in < /path/input_file.map`. For example, try `./lem-in < test_maps/valid/2-3.map`
-
-The visual mode can be run using `./run_visual /path/input_file.map`.
-
-## Input Format
-
-Each input file consists of the following information:
-
-```
-number_of_ants
-nodes
-tunnels_between_nodes
-```
 
 ### Prerequisites
 
 The visual mode for this project requires networkX and matplotlib. To install them: 
+
+* [NetworkX](https://networkx.github.io/) - Used to generate the nodes, connections and node placement in the visualizer
+* [Matplotlib](https://matplotlib.org/) - Plot the colorful dots represe
 
 ```
 pip3 install netowrkX
 pip3 install matplotlib
 ```
 
-## Built With
 
-* Good old C - For the bfs-based algorithm to find the optimal paths
-* Python3 - For the visualizer
-* [NetworkX](https://networkx.github.io/) - Used to generate the nodes, connections and node placement in the visualizer
-* [Matplotlib](https://matplotlib.org/) - Plot the colorful dots represe
+Usage:
+![simple](img/lemin_visu_usage.png)
+
+Simple graph:
+![simple](img/lemin_visu_one.mov)
+
+Medium graph:
+![simple](img/lemin_visu_two.mov)
+
+Big graph:
+![simple](img/lemin_visu_four.mov)
