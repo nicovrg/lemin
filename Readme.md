@@ -67,7 +67,7 @@ Simple graph:
 ![simple](img/lemin_visu_one.mov)
 
 Medium graph:
-![simple](img/lemin_visu_two.mov)
+![simple](img/lemin_visu_two.png)
 
 Big graph:
-![simple](img/lemin_visu_four.mov)
+![simple](img/lemin_visu_four.png)
