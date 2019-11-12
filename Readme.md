@@ -47,7 +47,7 @@ The task of checking if a link can be taken, and in which direction this link ca
 
 Each time we update the residual graph, we compute the number of moves we would need to do to move all ants from start to end, using this version of the graph. We keep the shortest path and continue untill we have used all possible paths.
 
-Then we have our best case solution so we send this path to the print functions.
+Then we have our best case solution hence we send this path to the print functions.
 
 
 ## Output format
